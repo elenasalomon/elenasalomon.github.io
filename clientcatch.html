@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Client Catch — Elena Salomón</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400&display=swap" rel="stylesheet"/>
+  <style>
+    :root { --bg:#faf7fc;--ink:#2a1f3d;--mid:#5a4a6f;--light:#9b7bb8;--rule:#e8d9f0; }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{background:var(--bg);color:var(--ink);font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--bg);border-bottom:1px solid var(--rule);}
+    .nav-inner{max-width:760px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:52px;}
+    .nav-name{font-family:'Playfair Display',serif;font-size:.95rem;color:var(--ink);text-decoration:none;}
+    .nav-back{font-size:.75rem;font-weight:500;letter-spacing:.05em;color:var(--mid);text-decoration:none;transition:color .15s;}
+    .nav-back:hover{color:var(--ink);}
+    .proj-hero{padding-top:52px;border-bottom:1px solid var(--rule);}
+    .proj-hero-inner{max-width:760px;margin:0 auto;padding:4rem 2rem;display:grid;grid-template-columns:160px 1fr;gap:3rem;}
+    .proj-num{font-family:'DM Mono',monospace;font-size:.7rem;color:var(--light);letter-spacing:.1em;margin-bottom:1.2rem;}
+    .proj-tags{display:flex;flex-direction:column;gap:.3rem;}
+    .proj-tag{font-size:.7rem;color:var(--light);}
+    h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);font-weight:400;line-height:1.1;letter-spacing:-.02em;margin-bottom:1rem;}
+    h1 em{font-style:italic;color:#c88dd4;}
+    .proj-summary{font-size:.95rem;color:var(--mid);line-height:1.8;font-weight:300;max-width:480px;margin-bottom:2rem;}
+    .proj-links{display:flex;gap:1.5rem;}
+    .proj-link{font-size:.72rem;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--ink);padding-bottom:1px;transition:color .15s,border-color .15s;}
+    .proj-link:hover{color:var(--mid);border-color:var(--light);}
+    .proj-link.ghost{color:var(--mid);border-color:var(--rule);}
+    .proj-link.ghost:hover{color:var(--ink);border-color:var(--ink);}
+    .proj-body{padding:5rem 0;}
+    .section{max-width:760px;margin:0 auto 4rem;padding:0 2rem;}
+    .sg{display:grid;grid-template-columns:160px 1fr;gap:3rem;}
+    .sl{font-size:.7rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--light);padding-top:.2rem;}
+    h2{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:400;letter-spacing:-.01em;margin-bottom:1.2rem;}
+    p{font-size:.9rem;color:var(--mid);line-height:1.85;font-weight:300;margin-bottom:.9rem;}
+    p strong{color:var(--ink);font-weight:400;}
+    p:last-child{margin-bottom:0;}
+    .meta-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;}
+    .mr{padding:.7rem 0;border-bottom:1px solid var(--rule);}
+    .mr:first-child,.mr:nth-child(2){border-top:1px solid var(--rule);}
+    .ml{font-size:.65rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--light);margin-bottom:.2rem;}
+    .mv{font-size:.82rem;color:var(--ink);}
+    /* segments */
+    .seg-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--rule);border:1px solid var(--rule);}
+    .seg{background:var(--bg);padding:1.2rem;}
+    .seg-id{font-family:'DM Mono',monospace;font-size:.65rem;color:var(--light);letter-spacing:.1em;margin-bottom:.5rem;}
+    .seg-name{font-family:'Playfair Display',serif;font-size:1rem;font-weight:400;color:var(--ink);margin-bottom:.6rem;}
+    .seg-stat{font-size:.78rem;color:var(--mid);line-height:1.6;font-weight:300;}
+    .seg-stat strong{color:var(--ink);font-weight:400;}
+    /* recs */
+    .rec-list{display:flex;flex-direction:column;}
+    .rec-item{padding:1rem 0;border-bottom:1px solid var(--rule);display:grid;grid-template-columns:1.8rem 1fr;gap:.8rem;}
+    .rec-item:first-child{border-top:1px solid var(--rule);}
+    .ri-n{font-family:'DM Mono',monospace;font-size:.7rem;color:var(--light);padding-top:.1rem;}
+    .ri-title{font-size:.85rem;font-weight:500;color:var(--ink);margin-bottom:.2rem;}
+    .ri-desc{font-size:.85rem;color:var(--mid);font-weight:300;line-height:1.7;}
+    /* conclusions */
+    .cl{display:flex;flex-direction:column;}
+    .ci{display:grid;grid-template-columns:2rem 1fr;gap:1rem;padding:1.2rem 0;border-bottom:1px solid var(--rule);}
+    .ci:first-child{border-top:1px solid var(--rule);}
+    .cn{font-family:'Playfair Display',serif;font-size:1rem;color:var(--rule);}
+    .ct{font-size:.88rem;color:var(--mid);line-height:1.75;font-weight:300;}
+    .ct strong{color:var(--ink);font-weight:400;}
+    /* proj nav */
+    .pnav{max-width:760px;margin:0 auto;padding:3rem 2rem;border-top:1px solid var(--rule);display:flex;justify-content:space-between;align-items:center;}
+    .pnl{font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--light);margin-bottom:.3rem;}
+    .pnt{font-family:'Playfair Display',serif;font-size:1rem;}
+    .pna{font-size:.72rem;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--ink);padding-bottom:1px;transition:color .15s;}
+    .pna:hover{color:var(--mid);}
+    footer{border-top:1px solid var(--rule);padding:1.5rem 2rem;text-align:center;font-size:.72rem;color:var(--light);letter-spacing:.04em;}
+    .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease;}
+    .reveal.visible{opacity:1;transform:translateY(0);}
+    @media(max-width:600px){.proj-hero-inner,.sg{grid-template-columns:1fr;gap:1rem;}.meta-grid,.seg-grid{grid-template-columns:1fr;}.pnav{flex-direction:column;align-items:flex-start;gap:1.2rem;}}
+  </style>
+</head>
+<body>
+<nav><div class="nav-inner"><a href="../index.html" class="nav-name">Elena Salomón</a><a href="../index.html#projects" class="nav-back">← Proyectos</a></div></nav>
+
+<div class="proj-hero">
+  <div class="proj-hero-inner">
+    <div>
+      <div class="proj-num">03 / 05</div>
+      <div class="proj-tags">
+        <span class="proj-tag">Clustering</span>
+        <span class="proj-tag">K-Means</span>
+        <span class="proj-tag">Marketing</span>
+        <span class="proj-tag">Retail</span>
+      </div>
+    </div>
+    <div>
+      <h1>Client Catch: <em>¿Quién es<br>tu cliente?</em></h1>
+      <p class="proj-summary">Segmentación de clientes de una empresa retail mediante aprendizaje no supervisado. Tres perfiles accionables construidos a partir de datos demográficos, hábitos de gasto e interacción con campañas de marketing.</p>
+      <div class="proj-links">
+        <a href="https://github.com/elenasalomon" class="proj-link" target="_blank">Ver en GitHub</a>
+        <a href="../index.html#projects" class="proj-link ghost">← Volver</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="proj-body">
+
+  <div class="section reveal">
+    <div class="sg">
+      <span class="sl">Ficha</span>
+      <div class="meta-grid">
+        <div class="mr"><div class="ml">Tipo</div><div class="mv">Clustering no supervisado</div></div>
+        <div class="mr"><div class="ml">Dataset</div><div class="mv">Customer Personality Analysis — 2.240 clientes</div></div>
+        <div class="mr"><div class="ml">Algoritmo</div><div class="mv">K-Means (K=3, método del codo)</div></div>
+        <div class="mr"><div class="ml">Año</div><div class="mv">2025</div></div>
+        <div class="mr"><div class="ml">Dominio</div><div class="mv">Marketing estratégico · Retail</div></div>
+        <div class="mr"><div class="ml">Stack</div><div class="mv">Python · scikit-learn · yellowbrick · seaborn</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section reveal">
+    <div class="sg">
+      <span class="sl">El problema</span>
+      <div>
+        <h2>Tratar a todos igual es una estrategia destinada al fracaso</h2>
+        <p>En un mercado saturado donde las empresas compiten por la atención del consumidor, la ventaja competitiva reside en la capacidad de identificar patrones de comportamiento que definen a cada individuo. Una empresa retail con base de clientes en crecimiento buscaba pasar de estrategias masivas a campañas hiper-personalizadas.</p>
+        <p>El objetivo fue implementar un flujo completo de ciencia de datos — desde la limpieza hasta el clustering — para <strong>segmentar clientes según su perfil de gasto y respuesta a campañas</strong>, identificando qué grupos son los más valiosos y cómo llegar a cada uno de forma distinta.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section reveal">
+    <div class="sg">
+      <span class="sl">Los datos</span>
+      <div>
+        <h2>Dataset Customer Personality Analysis</h2>
+        <p>El dataset incluye datos demográficos (año de nacimiento, educación, estado civil, ingresos, número de hijos y adolescentes en el hogar), información de gasto en los últimos dos años (vino, frutas, carnes, pescado, dulces, productos gold), canales de compra (web, catálogo, tienda, ofertas) e interacción con 5 campañas de marketing.</p>
+        <p>Antes del modelado se construyeron nuevas variables: <strong>Edad</strong> del cliente, <strong>Gasto Total</strong> (suma de todas las categorías), <strong>Tamaño del hogar</strong> y <strong>TotalAcceptedCmp</strong> (suma de campañas aceptadas). Estas variables simplificaron la complejidad de los datos crudos y mejoraron la interpretabilidad de los clusters.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section reveal">
+    <div class="sg">
+      <span class="sl">Metodología</span>
+      <div>
+        <h2>K-Means con método del codo</h2>
+        <p>Los datos fueron escalados con StandardScaler antes del clustering, dado que las variables tienen magnitudes muy distintas (ingresos en miles de dólares vs. variables binarias de campañas). Para determinar el número óptimo de clusters se evaluaron dos métricas, que arrojaron resultados distintos:</p>
+        <div style="background: var(--card); border: 1px solid var(--rule); border-radius: 10px; padding: 2rem; margin: 1.8rem 0;">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem;">
+
+            <!-- Método del Codo -->
+            <div>
+              <div style="font-size: 0.68rem; font-weight: 600; letter-spacing: 0.13em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.2rem;">Método del Codo (WCSS)</div>
+              <svg viewBox="0 0 290 145" style="width:100%;overflow:visible;">
+                <!-- Grid -->
+                <line x1="35" y1="10" x2="35" y2="110" stroke="#e8e2dc" stroke-width="1"/>
+                <line x1="35" y1="110" x2="270" y2="110" stroke="#e8e2dc" stroke-width="1"/>
+                <line x1="35" y1="40" x2="270" y2="40" stroke="#e8e2dc" stroke-width="0.5" stroke-dasharray="3,3"/>
+                <line x1="35" y1="70" x2="270" y2="70" stroke="#e8e2dc" stroke-width="0.5" stroke-dasharray="3,3"/>
+                <!-- Y labels -->
+                <text x="30" y="14" text-anchor="end" font-size="8" fill="#a89e94">22k</text>
+                <text x="30" y="44" text-anchor="end" font-size="8" fill="#a89e94">16k</text>
+                <text x="30" y="74" text-anchor="end" font-size="8" fill="#a89e94">12k</text>
+                <text x="30" y="113" text-anchor="end" font-size="8" fill="#a89e94">9k</text>
+                <!-- Curve -->
+                <polyline points="40,15 67,63 94,80 121,85 148,90 175,98 202,101 229,103 256,105" fill="none" stroke="#7dab8a" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+                <!-- Dots -->
+                <circle cx="40" cy="15" r="3" fill="#7dab8a"/><circle cx="67" cy="63" r="3" fill="#7dab8a"/><circle cx="94" cy="80" r="3" fill="#7dab8a"/><circle cx="121" cy="85" r="3" fill="#7dab8a"/><circle cx="148" cy="90" r="3" fill="#7dab8a"/><circle cx="175" cy="98" r="3" fill="#7dab8a"/><circle cx="202" cy="101" r="3" fill="#7dab8a"/><circle cx="229" cy="103" r="3" fill="#7dab8a"/><circle cx="256" cy="105" r="3" fill="#7dab8a"/>
+                <!-- K=3 highlight dot -->
+                <circle cx="94" cy="80" r="5" fill="none" stroke="var(--accent)" stroke-width="1.5"/>
+                <circle cx="94" cy="80" r="3" fill="var(--accent)"/>
+                <!-- Arrow pointing to K=3 elbow -->
+                <line x1="122" y1="58" x2="101" y2="74" stroke="#b0a89e" stroke-width="1.2" marker-end="url(#arr1)"/>
+                <text x="124" y="56" font-size="8.5" fill="#b0a89e">codo</text>
+                <defs>
+                  <marker id="arr1" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+                    <path d="M0,0 L6,3 L0,6 Z" fill="#b0a89e"/>
+                  </marker>
+                </defs>
+                <!-- X labels -->
+                <text x="40" y="124" text-anchor="middle" font-size="8.5" fill="#a89e94" >1</text><text x="67" y="124" text-anchor="middle" font-size="8.5" fill="#a89e94" >2</text><text x="94" y="124" text-anchor="middle" font-size="8.5" fill="var(--accent)" font-weight='600'>3</text><text x="121" y="124" text-anchor="middle" font-size="8.5" fill="#a89e94" >4</text><text x="148" y="124" text-anchor="middle" font-size="8.5" fill="#a89e94" >5</text><text x="175" y="124" text-anchor="middle" font-size="8.5" fill="#a89e94" >6</text><text x="202" y="124" text-anchor="middle" font-size="8.5" fill="#a89e94" >7</text><text x="229" y="124" text-anchor="middle" font-size="8.5" fill="#a89e94" >8</text><text x="256" y="124" text-anchor="middle" font-size="8.5" fill="#a89e94" >9</text>
+                <text x="155" y="140" text-anchor="middle" font-size="8.5" fill="#a89e94">Number of clusters</text>
+                <text x="10" y="65" text-anchor="middle" font-size="8.5" fill="#a89e94" transform="rotate(-90,10,65)">WCSS</text>
+              </svg>
+              <div style="font-size: 0.73rem; color: var(--mid); margin-top: 0.5rem;">Inflexión en K=3 — la varianza interna deja de reducirse significativamente.</div>
+            </div>
+
+            <!-- Silhouette -->
+            <div>
+              <div style="font-size: 0.68rem; font-weight: 600; letter-spacing: 0.13em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.2rem;">Coeficiente de Silueta</div>
+              <svg viewBox="0 0 290 145" style="width:100%;overflow:visible;">
+                <defs>
+                  <marker id="arr2" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+                    <path d="M0,0 L6,3 L0,6 Z" fill="#b0a89e"/>
+                  </marker>
+                </defs>
+                <!-- Grid -->
+                <line x1="35" y1="10" x2="35" y2="110" stroke="#e8e2dc" stroke-width="1"/>
+                <line x1="35" y1="110" x2="270" y2="110" stroke="#e8e2dc" stroke-width="1"/>
+                <line x1="35" y1="40" x2="270" y2="40" stroke="#e8e2dc" stroke-width="0.5" stroke-dasharray="3,3"/>
+                <line x1="35" y1="70" x2="270" y2="70" stroke="#e8e2dc" stroke-width="0.5" stroke-dasharray="3,3"/>
+                <!-- Y labels -->
+                <text x="30" y="14" text-anchor="end" font-size="8" fill="#a89e94">0.30</text>
+                <text x="30" y="44" text-anchor="end" font-size="8" fill="#a89e94">0.24</text>
+                <text x="30" y="74" text-anchor="end" font-size="8" fill="#a89e94">0.19</text>
+                <text x="30" y="113" text-anchor="end" font-size="8" fill="#a89e94">0.17</text>
+                <!-- Curve -->
+                <polyline points="40,15 71,40 102,86 133,91 164,104 195,105 226,95 257,95" fill="none" stroke="#7dab8a" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+                <!-- Dots -->
+                <circle cx="40" cy="15" r="3" fill="#7dab8a"/><circle cx="71" cy="40" r="3" fill="#7dab8a"/><circle cx="102" cy="86" r="3" fill="#7dab8a"/><circle cx="133" cy="91" r="3" fill="#7dab8a"/><circle cx="164" cy="104" r="3" fill="#7dab8a"/><circle cx="195" cy="105" r="3" fill="#7dab8a"/><circle cx="226" cy="95" r="3" fill="#7dab8a"/><circle cx="257" cy="95" r="3" fill="#7dab8a"/>
+                <!-- K=2 highlight -->
+                <circle cx="40" cy="15" r="5" fill="none" stroke="var(--accent)" stroke-width="1.5"/>
+                <circle cx="40" cy="15" r="3" fill="var(--accent)"/>
+                <!-- Arrow pointing to K=2 peak -->
+                <line x1="68" y1="-3" x2="47" y2="10" stroke="#b0a89e" stroke-width="1.2" marker-end="url(#arr2)"/>
+                <text x="70" y="-5" font-size="8.5" fill="#b0a89e">máximo</text>
+                <!-- X labels -->
+                <text x="40" y="124" text-anchor="middle" font-size="8.5" fill="var(--accent)" font-weight='600'>2</text><text x="71" y="124" text-anchor="middle" font-size="8.5" fill="#a89e94" >3</text><text x="102" y="124" text-anchor="middle" font-size="8.5" fill="#a89e94" >4</text><text x="133" y="124" text-anchor="middle" font-size="8.5" fill="#a89e94" >5</text><text x="164" y="124" text-anchor="middle" font-size="8.5" fill="#a89e94" >6</text><text x="195" y="124" text-anchor="middle" font-size="8.5" fill="#a89e94" >7</text><text x="226" y="124" text-anchor="middle" font-size="8.5" fill="#a89e94" >8</text><text x="257" y="124" text-anchor="middle" font-size="8.5" fill="#a89e94" >9</text>
+                <text x="155" y="140" text-anchor="middle" font-size="8.5" fill="#a89e94">Number of clusters</text>
+                <text x="10" y="65" text-anchor="middle" font-size="8.5" fill="#a89e94" transform="rotate(-90,10,65)">Silhouette Score</text>
+              </svg>
+              <div style="font-size: 0.73rem; color: var(--mid); margin-top: 0.5rem;">Pico en K=2, pero K=3 elegido por mayor valor interpretativo de negocio.</div>
+            </div>
+
+          </div>
+        </div>
+        <p><strong>Método del codo (WCSS):</strong> sugería K=3 como punto de inflexión donde la varianza interna deja de reducirse significativamente. <strong>Coeficiente de Silueta:</strong> estadísticamente señalaba K=2 como la división más precisa.</p>
+        <p>La decisión fue mantener <strong>K=3</strong>. Desde el punto de vista estadístico puro, dos grupos eran más cohesivos — pero en términos de negocio, el tercer cluster ofrecía matices y oportunidades de personalización que se habrían perdido en una segmentación demasiado simplificada. Esa tensión entre precisión estadística y utilidad práctica es parte del trabajo real de ciencia de datos.</p>
+        <p>El resultado: tres grupos con tamaños sustanciales (909, 628 y 493 clientes), ninguno marginal, todos con perfiles accionables.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section reveal">
+    <div class="sg">
+      <span class="sl">Segmentos</span>
+      <div>
+        <h2>Tres perfiles de cliente</h2>
+        <div class="seg-grid" style="margin-top:.4rem;">
+          <div class="seg">
+            <div class="seg-id">Cluster 0 — Cliente premium in-store</div>
+            <div class="seg-name">Cliente premium in-store</div>
+            <div class="seg-stat">
+              <strong>Ingreso medio:</strong> Alto, sin niños<br>
+              <strong>Gasto:</strong> El más elevado en todas las categorías<br>
+              <strong>Canal preferido:</strong> Tienda física y catálogo<br><br>
+              Segmento más rentable y menos presente en web. Receptivos a campañas (31% de interacción). Valoran la exclusividad — debemos ofrecerles preventas y vinos de alta gama. El espacio en tienda debe destacar productos exclusivos para este segmento.
+            </div>
+          </div>
+          <div class="seg">
+            <div class="seg-id">Cluster 1 — Comprador digital maduro</div>
+            <div class="seg-name">Comprador digital maduro</div>
+            <div class="seg-stat">
+              <strong>Edad mediana:</strong> 60 años<br>
+              <strong>Ingresos:</strong> Medios con adolescentes en casa<br>
+              <strong>Comportamiento:</strong> Más activos en compras digitales<br><br>
+              Lideran transacciones web. Muy sensibles al precio — mayor uso de ofertas y descuentos. A pesar de su edad, son nativos digitales para transacciones. Dirigirles descuentos exclusivos online para movilizar inventario. Son los que más usan cupones — comunicar proactivamente ofertas web para elevar ticket promedio.
+            </div>
+          </div>
+          <div class="seg">
+            <div class="seg-id">Cluster 2 — Cliente digital con hijos</div>
+            <div class="seg-name">Cliente digital con hijos</div>
+            <div class="seg-stat">
+              <strong>Tamaño:</strong> Segmento más numeroso<br>
+              <strong>Ingresos:</strong> Comparativamente menores<br>
+              <strong>Web:</strong> Visitantes más frecuentes (7.5 visitas/mes)<br><br>
+              Familias jóvenes con hijos — gasto total más bajo pero visitantes web más frecuentes. Utilizan la web como herramienta de consulta, con tasa de conversión más baja. Son cazadores de ofertas — destacar descuentos claros para convertir visitas en transacciones. Promover artículos esenciales — dejar productos de lujo fuera del radar.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section reveal">
+    <div class="sg">
+      <span class="sl">Recomendaciones</span>
+      <div>
+        <h2>Estrategia por segmento</h2>
+        <div class="rec-list">
+          <div class="rec-item">
+            <div class="ri-n">C0</div>
+            <div>
+              <div class="ri-title">Experiencia exclusiva premium, no descuentos</div>
+              <div class="ri-desc">Segmento más rentable y más receptivo a campañas. La retención debe enfocarse en acceso exclusivo y experiencias premium en tienda y catálogo — no en descuentos, que erosionan margen. Ofrecerles preventas y vinos de alta gama. El espacio en tienda y catálogo debe priorizar productos de alto valor orientados a este segmento.</div>
+            </div>
+          </div>
+          <div class="rec-item">
+            <div class="ri-n">C1</div>
+            <div>
+              <div class="ri-title">Descuentos web en productos de alto valor</div>
+              <div class="ri-desc">Nativos digitales sensibles al precio que sí compran productos de valor como vinos y carnes. Promover descuentos exclusivos online en estas categorías para mover inventario aprovechando su canal preferido. Comunicar proactivamente cupones y ofertas para elevar ticket promedio aprovechando que están cómodos comprando digitalmente.</div>
+            </div>
+          </div>
+          <div class="rec-item">
+            <div class="ri-n">C2</div>
+            <div>
+              <div class="ri-title">Optimizar experiencia web para conversión en familias</div>
+              <div class="ri-desc">Segmento más numeroso — visitantes frecuentes del sitio pero conversión más baja. Priorizar ofertas en productos de primera necesidad y simplificar la experiencia de compra. Son cazadores de ofertas — destacar descuentos claros. Al ser el grupo más grande, mejorar usabilidad y conversión web tiene impacto directo en volumen total.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section reveal">
+    <div class="sg">
+      <span class="sl">Conclusiones</span>
+      <div>
+        <h2>Lo que aprendimos</h2>
+        <div class="cl">
+          <div class="ci"><div class="cn">1</div><div class="ct"><strong>La segmentación equilibra métricas con intuición estratégica.</strong> Elegir K=3 sobre K=2 fue decisión de negocio, no solo matemática. El costo de ignorar oportunidades de personalización fue mayor que el costo de menor pureza estadística.</div></div>
+          <div class="ci"><div class="cn">2</div><div class="ct"><strong>Los perfiles revelan trade-offs accionables.</strong> Alto valor vs. volumen, sensibilidad al precio vs. gasto absoluto. Cada segmento requiere un mix táctico diferente de canales, precios y mensajería.</div></div>
+          <div class="ci"><div class="cn">3</div><div class="ct"><strong>La edad y la familia son predictores potentes.</strong> El ciclo de vida del cliente (joven con hijos, maduro con adolescentes, adulto sin dependientes) correlaciona fuertemente con canal preferido, sensibilidad al precio y gasto total.</div></div>
+          <div class="ci"><div class="cn">4</div><div class="ct"><strong>El canal predice el comportamiento.</strong> Quiénes compran digitalmente son distintos a quiénes prefieren la tienda física — no es solo un medio, es un indicador de personalidad y hábito de compra.</div></div>
+          <div class="ci"><div class="cn">5</div><div class="ct"><strong>K=3 capturó la estructura real sin sobreajuste.</strong> El método del codo confirmó que tres clusters son suficientes. Más clusters habrían fragmentado perfiles sin agregar interpretabilidad accionable para el negocio.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pnav reveal">
+    <div><div class="pnl">Anterior</div><div class="pnt">Dine or Dash</div></div>
+    <div style="text-align:right">
+      <div class="pnl">Siguiente proyecto</div>
+      <div class="pnt">Goodreads</div>
+    </div>
+    <a href="../goodreads/index.html" class="pna">Ver proyecto →</a>
+  </div>
+
+</div>
+<footer>© 2026 Elena Salomón López</footer>
+<script>
+  const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.08});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>

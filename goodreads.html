@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Goodreads — Elena Salomón</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400&display=swap" rel="stylesheet"/>
+  <style>
+    :root { --bg:#faf7fc;--ink:#2a1f3d;--mid:#5a4a6f;--light:#9b7bb8;--rule:#e8d9f0; }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{background:var(--bg);color:var(--ink);font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--bg);border-bottom:1px solid var(--rule);}
+    .nav-inner{max-width:760px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:52px;}
+    .nav-name{font-family:'Playfair Display',serif;font-size:.95rem;color:var(--ink);text-decoration:none;}
+    .nav-back{font-size:.75rem;font-weight:500;letter-spacing:.05em;color:var(--mid);text-decoration:none;transition:color .15s;}
+    .nav-back:hover{color:var(--ink);}
+    .proj-hero{padding-top:52px;border-bottom:1px solid var(--rule);}
+    .proj-hero-inner{max-width:760px;margin:0 auto;padding:4rem 2rem;display:grid;grid-template-columns:160px 1fr;gap:3rem;}
+    .proj-num{font-family:'DM Mono',monospace;font-size:.7rem;color:var(--light);letter-spacing:.1em;margin-bottom:1.2rem;}
+    .proj-tags{display:flex;flex-direction:column;gap:.3rem;}
+    .proj-tag{font-size:.7rem;color:var(--light);}
+    h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);font-weight:400;line-height:1.1;letter-spacing:-.02em;margin-bottom:1rem;}
+    h1 em{font-style:italic;color:#c88dd4;}
+    .proj-summary{font-size:.95rem;color:var(--mid);line-height:1.8;font-weight:300;max-width:480px;margin-bottom:2rem;}
+    .proj-links{display:flex;gap:1.5rem;}
+    .proj-link{font-size:.72rem;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--ink);padding-bottom:1px;transition:color .15s,border-color .15s;}
+    .proj-link:hover{color:var(--mid);border-color:var(--light);}
+    .proj-link.ghost{color:var(--mid);border-color:var(--rule);}
+    .proj-link.ghost:hover{color:var(--ink);border-color:var(--ink);}
+    .proj-body{padding:5rem 0;}
+    .section{max-width:760px;margin:0 auto 4rem;padding:0 2rem;}
+    .sg{display:grid;grid-template-columns:160px 1fr;gap:3rem;}
+    .sl{font-size:.7rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--light);padding-top:.2rem;}
+    h2{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:400;letter-spacing:-.01em;margin-bottom:1.2rem;}
+    p{font-size:.9rem;color:var(--mid);line-height:1.85;font-weight:300;margin-bottom:.9rem;}
+    p strong{color:var(--ink);font-weight:400;}
+    p:last-child{margin-bottom:0;}
+    /* meta */
+    .meta-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;}
+    .mr{padding:.7rem 0;border-bottom:1px solid var(--rule);}
+    .mr:first-child,.mr:nth-child(2){border-top:1px solid var(--rule);}
+    .ml{font-size:.65rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--light);margin-bottom:.2rem;}
+    .mv{font-size:.82rem;color:var(--ink);}
+    /* comparison table */
+    .bt{width:100%;border-collapse:collapse;font-size:.82rem;}
+    .bt th{font-size:.65rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--light);text-align:left;padding:.6rem 0;border-bottom:1px solid var(--rule);}
+    .bt td{padding:.8rem 0;border-bottom:1px solid var(--rule);color:var(--mid);vertical-align:top;}
+    .bt td:first-child{color:var(--ink);}
+    .wb{display:inline-block;font-size:.6rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;border:1px solid var(--rule);padding:.1rem .4rem;margin-left:.5rem;}
+    /* features list */
+    .feat-list{display:flex;flex-direction:column;}
+    .feat-item{padding:.85rem 0;border-bottom:1px solid var(--rule);display:grid;grid-template-columns:2rem 1fr;gap:.8rem;}
+    .feat-item:first-child{border-top:1px solid var(--rule);}
+    .fi-n{font-family:'DM Mono',monospace;font-size:.7rem;color:var(--light);}
+    .fi-t{font-size:.85rem;color:var(--mid);font-weight:300;line-height:1.7;}
+    .fi-t strong{color:var(--ink);font-weight:400;}
+    /* conclusions */
+    .cl{display:flex;flex-direction:column;}
+    .ci{display:grid;grid-template-columns:2rem 1fr;gap:1rem;padding:1.2rem 0;border-bottom:1px solid var(--rule);}
+    .ci:first-child{border-top:1px solid var(--rule);}
+    .cn{font-family:'Playfair Display',serif;font-size:1rem;color:var(--rule);}
+    .ct{font-size:.88rem;color:var(--mid);line-height:1.75;font-weight:300;}
+    .ct strong{color:var(--ink);font-weight:400;}
+    /* proj nav */
+    .pnav{max-width:760px;margin:0 auto;padding:3rem 2rem;border-top:1px solid var(--rule);display:flex;justify-content:space-between;align-items:center;}
+    .pnl{font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--light);margin-bottom:.3rem;}
+    .pnt{font-family:'Playfair Display',serif;font-size:1rem;}
+    .pna{font-size:.72rem;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--ink);padding-bottom:1px;transition:color .15s;}
+    .pna:hover{color:var(--mid);}
+    footer{border-top:1px solid var(--rule);padding:1.5rem 2rem;text-align:center;font-size:.72rem;color:var(--light);letter-spacing:.04em;}
+    .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease;}
+    .reveal.visible{opacity:1;transform:translateY(0);}
+    @media(max-width:600px){.proj-hero-inner,.sg{grid-template-columns:1fr;gap:1rem;}.meta-grid{grid-template-columns:1fr;}.pnav{flex-direction:column;align-items:flex-start;gap:1.2rem;}}
+  </style>
+</head>
+<body>
+<nav><div class="nav-inner"><a href="../index.html" class="nav-name">Elena Salomón</a><a href="../index.html#projects" class="nav-back">← Proyectos</a></div></nav>
+
+<div class="proj-hero">
+  <div class="proj-hero-inner">
+    <div>
+      <div class="proj-num">04 / 05</div>
+      <div class="proj-tags">
+        <span class="proj-tag">Clasificación</span>
+        <span class="proj-tag">NLP</span>
+        <span class="proj-tag">XGBoost</span>
+        <span class="proj-tag">Random Forest</span>
+      </div>
+    </div>
+    <div>
+      <h1>Goodreads: <em>¿Será<br>popular?</em></h1>
+      <p class="proj-summary">Modelo de clasificación que predice la popularidad de un libro a partir de sus características — sin leerlo. Entrenado con 16.225 libros del catálogo global de Goodreads.</p>
+      <div class="proj-links">
+        <a href="https://github.com/elenasalomon" class="proj-link" target="_blank">Ver en GitHub</a>
+        <a href="../index.html#projects" class="proj-link ghost">← Volver</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="proj-body">
+
+  <div class="section reveal">
+    <div class="sg">
+      <span class="sl">Ficha</span>
+      <div class="meta-grid">
+        <div class="mr"><div class="ml">Tipo</div><div class="mv">Clasificación supervisada</div></div>
+        <div class="mr"><div class="ml">Dataset</div><div class="mv">16.225 libros — Kaggle/Goodreads</div></div>
+        <div class="mr"><div class="ml">Modelo elegido</div><div class="mv">XGBoost (accuracy 76%, AUC 0.81)</div></div>
+        <div class="mr"><div class="ml">Año</div><div class="mv">2025</div></div>
+        <div class="mr"><div class="ml">Equipo</div><div class="mv">Ibarra · Salomón · Nebot</div></div>
+        <div class="mr"><div class="ml">Stack</div><div class="mv">Python · scikit-learn · XGBoost · SHAP</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section reveal">
+    <div class="sg">
+      <span class="sl">El problema</span>
+      <div>
+        <h2>No juzgues un libro por su portada</h2>
+        <p>Al cierre de 2024, se publicaban entre 2.2 y 2.4 millones de libros al año — unos 6.000 diarios. Para una aplicación como Goodreads, identificar de antemano qué libros van a resonar con sus usuarios es la diferencia entre una buena recomendación y un bloqueo lector.</p>
+        <p>El objetivo fue construir un <strong>modelo de clasificación</strong> que, a partir de las características de un libro (título, autor, género, formato, fecha de publicación, cantidad de páginas), prediga si será popular — sin depender de las reseñas acumuladas.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section reveal">
+    <div class="sg">
+      <span class="sl">Los datos</span>
+      <div>
+        <h2>Dataset Goodreads</h2>
+        <p>El dataset contiene <strong>16.225 libros</strong> con 15 variables: 10 de tipo objeto y 5 numéricas. Las variables clave incluyen título, autor, género, formato, número de páginas, puntuación promedio, cantidad de ratings y distribución de reseñas.</p>
+        <p>La variable objetivo <strong>popular</strong> fue construida a partir del NPS ajustado del libro: 62% no populares / 38% populares — un desbalance moderado que no requirió técnicas extremas de balanceo.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section reveal">
+    <div class="sg">
+      <span class="sl">Variable objetivo</span>
+      <div>
+        <h2>El dilema del promedio engañoso</h2>
+        <p>El dataset tiene una trampa: un libro con una sola calificación de 5 estrellas aparece "mejor" que un clásico con promedio 4.2 basado en un millón de reseñas. Usar el promedio simple directamente haría que el modelo recomendara títulos con una sola reseña perfecta, ignorando los éxitos consolidados.</p>
+        <p>La solución fue construir una métrica propia: el <strong>NPS Ajustado</strong>, que pondera la calificación por el volumen de interacción recibida. Esto neutraliza el ruido estadístico de libros con pocas reseñas.</p>
+
+        <p style="margin-top:1.6rem;margin-bottom:.6rem;font-size:.82rem;font-weight:500;color:var(--ink);">Paso 1 — Normalización por género (Z-Score)</p>
+        <p>No es válido comparar el éxito de un libro de ficción juvenil con uno de no ficción: tienen audiencias y volúmenes distintos. Se calculó el Z-Score del NPS ajustado <em>dentro de cada género</em>:</p>
+        <p>Z &gt; 0 → el libro supera el promedio de su propio género.<br>Z &lt; 0 → el libro está por debajo de la media de su categoría.</p>
+
+        <p style="margin-top:1.6rem;margin-bottom:.6rem;font-size:.82rem;font-weight:500;color:var(--ink);">Paso 2 — Umbral del percentil 70</p>
+        <p>Para convertir la métrica continua en una clasificación binaria útil para el modelo, se estableció el <strong>percentil 70 del Z-Score</strong> como punto de corte. Todo libro que supere ese umbral es etiquetado como <strong>POPULAR</strong>. El resultado: 62% no populares / 38% populares — un desbalance moderado, manejable sin técnicas extremas.</p>
+        <p>Esta metodología asegura que la clasificación no sea un concurso de popularidad bruta, sino un análisis de calidad relativa que respeta las particularidades de cada comunidad de lectores.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section reveal">
+    <div class="sg">
+      <span class="sl">Feature engineering</span>
+      <div>
+        <h2>Variables construidas</h2>
+        <p style="margin-bottom:1.4rem;">Las variables más predictivas no estaban en el dataset original — fueron construidas:</p>
+        <div class="feat-list">
+          <div class="feat-item">
+            <div class="fi-n">01</div>
+            <div class="fi-t"><strong>nps_autor_prev</strong> — NPS histórico del autor antes del libro analizado. La variable con mayor correlación con popularidad.</div>
+          </div>
+          <div class="feat-item">
+            <div class="fi-n">02</div>
+            <div class="fi-t"><strong>q_libros_prev</strong> — Cantidad de libros publicados previamente por el autor. Proxy de audiencia consolidada.</div>
+          </div>
+          <div class="feat-item">
+            <div class="fi-n">03</div>
+            <div class="fi-t"><strong>antiguedad</strong> — Años desde la primera publicación. El modelo detectó que la antigüedad penaliza: el mercado premia las novedades.</div>
+          </div>
+          <div class="feat-item">
+            <div class="fi-n">04</div>
+            <div class="fi-t"><strong>Cluster_Nombre</strong> — Géneros agrupados en 8 clusters mediante KMeans sobre los géneros originales del dataset (que tenían 13.773 combinaciones únicas). Cada cluster representa una comunidad lectora con comportamiento homogéneo.</div>
+          </div>
+        </div>
+        <h3 style="font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 300; color: var(--ink); margin-top: 2.2rem; margin-bottom: 1.2rem;">Libros más reseñados por cluster</h3>
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 0.5rem;">
+
+          <div style="background: var(--card); border: 1px solid var(--rule); border-radius: 10px; padding: 1.4rem;">
+            <div style="font-size: 0.65rem; font-weight: 600; letter-spacing: 0.13em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.7rem;">Ciencia Ficción</div>
+            <div style="font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 400; color: var(--ink); margin-bottom: 0.3rem;">1984</div>
+            <div style="font-size: 0.78rem; color: var(--mid); margin-bottom: 0.5rem;">587.628 reseñas</div>
+            <div style="font-size: 0.75rem; color: var(--mid);">The Hunger Games · The Midnight Library</div>
+          </div>
+
+          <div style="background: var(--card); border: 1px solid var(--rule); border-radius: 10px; padding: 1.4rem;">
+            <div style="font-size: 0.65rem; font-weight: 600; letter-spacing: 0.13em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.7rem;">Misterio, Thriller y Terror</div>
+            <div style="font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 400; color: var(--ink); margin-bottom: 0.3rem;">Verity</div>
+            <div style="font-size: 0.78rem; color: var(--mid); margin-bottom: 0.5rem;">712.108 reseñas</div>
+            <div style="font-size: 0.75rem; color: var(--mid);">The Silent Patient · A Good Girl's Guide</div>
+          </div>
+
+          <div style="background: var(--card); border: 1px solid var(--rule); border-radius: 10px; padding: 1.4rem;">
+            <div style="font-size: 0.65rem; font-weight: 600; letter-spacing: 0.13em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.7rem;">Novela Literaria e Histórica</div>
+            <div style="font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 400; color: var(--ink); margin-bottom: 0.3rem;">The Seven Husbands of Evelyn Hugo</div>
+            <div style="font-size: 0.78rem; color: var(--mid); margin-bottom: 0.5rem;">1.098.517 reseñas</div>
+            <div style="font-size: 0.75rem; color: var(--mid);">The Song of Achilles · Addie LaRue</div>
+          </div>
+
+          <div style="background: var(--card); border: 1px solid var(--rule); border-radius: 10px; padding: 1.4rem;">
+            <div style="font-size: 0.65rem; font-weight: 600; letter-spacing: 0.13em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.7rem;">Ficción y Nuevas Tendencias</div>
+            <div style="font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 400; color: var(--ink); margin-bottom: 0.3rem;">A Court of Mist and Fury</div>
+            <div style="font-size: 0.78rem; color: var(--mid); margin-bottom: 0.5rem;">674.371 reseñas</div>
+            <div style="font-size: 0.75rem; color: var(--mid);">ACOTAR · It Ends with Us</div>
+          </div>
+
+          <div style="background: var(--card); border: 1px solid var(--rule); border-radius: 10px; padding: 1.4rem;">
+            <div style="font-size: 0.65rem; font-weight: 600; letter-spacing: 0.13em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.7rem;">No ficción y Reflexión</div>
+            <div style="font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 400; color: var(--ink); margin-bottom: 0.3rem;">The Subtle Art of Not Giving a F*ck</div>
+            <div style="font-size: 0.78rem; color: var(--mid); margin-bottom: 0.5rem;">584.217 reseñas</div>
+            <div style="font-size: 0.75rem; color: var(--mid);">Atomic Habits · Sapiens</div>
+          </div>
+
+          <div style="background: var(--card); border: 1px solid var(--rule); border-radius: 10px; padding: 1.4rem;">
+            <div style="font-size: 0.65rem; font-weight: 600; letter-spacing: 0.13em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.7rem;">Ficción Juvenil</div>
+            <div style="font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 400; color: var(--ink); margin-bottom: 0.3rem;">The Cruel Prince</div>
+            <div style="font-size: 0.78rem; color: var(--mid); margin-bottom: 0.5rem;">398.542 reseñas</div>
+            <div style="font-size: 0.75rem; color: var(--mid);">An Ember in the Ashes · Six of Crows</div>
+          </div>
+
+          <div style="background: var(--card); border: 1px solid var(--rule); border-radius: 10px; padding: 1.4rem;">
+            <div style="font-size: 0.65rem; font-weight: 600; letter-spacing: 0.13em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.7rem;">Historiador y Biógrafo</div>
+            <div style="font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 400; color: var(--ink); margin-bottom: 0.3rem;">Educated</div>
+            <div style="font-size: 0.78rem; color: var(--mid); margin-bottom: 0.5rem;">512.904 reseñas</div>
+            <div style="font-size: 0.75rem; color: var(--mid);">The Glass Castle · Born a Crime</div>
+          </div>
+
+          <div style="background: var(--card); border: 1px solid var(--rule); border-radius: 10px; padding: 1.4rem;">
+            <div style="font-size: 0.65rem; font-weight: 600; letter-spacing: 0.13em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.7rem;">Fantasía y Romance Juvenil</div>
+            <div style="font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 400; color: var(--ink); margin-bottom: 0.3rem;">Crepúsculo</div>
+            <div style="font-size: 0.78rem; color: var(--mid); margin-bottom: 0.5rem;">743.891 reseñas</div>
+            <div style="font-size: 0.75rem; color: var(--mid);">The Fault in Our Stars · Divergent</div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section reveal">
+    <div class="sg">
+      <span class="sl">Modelos</span>
+      <div>
+        <h2>Comparación de modelos</h2>
+        <p style="margin-bottom:1.4rem;">Se entrenaron cuatro modelos. La métrica prioritaria fue <strong>precisión en libros populares</strong>: que los libros predichos como exitosos efectivamente lo sean.</p>
+        <table class="bt">
+          <thead>
+            <tr><th>Modelo</th><th>Accuracy</th><th>Precisión (pop.)</th><th>Recall (pop.)</th><th>AUC-ROC</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Regresión Logística</td><td>0.66</td><td>0.54</td><td>0.66</td><td>0.72</td></tr>
+            <tr><td>Árbol de Decisión</td><td>0.73</td><td>0.62</td><td>0.72</td><td>0.79</td></tr>
+            <tr><td>Random Forest</td><td>0.74</td><td>0.67</td><td>0.60</td><td>0.79</td></tr>
+            <tr><td>XGBoost <span class="wb">elegido</span></td><td>0.76</td><td>0.71</td><td>0.61</td><td>0.81</td></tr>
+          </tbody>
+        </table>
+        <p style="margin-top:1.4rem;">XGBoost fue elegido por ser el modelo más equilibrado entre entrenamiento y test, con la mayor precisión (71%) y AUC-ROC (0.81). Un libro que el modelo marque como popular tiene una probabilidad real alta de serlo.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section reveal">
+    <div class="sg">
+      <span class="sl">Interpretabilidad</span>
+      <div>
+        <h2>¿Qué hace popular a un libro?</h2>
+        <p>El análisis SHAP sobre el modelo XGBoost reveló los factores reales detrás de las predicciones:</p>
+        <div class="feat-list">
+          <div class="feat-item">
+            <div class="fi-n">↑</div>
+            <div class="fi-t"><strong>NPS previo del autor</strong> — el factor más determinante. Un autor con buen historial casi garantiza popularidad; uno con mala reputación la castiga severamente.</div>
+          </div>
+          <div class="feat-item">
+            <div class="fi-n">↑</div>
+            <div class="fi-t"><strong>Novela Literaria e Histórica</strong> — el único cluster de géneros con impacto positivo consistente. Un género "ganador" en Goodreads.</div>
+          </div>
+          <div class="feat-item">
+            <div class="fi-n">↓</div>
+            <div class="fi-t"><strong>Antigüedad</strong> — penaliza. Los libros más viejos tienen menor probabilidad de ser populares en la plataforma actual.</div>
+          </div>
+          <div class="feat-item">
+            <div class="fi-n">↓</div>
+            <div class="fi-t"><strong>Ficción Juvenil</strong> — tiene más dificultades para alcanzar alta popularidad comparado con otros géneros.</div>
+          </div>
+          <div class="feat-item">
+            <div class="fi-n">—</div>
+            <div class="fi-t"><strong>Cantidad de libros previos del autor</strong> — tener muchos libros publicados no necesariamente predice éxito en el título actual.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section reveal">
+    <div class="sg">
+      <span class="sl">Conclusiones</span>
+      <div>
+        <h2>Lo que aprendimos</h2>
+        <div class="cl">
+          <div class="ci"><div class="cn">1</div><div class="ct"><strong>La variable objetivo debe ser inteligente.</strong> Un promedio simple no captura la realidad. Al ponderar por volumen y normalizar por género, obtuvimos un objetivo verdaderamente predictivo que el modelo pudo aprender.</div></div>
+          <div class="ci"><div class="cn">2</div><div class="ct"><strong>El historial del autor es el predictor más fuerte.</strong> El éxito previo del autor casi garantiza popularidad en el nuevo título. Los primeros libros de autores nuevos tienen muchas más dificultades para despegar.</div></div>
+          <div class="ci"><div class="cn">3</div><div class="ct"><strong>XGBoost captura mejor las interacciones no lineales.</strong> Su valor está en la precisión balanceada y capacidad de generalización sin overfitting — no solo en accuracy bruto como sugieren las métricas simples.</div></div>
+          <div class="ci"><div class="cn">4</div><div class="ct"><strong>La explicabilidad con SHAP es esencial en ML.</strong> No es suficiente un modelo preciso si no puedes explicar por qué predice lo que predice. SHAP convirtió una caja negra en decisiones interpretables para el negocio editorial.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pnav reveal">
+    <div><div class="pnl">Anterior</div><div class="pnt">Client Catch</div></div>
+    <div style="text-align:right">
+      <div class="pnl">Siguiente proyecto</div>
+      <div class="pnt">Brain Tumor Detection</div>
+    </div>
+    <a href="../braintumor/index.html" class="pna">Ver proyecto →</a>
+  </div>
+
+</div>
+<footer>© 2026 Elena Salomón López</footer>
+<script>
+  const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.08});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>

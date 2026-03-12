@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dine or Dash — Elena Salomón</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400&display=swap" rel="stylesheet"/>
+  <style>
+    :root { --bg:#faf7fc;--bg-alt:#f4eff8;--ink:#2a1f3d;--mid:#5a4a6f;--light:#9b7bb8;--accent:#c88dd4;--rule:#e8d9f0;--white:#fefbff; }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{background:var(--bg);color:var(--ink);font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--bg);border-bottom:1px solid var(--rule);}
+    .nav-inner{max-width:760px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:52px;}
+    .nav-name{font-family:'Playfair Display',serif;font-size:.95rem;color:var(--ink);text-decoration:none;}
+    .nav-back{font-size:.75rem;font-weight:500;letter-spacing:.05em;color:var(--mid);text-decoration:none;transition:color .15s;}
+    .nav-back:hover{color:var(--ink);}
+    .proj-hero{padding-top:52px;border-bottom:1px solid var(--rule);}
+    .proj-hero-inner{max-width:760px;margin:0 auto;padding:4rem 2rem;display:grid;grid-template-columns:160px 1fr;gap:3rem;}
+    .proj-num{font-family:'DM Mono',monospace;font-size:.7rem;color:var(--light);letter-spacing:.1em;margin-bottom:1.2rem;}
+    .proj-tags{display:flex;flex-direction:column;gap:.3rem;}
+    .proj-tag{font-size:.7rem;color:var(--light);}
+    h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);font-weight:400;line-height:1.1;letter-spacing:-.02em;margin-bottom:1rem;}
+    h1 em{font-style:italic;color:#c88dd4;}
+    .proj-summary{font-size:.95rem;color:var(--mid);line-height:1.8;font-weight:300;max-width:480px;margin-bottom:2rem;}
+    .proj-links{display:flex;gap:1.5rem;}
+    .proj-link{font-size:.72rem;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--ink);padding-bottom:1px;transition:color .15s,border-color .15s;}
+    .proj-link:hover{color:var(--mid);border-color:var(--light);}
+    .proj-link.ghost{color:var(--mid);border-color:var(--rule);}
+    .proj-link.ghost:hover{color:var(--ink);border-color:var(--ink);}
+    .proj-body{padding:5rem 0;}
+    .section{max-width:760px;margin:0 auto 4rem;padding:0 2rem;}
+    .sg{display:grid;grid-template-columns:160px 1fr;gap:3rem;}
+    .sl{font-size:.7rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--light);padding-top:.2rem;}
+    h2{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:400;letter-spacing:-.01em;margin-bottom:1.2rem;}
+    p{font-size:.9rem;color:var(--mid);line-height:1.85;font-weight:300;margin-bottom:.9rem;}
+    p strong{color:var(--ink);font-weight:400;}
+    p:last-child{margin-bottom:0;}
+    .meta-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;}
+    .mr{padding:.7rem 0;border-bottom:1px solid var(--rule);}
+    .mr:first-child,.mr:nth-child(2){border-top:1px solid var(--rule);}
+    .ml{font-size:.65rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--light);margin-bottom:.2rem;}
+    .mv{font-size:.82rem;color:var(--ink);}
+    /* models list */
+    .model-list{display:flex;flex-direction:column;}
+    .model-item{padding:1.1rem 0;border-bottom:1px solid var(--rule);display:grid;grid-template-columns:1.8rem 1fr;gap:1rem;}
+    .model-item:first-child{border-top:1px solid var(--rule);}
+    .mi-n{font-family:'DM Mono',monospace;font-size:.7rem;color:var(--light);padding-top:.15rem;}
+    .mi-body{}
+    .mi-title{font-size:.88rem;font-weight:500;color:var(--ink);margin-bottom:.25rem;}
+    .mi-desc{font-size:.85rem;color:var(--mid);font-weight:300;line-height:1.7;}
+    /* table */
+    .bt{width:100%;border-collapse:collapse;font-size:.82rem;}
+    .bt th{font-size:.65rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--light);text-align:left;padding:.6rem 0;border-bottom:1px solid var(--rule);}
+    .bt td{padding:.8rem 0;border-bottom:1px solid var(--rule);color:var(--mid);vertical-align:top;}
+    .bt td:first-child{color:var(--ink);}
+    .wb{display:inline-block;font-size:.6rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;border:1px solid var(--rule);padding:.1rem .4rem;margin-left:.5rem;}
+    /* conclusions */
+    .cl{display:flex;flex-direction:column;}
+    .ci{display:grid;grid-template-columns:2rem 1fr;gap:1rem;padding:1.2rem 0;border-bottom:1px solid var(--rule);}
+    .ci:first-child{border-top:1px solid var(--rule);}
+    .cn{font-family:'Playfair Display',serif;font-size:1rem;color:var(--rule);}
+    .ct{font-size:.88rem;color:var(--mid);line-height:1.75;font-weight:300;}
+    .ct strong{color:var(--ink);font-weight:400;}
+    /* future */
+    .fl{display:flex;flex-direction:column;}
+    .fi{padding:.9rem 0;border-bottom:1px solid var(--rule);}
+    .fi:first-child{border-top:1px solid var(--rule);}
+    .fit{font-size:.82rem;font-weight:500;color:var(--ink);margin-bottom:.2rem;}
+    .fid{font-size:.82rem;color:var(--mid);font-weight:300;}
+    /* proj nav */
+    .pnav{max-width:760px;margin:0 auto;padding:3rem 2rem;border-top:1px solid var(--rule);display:flex;justify-content:space-between;align-items:center;}
+    .pnl{font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--light);margin-bottom:.3rem;}
+    .pnt{font-family:'Playfair Display',serif;font-size:1rem;}
+    .pna{font-size:.72rem;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--ink);padding-bottom:1px;transition:color .15s;}
+    .pna:hover{color:var(--mid);}
+    footer{border-top:1px solid var(--rule);padding:1.5rem 2rem;text-align:center;font-size:.72rem;color:var(--light);letter-spacing:.04em;}
+    .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease;}
+    .reveal.visible{opacity:1;transform:translateY(0);}
+    @media(max-width:600px){.proj-hero-inner,.sg{grid-template-columns:1fr;gap:1rem;}.meta-grid{grid-template-columns:1fr;}.pnav{flex-direction:column;align-items:flex-start;gap:1.2rem;}}
+  </style>
+</head>
+<body>
+<nav><div class="nav-inner"><a href="../index.html" class="nav-name">Elena Salomón</a><a href="../index.html#projects" class="nav-back">← Proyectos</a></div></nav>
+
+<div class="proj-hero">
+  <div class="proj-hero-inner">
+    <div>
+      <div class="proj-num">02 / 05</div>
+      <div class="proj-tags">
+        <span class="proj-tag">Sistemas de recomendación</span>
+        <span class="proj-tag">Collaborative Filtering</span>
+        <span class="proj-tag">NLP</span>
+        <span class="proj-tag">Social Graphs</span>
+      </div>
+    </div>
+    <div>
+      <h1>Dine or Dash: <em>¿Dónde<br>comemos?</em></h1>
+      <p class="proj-summary">Sistema de recomendación de restaurantes construido con reseñas de Yelp para restaurantes de Philadelphia. Cinco modelos progresivos — desde ranking simple hasta filtrado colaborativo enriquecido con análisis de sentimiento y red social de amigos.</p>
+      <div class="proj-links">
+        <a href="https://github.com/elenasalomon" class="proj-link" target="_blank">Ver en GitHub</a>
+        <a href="../index.html#projects" class="proj-link ghost">← Volver</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="proj-body">
+
+  <div class="section reveal">
+    <div class="sg">
+      <span class="sl">Ficha</span>
+      <div class="meta-grid">
+        <div class="mr"><div class="ml">Tipo</div><div class="mv">Sistema de recomendación</div></div>
+        <div class="mr"><div class="ml">Dataset</div><div class="mv">Yelp — 112K reseñas, 8.714 usuarios, 3.372 restaurantes</div></div>
+        <div class="mr"><div class="ml">Modelo elegido</div><div class="mv">SVD + Sentiment Analysis (Recall 84%)</div></div>
+        <div class="mr"><div class="ml">Año</div><div class="mv">2025</div></div>
+        <div class="mr"><div class="ml">Equipo</div><div class="mv">Ibarra · Salomón · Nebot</div></div>
+        <div class="mr"><div class="ml">Stack</div><div class="mv">Python · Surprise · VADER · NetworkX · spaCy</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section reveal">
+    <div class="sg">
+      <span class="sl">El problema</span>
+      <div>
+        <h2>La paradoja de la elección</h2>
+        <p>Demasiadas opciones no liberan al usuario — lo paralizan. En el ecosistema actual de plataformas digitales, las reseñas de desconocidos generan sobrecarga de información. Sin embargo, las decisiones de consumo siguen profundamente ligadas a la confianza: lo que recomienda un amigo pesa más que mil reseñas anónimas.</p>
+        <p>El objetivo fue construir un sistema de recomendación personalizado que transforme el dataset masivo de Yelp en sugerencias con significado — incorporando no solo patrones de comportamiento individuales, sino también la influencia de la red social del usuario.</p>
+
+        <h2 style="margin-top: 2.5rem;">Por qué las 5 estrellas no alcanzan</h2>
+        <p>Los sistemas de rating tradicionales tienen un problema estructural: el sesgo positivo. El promedio de ratings en el dataset es 3.93 sobre 5, y la distribución está fuertemente sesgada hacia calificaciones altas. Los usuarios escriben reseñas principalmente luego de experiencias excepcionales, no promedio.</p>
+        <p>Además, cada usuario tiene una escala diferente: el usuario 52500 tiene un promedio de 4.60, mientras el usuario 51007 promedia 3.59. Una estrella de uno no equivale a una estrella del otro. El sistema de recomendación debe capturar estas diferencias individuales.</p>
+
+        <div style="background: var(--card); border: 1px solid var(--rule); border-radius: 10px; padding: 2rem 2.4rem; margin-top: 2rem; max-width: 560px;">
+          <div style="font-size: 0.7rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.4rem;">Sesgo positivo del dataset</div>
+          
+          <div style="display: flex; flex-direction: column; gap: 0.85rem;">
+            <div style="display: flex; align-items: center; gap: 1rem;">
+              <div style="width: 120px; font-size: 0.82rem; color: var(--mid); white-space: nowrap;">★★★★★ (5 estrellas)</div>
+              <div style="flex: 1; background: #f0ebe8; border-radius: 99px; height: 8px;">
+                <div style="width: 48%; background: #5a9e7c; border-radius: 99px; height: 8px;"></div>
+              </div>
+              <div style="width: 32px; font-size: 0.82rem; color: var(--ink); text-align: right;">48%</div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 1rem;">
+              <div style="width: 120px; font-size: 0.82rem; color: var(--mid); white-space: nowrap;">★★★★☆ (4 estrellas)</div>
+              <div style="flex: 1; background: #f0ebe8; border-radius: 99px; height: 8px;">
+                <div style="width: 28%; background: #5a9e7c; border-radius: 99px; height: 8px;"></div>
+              </div>
+              <div style="width: 32px; font-size: 0.82rem; color: var(--ink); text-align: right;">28%</div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 1rem;">
+              <div style="width: 120px; font-size: 0.82rem; color: var(--mid); white-space: nowrap;">★★★☆☆ (3 estrellas)</div>
+              <div style="flex: 1; background: #f0ebe8; border-radius: 99px; height: 8px;">
+                <div style="width: 12%; background: #5a9e7c; border-radius: 99px; height: 8px;"></div>
+              </div>
+              <div style="width: 32px; font-size: 0.82rem; color: var(--ink); text-align: right;">12%</div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 1rem;">
+              <div style="width: 120px; font-size: 0.82rem; color: var(--mid); white-space: nowrap;">★★☆☆☆ (2 estrellas)</div>
+              <div style="flex: 1; background: #f0ebe8; border-radius: 99px; height: 8px;">
+                <div style="width: 7%; background: #5a9e7c; border-radius: 99px; height: 8px;"></div>
+              </div>
+              <div style="width: 32px; font-size: 0.82rem; color: var(--ink); text-align: right;">7%</div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 1rem;">
+              <div style="width: 120px; font-size: 0.82rem; color: var(--mid); white-space: nowrap;">★☆☆☆☆ (1 estrella)</div>
+              <div style="flex: 1; background: #f0ebe8; border-radius: 99px; height: 8px;">
+                <div style="width: 5%; background: #5a9e7c; border-radius: 99px; height: 8px;"></div>
+              </div>
+              <div style="width: 32px; font-size: 0.82rem; color: var(--ink); text-align: right;">5%</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="section reveal">
+    <div class="sg">
+      <span class="sl">Los datos</span>
+      <div>
+        <h2>Dataset Yelp</h2>
+        <p>El dataset original de Yelp contiene 1.84 millones de reseñas con 40 variables: datos del usuario (id, amigos, tipo de usuario, índice de influencia), del restaurante (nombre, ubicación, cocina principal, atributos como WiFi, alcohol, reservas) y de la reseña (rating, texto, fecha, score de impacto). Para el modelado se filtró el subconjunto de Restaurantes ubicados en Philadelphia.</p>
+        <p>El dataset filtrado tiene <strong>8.714 usuarios únicos</strong> y <strong>3.372 restaurantes únicos</strong>, con 111.831 ratings reales sobre un universo teórico de 29.3 millones de combinaciones posibles. Esa alta dispersión — menos del 0.4% de la matriz completa — es precisamente el problema que el sistema de recomendación viene a resolver. El grafo social construido con NetworkX conectó esos usuarios con <strong>32.917 vínculos</strong> entre amigos.</p>
+
+
+      </div>
+    </div>
+  </div>
+
+  <div class="section reveal">
+    <div class="sg">
+      <span class="sl">Los modelos</span>
+      <div>
+        <h2>Cinco enfoques progresivos</h2>
+        <p style="margin-bottom:1.4rem;">Cada modelo agrega una capa de inteligencia sobre el anterior, desde el baseline más simple hasta la integración de texto y red social.</p>
+        <div class="model-list">
+          <div class="model-item">
+            <div class="mi-n">M1</div>
+            <div class="mi-body">
+              <div class="mi-title">Rank Based (baseline)</div>
+              <div class="mi-desc">Recomienda los restaurantes con mejor rating promedio (mín. 55 interacciones). Útil para el cold start: usuarios nuevos sin historial. Sin personalización.</div>
+            </div>
+          </div>
+          <div class="model-item">
+            <div class="mi-n">M2</div>
+            <div class="mi-body">
+              <div class="mi-title">Collaborative Filtering — User-User (KNN)</div>
+              <div class="mi-desc">Identifica usuarios con patrones de rating similares. Recomendaciones basadas puramente en comportamiento, sin metadata del restaurante. Recall 82%, F1 0.777.</div>
+            </div>
+          </div>
+          <div class="model-item">
+            <div class="mi-n">M3</div>
+            <div class="mi-body">
+              <div class="mi-title">Collaborative Filtering — Matrix Factorization (SVD)</div>
+              <div class="mi-desc">Descompone la matriz usuario-restaurante en factores latentes. Menor RMSE que KNN (1.03 vs 1.12). Precisión 72%, Recall 79%.</div>
+            </div>
+          </div>
+          <div class="model-item">
+            <div class="mi-n">M4</div>
+            <div class="mi-body">
+              <div class="mi-title">SVD + Social Graphs (Friends)</div>
+              <div class="mi-desc">Incorpora la red social del usuario al SVD mediante regularización social: las valoraciones de los amigos "guían" la predicción. Especialmente útil para restaurantes con datos escasos.</div>
+            </div>
+          </div>
+          <div class="model-item">
+            <div class="mi-n">M5</div>
+            <div class="mi-body">
+              <div class="mi-title">SVD + Sentiment Analysis (VADER) <span class="wb">elegido</span></div>
+              <div class="mi-desc">Enriquece el SVD con el score de sentimiento extraído del texto de cada reseña usando VADER. El sentimiento del texto correlaciona positivamente con el rating — aporta señal que el número de estrellas solo no captura. Recall 84%, F1 0.783.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section reveal">
+    <div class="sg">
+      <span class="sl">Resultados</span>
+      <div>
+        <h2>Comparación de modelos</h2>
+        <p style="margin-bottom:1.4rem;">La métrica prioritaria fue <strong>Recall</strong>: la proporción de restaurantes relevantes que el sistema logra capturar y recomendar.</p>
+        <table class="bt">
+          <thead>
+            <tr><th>Modelo</th><th>RMSE</th><th>Precisión</th><th>Recall</th><th>F1</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Rank Based (baseline)</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+            <tr><td>CF User-User (KNN)</td><td>1.1203</td><td>0.736</td><td>0.823</td><td>0.777</td></tr>
+            <tr><td>CF Item-Item (KNN)</td><td>1.1356</td><td>0.729</td><td>0.827</td><td>0.775</td></tr>
+            <tr><td>SVD Matrix Factorization</td><td>1.0292</td><td>0.721</td><td>0.785</td><td>0.752</td></tr>
+            <tr><td>SVD + Friends</td><td>1.1103</td><td>0.728</td><td>0.839</td><td>0.780</td></tr>
+            <tr><td>SVD + Sentiment <span class="wb">elegido</span></td><td>1.1103</td><td>0.728</td><td>0.846</td><td>0.783</td></tr>
+          </tbody>
+        </table>
+        <p style="margin-top:1.4rem;">Aunque el RMSE no es el más bajo, el objetivo no era predecir el rating exacto sino identificar el mayor número posible de restaurantes que el usuario realmente disfrutaría. En ese criterio, SVD + Sentiment lidera con un Recall del 84%.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section reveal">
+    <div class="sg">
+      <span class="sl">Recomendación</span>
+      <div>
+        <h2>Estrategia híbrida por sección</h2>
+        <p>El sistema no propone un único modelo sino una arquitectura por secciones dentro de la plataforma, según el estado del usuario:</p>
+        <div class="fl" style="margin-top:.8rem;">
+          <div class="fi"><div class="fit">Usuarios nuevos (cold start)</div><div class="fid">Rank Based — los restaurantes mejor valorados con suficiente volumen de reseñas.</div></div>
+          <div class="fi"><div class="fit">"Basado en tus reseñas anteriores"</div><div class="fid">SVD + Sentiment Analysis — el modelo con mayor recall para usuarios activos.</div></div>
+          <div class="fi"><div class="fit">"Lo que recomiendan tus amigos"</div><div class="fid">SVD + Friends — aprovecha la red social para descubrir lugares fuera del historial propio.</div></div>
+          <div class="fi"><div class="fit">"Restaurantes similares a tu historial"</div><div class="fid">CF Item-Item — encuentra locales con perfiles parecidos a los que ya visitaste.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section reveal">
+    <div class="sg">
+      <span class="sl">Conclusiones</span>
+      <div>
+        <h2>Lo que aprendimos</h2>
+        <div class="cl">
+          <div class="ci"><div class="cn">1</div><div class="ct"><strong>El texto de la reseña contiene señal que el rating no captura.</strong> El análisis de sentimiento con VADER mostró correlación positiva clara entre texto y estrellas — integrar ambos mejoró el Recall del modelo base.</div></div>
+          <div class="ci"><div class="cn">2</div><div class="ct"><strong>La red social amplifica la recomendación, no la reemplaza.</strong> El modelo de amigos fue especialmente valioso para restaurantes con pocos datos (long tail), donde el filtrado colaborativo clásico falla.</div></div>
+          <div class="ci"><div class="cn">3</div><div class="ct"><strong>RMSE no es la métrica correcta para este problema.</strong> Predecir el rating exacto importa menos que capturar todos los lugares que el usuario disfrutaría. Recall fue la guía real del desarrollo.</div></div>
+          <div class="ci"><div class="cn">4</div><div class="ct"><strong>Un solo modelo no sirve para todos los usuarios.</strong> La arquitectura híbrida por sección resuelve el cold start y maximiza la personalización según el ciclo de vida del usuario en la plataforma.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section reveal">
+    <div class="sg">
+      <span class="sl">Próximos pasos</span>
+      <div>
+        <h2>Escalabilidad</h2>
+        <div class="fl">
+          <div class="fi"><div class="fit">Análisis semántico profundo</div><div class="fid">Integrar embeddings de texto para capturar matices que VADER no detecta.</div></div>
+          <div class="fi"><div class="fit">LightFM con metadata</div><div class="fid">Incorporar atributos del restaurante (precio, categoría, apto para grupos) al modelo de factorización.</div></div>
+          <div class="fi"><div class="fit">Neural Collaborative Filtering</div><div class="fid">Capturar relaciones no lineales entre usuarios e ítems que SVD no puede representar.</div></div>
+          <div class="fi"><div class="fit">SVD + Friends + Sentiment</div><div class="fid">Consolidar el modelo que integra red social y análisis de texto en un único pipeline.</div></div>
+          <div class="fi"><div class="fit">Despliegue local</div><div class="fid">Desarrollo de una aplicación móvil orientada al mercado uruguayo.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pnav reveal">
+    <div><div class="pnl">Anterior</div><div class="pnt">ClarIA</div></div>
+    <div style="text-align:right">
+      <div class="pnl">Siguiente proyecto</div>
+      <div class="pnt">Client Catch</div>
+    </div>
+    <a href="../clientcatch/index.html" class="pna">Ver proyecto →</a>
+  </div>
+
+</div>
+<footer>© 2026 Elena Salomón López</footer>
+<script>
+  const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.08});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
