@@ -1,635 +1,179 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Elena Salomón — Sr. Data Analyst</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg: #faf7fc;
-      --bg-alt: #f4eff8;
-      --ink: #2a1f3d;
-      --mid: #5a4a6f;
-      --light: #9b7bb8;
-      --accent: #c88dd4;
-      --rule: #e8d9f0;
-      --white: #fefbff;
-    }
-
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      background: var(--bg);
-      color: var(--ink);
-      font-family: 'DM Sans', sans-serif;
-      font-size: 15px;
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    /* NAV */
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 100;
-      background: rgba(250, 247, 252, 0.95);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--rule);
-      padding: 1rem 3rem;
-    }
-    .nav-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .nav-logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.1rem;
-      font-weight: 400;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--ink);
-      text-decoration: none;
-    }
-    .nav-logo span { color: var(--accent); font-style: italic; }
-    .nav-links { display: flex; gap: 2rem; align-items: center; }
-    .nav-link {
-      font-size: 0.72rem;
-      font-weight: 500;
-      letter-spacing: 0.09em;
-      text-transform: uppercase;
-      color: var(--mid);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .nav-link:hover { color: var(--accent); }
-
-    /* HERO */
-    .hero {
-      min-height: 100vh;
-      padding-top: 56px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 4rem;
-      max-width: 1100px;
-      margin: 0 auto;
-      padding-left: 3rem;
-      padding-right: 3rem;
-      position: relative;
-      overflow: hidden;
-    }
-    .hero-image {
-      flex: 1;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    .hero-image img {
-      width: 100%;
-      max-width: 480px;
-      border-radius: 16px;
-      box-shadow: 0 12px 48px rgba(120,80,160,0.15);
-    }
-    .hero::before {
-      position: absolute;
-      top: -100px;
-      right: -160px;
-      width: 620px;
-      height: 620px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(200, 141, 212, 0.15) 0%, rgba(155, 123, 184, 0.05) 50%, transparent 72%);
-      pointer-events: none;
-    }
-    .hero::after {
-      position: absolute;
-      bottom: -60px;
-      left: -80px;
-      width: 380px;
-      height: 380px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(155, 123, 184, 0.08) 0%, transparent 70%);
-      pointer-events: none;
-    }
-    .hero-content {
-      max-width: 500px;
-      position: relative;
-      z-index: 1;
-    }
-    .eyebrow {
-      font-size: 0.68rem;
-      font-weight: 500;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 1.5rem;
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-    }
-    .eyebrow::before {
-      content: '';
-      width: 28px;
-      height: 1px;
-      background: var(--accent);
-    }
-    h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 4rem;
-      font-weight: 300;
-      line-height: 1.0;
-      margin-bottom: 1.2rem;
-      color: var(--ink);
-      letter-spacing: -0.01em;
-    }
-    h1 em { font-style: italic; color: var(--accent); }
-    .bio {
-      font-size: 0.92rem;
-      color: var(--mid);
-      line-height: 1.9;
-      margin-bottom: 2rem;
-      max-width: 450px;
-      font-weight: 300;
-    }
-    .ctas {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-    .btn {
-      padding: 0.72rem 1.7rem;
-      font-size: 0.72rem;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      border-radius: 3px;
-      text-decoration: none;
-      transition: all 0.25s;
-      cursor: pointer;
-      border: none;
-    }
-    .btn-primary {
-      background: var(--accent);
-      color: var(--white);
-      box-shadow: 0 4px 15px rgba(200, 141, 212, 0.25);
-    }
-    .btn-primary:hover {
-      background: var(--light);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(200, 141, 212, 0.4);
-    }
-    .btn-secondary {
-      background: transparent;
-      color: var(--ink);
-      border: 1px solid var(--rule);
-    }
-    .btn-secondary:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-      transform: translateY(-2px);
-    }
-
-    /* ABOUT */
-    #about {
-      background: var(--bg-alt);
-      padding: 5rem 3rem;
-      margin-top: 5rem;
-      border-top: 1px solid var(--rule);
-      border-bottom: 1px solid var(--rule);
-    }
-    .section-container {
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-    h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.2rem;
-      font-weight: 300;
-      margin-bottom: 2rem;
-      color: var(--ink);
-      letter-spacing: -0.01em;
-    }
-    h2 em { font-style: italic; color: var(--accent); }
-    .about-text {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      margin-bottom: 2rem;
-    }
-    .about-p {
-      font-size: 0.92rem;
-      color: var(--mid);
-      line-height: 1.95;
-      margin-bottom: 1rem;
-      font-weight: 300;
-    }
-    .about-p strong { color: var(--ink); font-weight: 500; }
-    .tools {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 0;
-      border: 1px solid var(--rule);
-      margin-top: 2rem;
-      border-radius: 3px;
-      overflow: hidden;
-    }
-    .tool {
-      padding: 0.85rem 1rem;
-      border-right: 1px solid var(--rule);
-      border-bottom: 1px solid var(--rule);
-      font-size: 0.78rem;
-      color: var(--mid);
-      background: var(--white);
-      transition: all 0.2s;
-    }
-    .tool:hover {
-      background: rgba(200, 141, 212, 0.08);
-      color: var(--accent);
-    }
-    .tool:nth-child(3n) { border-right: none; }
-    .tool:nth-last-child(-n+3) { border-bottom: none; }
-
-    /* PROJECTS */
-    #projects {
-      padding: 5rem 3rem;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-    .project-card {
-      background: var(--white);
-      border: 1px solid var(--rule);
-      border-radius: 3px;
-      padding: 2rem;
-      transition: all 0.2s;
-    }
-    .project-card:hover {
-      border-color: var(--accent);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(200, 141, 212, 0.15);
-    }
-    .project-num {
-      font-size: 0.65rem;
-      font-weight: 500;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 0.8rem;
-      font-family: 'DM Mono', monospace;
-    }
-    h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.4rem;
-      font-weight: 300;
-      margin-bottom: 0.8rem;
-      color: var(--ink);
-      letter-spacing: -0.01em;
-    }
-    h3 em { font-style: italic; color: var(--accent); }
-    .project-desc {
-      font-size: 0.88rem;
-      color: var(--mid);
-      line-height: 1.7;
-      margin-bottom: 1.5rem;
-      font-weight: 300;
-    }
-    .project-meta {
-      display: flex;
-      gap: 0.5rem;
-      flex-wrap: wrap;
-      margin: 1.5rem 0;
-    }
-    .tag {
-      font-size: 0.63rem;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--light);
-      background: rgba(155, 123, 184, 0.12);
-      padding: 0.28rem 0.7rem;
-      border-radius: 50px;
-    }
-    .project-link {
-      display: inline-block;
-      margin-top: 1rem;
-      font-size: 0.72rem;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--accent);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .project-link:hover { color: var(--light); }
-
-    /* CONTACT */
-    #contact {
-      background: var(--bg-alt);
-      padding: 5rem 3rem;
-      text-align: center;
-      border-top: 1px solid var(--rule);
-    }
-    .contact-content {
-      max-width: 600px;
-      margin: 0 auto;
-    }
-    .contact-list {
-      display: flex;
-      flex-direction: column;
-      gap: 0.8rem;
-      margin: 2rem 0;
-    }
-    .contact-item {
-      font-size: 0.92rem;
-      color: var(--mid);
-      font-weight: 300;
-    }
-    .contact-link {
-      color: var(--accent);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .contact-link:hover { color: var(--light); }
-
-    /* FOOTER */
-    footer {
-      border-top: 1px solid var(--rule);
-      padding: 2rem 3rem;
-      text-align: center;
-      font-size: 0.78rem;
-      color: var(--light);
-      background: var(--bg-alt);
-    }
-
-    /* RESPONSIVE */
-    @media (max-width: 768px) {
-      .hero { flex-direction: column; text-align: center; }
-      .hero-content { max-width: 100%; }
-      .hero-image { display: none; }
-      h1 { font-size: 2.5rem; }
-      .projects-grid { grid-template-columns: 1fr; }
-      .about-text { grid-template-columns: 1fr; }
-      .tools { grid-template-columns: repeat(2, 1fr); }
-      nav { padding: 1rem 1.5rem; }
-      .eyebrow::before { display: none; }
-    }
-
-    /* LANG TOGGLE */
-    .lang-toggle {
-      font-size: 0.68rem;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      cursor: pointer;
-      border: 1px solid var(--rule);
-      border-radius: 50px;
-      padding: 0.28rem 0.8rem;
-      color: var(--mid);
-      background: transparent;
-      transition: all 0.2s;
-      text-transform: uppercase;
-    }
-    .lang-toggle:hover { border-color: var(--accent); color: var(--accent); }
-  </style>
-</head>
-<body>
-
-<!-- NAV -->
-<nav>
-  <div class="nav-inner">
-    <a href="#" class="nav-logo">Elena <span>Salomón</span></a>
-    <div class="nav-links">
-      <a href="#about" class="nav-link" data-es="Sobre mí" data-en="About me">Sobre mí</a>
-      <a href="#projects" class="nav-link" data-es="Proyectos" data-en="Projects">Proyectos</a>
-      <a href="#contact" class="nav-link" data-es="Contacto" data-en="Contact">Contacto</a>
-      <button class="lang-toggle" id="lang-btn">EN</button>
-    </div>
-  </div>
-</nav>
-
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-content">
-    <div class="eyebrow" data-es="— PORTAFOLIO · DATOS & IA" data-en="— PORTFOLIO · DATA & AI">— PORTAFOLIO · DATOS & IA</div>
-    
-    <h1 style="margin-bottom: 0;">Elena</h1>
-    <h1 style="color: var(--accent); font-style: italic; margin-bottom: 0;">Salomón</h1>
-    <h1 style="margin-bottom: 2rem;">López</h1>
-    
-    <p class="bio">
-      <span data-es="Licenciada en Economía, especializada en Ciencia de Datos e Inteligencia Artificial. Me apasiona diseñar productos de datos bajo una filosofía user-centric, traduciendo la complejidad técnica en soluciones intuitivas y de alto impacto." data-en="Economics graduate, specialized in Data Science and Artificial Intelligence. I love designing data products under a user-centric philosophy, translating technical complexity into intuitive, high-impact solutions.">Licenciada en Economía, especializada en Ciencia de Datos e Inteligencia Artificial. Me apasiona diseñar productos de datos bajo una filosofía user-centric, traduciendo la complejidad técnica en soluciones intuitivas y de alto impacto.</span>
-    </p>
-    <div class="ctas">
-      <a href="#about" class="btn btn-primary" data-es="Sobre mí →" data-en="About me →">Sobre mí →</a>
-      <a href="#projects" class="btn btn-secondary" data-es="Ver proyectos" data-en="See projects">Ver proyectos</a>
-    </div>
-  </div>
-  <div class="hero-image">
-    <img src="about_illustration.jpeg" alt="Data science workspace illustration">
-  </div>
-</section>
-
-<!-- ABOUT -->
-<section id="about">
-  <div class="section-container">
-    <h2 data-es="Sobre <em>mí</em>" data-en="About <em>me</em>">Sobre <em>mí</em></h2>
-    
-    <div style="margin-bottom: 2rem;">
-      <div style="display: flex; align-items: baseline; gap: 1rem; margin-bottom: 1rem;">
-        <p style="font-size: 0.78rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin: 0;" data-es="Sr. Data Analyst" data-en="Sr. Data Analyst">Sr. Data Analyst</p>
-        <p style="font-size: 0.78rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--mid); margin: 0;" data-es="· Ciencia de Datos e IA" data-en="· Data Science & AI">· Ciencia de Datos e IA</p>
-      </div>
-      
-      <h3 style="font-family: 'Playfair Display', serif; font-size: 2.4rem; font-weight: 300; color: var(--accent); font-style: italic; margin: 0; letter-spacing: -0.01em;">
-        <span data-es="¡Hola!" data-en="Hello!">¡Hola!</span>
-      </h3>
-      
-      <div class="about-text" style="grid-template-columns: 1fr; margin-top: 1.5rem;">
-        <div>
-          <p class="about-p">
-            <span data-es="Soy Elena, Licenciada en Economía por la UdelaR (Uruguay) y especialista en Ciencia de Datos e IA por la UTEC en colaboración con el MIT. Desde 2019 me especializo en análisis de datos avanzado, desarrollándome en sectores tecnológicos y banca. Actualmente me desempeño como Sr. Data Analyst en el área de Prevención de Fraude." data-en="I'm Elena, an Economics graduate from UdelaR (Uruguay) and a Data Science & AI specialist from UTEC in collaboration with MIT. Since 2019 I've specialized in advanced data analysis across tech and banking sectors. I currently work as a Sr. Data Analyst in Fraud Prevention.">Soy Elena, Licenciada en Economía por la UdelaR (Uruguay) y especialista en Ciencia de Datos e IA por la UTEC en colaboración con el MIT. Desde 2019 me especializo en análisis de datos avanzado, desarrollándome en sectores tecnológicos y banca. Actualmente me desempeño como Sr. Data Analyst en el área de Prevención de Fraude.</span>
-          </p>
-          
-          <p class="about-p">
-            <span data-es="Para mi, un modelo de datos solo cobra valor cuando genera impacto en el negocio y es adoptado naturalmente por el usuario. Me apasiona diseñar productos de datos bajo una filosofía user-centric, traduciendo complejidad técnica en soluciones intuitivas. Mi objetivo es generar productos de datos que no solo funcionen, sino que se usen." data-en="For me, a data model only generates value when it creates real business impact and is naturally adopted by users. I love designing data products with a user-centric philosophy, translating technical complexity into intuitive solutions. My goal is to build data products that don't just work — they get used.">Para mi, un modelo de datos solo cobra valor cuando genera impacto en el negocio y es adoptado naturalmente por el usuario. Me apasiona diseñar productos de datos bajo una filosofía user-centric, traduciendo complejidad técnica en soluciones intuitivas. Mi objetivo es generar productos de datos que no solo funcionen, sino que se usen.</span>
-          </p>
-          
-          <p class="about-p">
-            <span data-es="Me encanta involucrarme en todo el proceso: desde entender qué historias cuentan los datos hasta verlos en producción transformando el día a día del negocio y los usuarios." data-en="I love getting involved in the whole process: from understanding what stories the data tells, to seeing them in production transforming the day-to-day of the business and its users.">Me encanta involucrarme en todo el proceso: desde entender qué historias cuentan los datos hasta verlos en producción transformando el día a día del negocio y los usuarios.</span>
-          </p>
-          
-          <p class="about-p">
-            <span data-es="Este sitio web, vinculado a mi repositorio en Github, tiene como objetivo difundir y poner a disposición los principales proyectos que desarrollé durante la especialización. Se presentan algunos de los proyectos más relevantes: cada uno representa los aprendizajes, competencias y desafíos más significativos de mi recorrido académico y profesional." data-en="This website, linked to my GitHub repository, aims to share and showcase the main projects I developed during my specialization. Each project represents the most significant learnings, skills, and challenges of my academic and professional journey.">Este sitio web, vinculado a mi repositorio en Github, tiene como objetivo difundir y poner a disposición los principales proyectos que desarrollé durante la especialización. Se presentan algunos de los proyectos más relevantes: cada uno representa los aprendizajes, competencias y desafíos más significativos de mi recorrido académico y profesional.</span>
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <h3 style="font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 300; margin-bottom: 1.5rem; color: var(--ink); margin-top: 2.5rem;"><span data-es="Stack Técnico" data-en="Tech Stack">Stack Técnico</span></h3>
-    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 2rem;">
-      <!-- Skill Card 1 -->
-      <div style="background: var(--white); border: 1px solid var(--rule); border-radius: 3px; padding: 1.8rem; transition: all 0.25s;">
-        <div style="font-size: 0.68rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.8rem;"><span data-es="Análisis & Datos" data-en="Analysis & Data">Análisis & Datos</span></div>
-        <div style="font-size: 1rem; color: var(--ink); font-weight: 400; line-height: 1.6;">SQL · Python</div>
-      </div>
-      
-      <!-- Skill Card 2 -->
-      <div style="background: var(--white); border: 1px solid var(--rule); border-radius: 3px; padding: 1.8rem; transition: all 0.25s;">
-        <div style="font-size: 0.68rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.8rem;"><span data-es="Visualización" data-en="Visualization">Visualización</span></div>
-        <div style="font-size: 1rem; color: var(--ink); font-weight: 400; line-height: 1.6;">Tableau · Power BI</div>
-      </div>
-      
-      <!-- Skill Card 3 -->
-      <div style="background: var(--white); border: 1px solid var(--rule); border-radius: 3px; padding: 1.8rem; transition: all 0.25s;">
-        <div style="font-size: 0.68rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.8rem;"><span data-es="Inteligencia Artificial" data-en="Artificial Intelligence">Inteligencia Artificial</span></div>
-        <div style="font-size: 1rem; color: var(--ink); font-weight: 400; line-height: 1.6;">LLMs · RAG</div>
-      </div>
-      
-      <!-- Skill Card 4 -->
-      <div style="background: var(--white); border: 1px solid var(--rule); border-radius: 3px; padding: 1.8rem; transition: all 0.25s;">
-        <div style="font-size: 0.68rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.8rem;"><span data-es="Dominios" data-en="Domains">Dominios</span></div>
-        <div style="font-size: 1rem; color: var(--ink); font-weight: 400; line-height: 1.6;"><span data-es="Product Analytics · Prevención de Fraude" data-en="Product Analytics · Fraud Prevention">Product Analytics · Prevención de Fraude</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PROJECTS -->
-<section id="projects">
-  <h2 data-es="Mis <em>proyectos</em>" data-en="My <em>projects</em>">Mis <em>proyectos</em></h2>
-  
-  <div class="projects-grid">
-    <!-- Proyecto 1 -->
-    <div class="project-card">
-      <div class="project-num">Proyecto 01 / 05</div>
-      <h3>CLAR<em>IA</em></h3>
-      <p class="project-desc">
-        <span data-es="Agente de IA para el sector financiero que analiza reclamos bancarios en 
-        lenguaje natural, identifica causas raíz y genera respuestas fundamentadas." data-en="AI agent for the financial sector that analyzes banking complaints in natural language, identifies root causes and generates data-grounded responses.">Agente de IA para el sector financiero que analiza reclamos bancarios en 
-        lenguaje natural, identifica causas raíz y genera respuestas fundamentadas.</span>
-      </p>
-      <div class="project-meta">
-        <span class="tag">NLP</span>
-        <span class="tag">LLMs</span>
-        <span class="tag">RAG</span>
-        <span class="tag">Fintech</span>
-      </div>
-      <a href="claria.html" class="project-link"><span data-es="Ver proyecto →" data-en="View project →">Ver proyecto →</span></a>
-    </div>
-
-    <!-- Proyecto 2 -->
-    <div class="project-card">
-      <div class="project-num">Proyecto 02 / 05</div>
-      <h3>DINE OR <em>DASH</em></h3>
-      <p class="project-desc">
-        <span data-es="Sistema de recomendación de restaurantes con cinco modelos progresivos. 
-        Desde ranking simple a filtrado colaborativo enriquecido con sentimiento." data-en="Restaurant recommendation system with five progressive models. From simple ranking to collaborative filtering enriched with sentiment analysis.">Sistema de recomendación de restaurantes con cinco modelos progresivos. 
-        Desde ranking simple a filtrado colaborativo enriquecido con sentimiento.</span>
-      </p>
-      <div class="project-meta">
-        <span class="tag"<span data-es=">Recomendación<" data-en="><span data-es=&quot;Recomendación&quot; data-en=&quot;Recommendation&quot;>Recomendación</span><">>Recomendación<</span>/span>
-        <span class="tag">SVD</span>
-        <span class="tag">NLP</span>
-        <span class="tag">Grafos</span>
-      </div>
-      <a href="dineordash.html" class="project-link"><span data-es="Ver proyecto →" data-en="View project →">Ver proyecto →</span></a>
-    </div>
-
-    <!-- Proyecto 3 -->
-    <div class="project-card">
-      <div class="project-num">Proyecto 03 / 05</div>
-      <h3>CLIENT <em>CATCH</em></h3>
-      <p class="project-desc">
-        <span data-es="Segmentación de clientes retail mediante K-Means. Tres perfiles accionables 
-        con estrategias personalizadas por canal y comportamiento." data-en="Retail customer segmentation using K-Means. Three actionable profiles with personalized strategies by channel and behavior.">Segmentación de clientes retail mediante K-Means. Tres perfiles accionables 
-        con estrategias personalizadas por canal y comportamiento.</span>
-      </p>
-      <div class="project-meta">
-        <span class="tag">Clustering</span>
-        <span class="tag">K-Means</span>
-        <span class="tag">Marketing</span>
-        <span class="tag">Retail</span>
-      </div>
-      <a href="clientcatch.html" class="project-link"><span data-es="Ver proyecto →" data-en="View project →">Ver proyecto →</span></a>
-    </div>
-
-    <!-- Proyecto 4 -->
-    <div class="project-card">
-      <div class="project-num">Proyecto 04 / 05</div>
-      <h3>GOOD<em>READS</em></h3>
-      <p class="project-desc">
-        <span data-es="Predicción de popularidad de libros con XGBoost. Variable objetivo inteligente 
-        usando NPS Ajustado normalizado por género." data-en="Book popularity prediction with XGBoost. Intelligent target variable using Adjusted NPS normalized by genre.">Predicción de popularidad de libros con XGBoost. Variable objetivo inteligente 
-        usando NPS Ajustado normalizado por género.</span>
-      </p>
-      <div class="project-meta">
-        <span class="tag"<span data-es=">Clasificación<" data-en="><span data-es=&quot;Clasificación&quot; data-en=&quot;Classification&quot;>Clasificación</span><">>Clasificación<</span>/span>
-        <span class="tag">XGBoost</span>
-        <span class="tag">SHAP</span>
-        <span class="tag">Feature Eng</span>
-      </div>
-      <a href="goodreads.html" class="project-link"><span data-es="Ver proyecto →" data-en="View project →">Ver proyecto →</span></a>
-    </div>
-
-    <!-- Proyecto 5 -->
-    <div class="project-card">
-      <div class="project-num">Proyecto 05 / 05</div>
-      <h3>BRAIN TUMOR CANCER <em>Detection</em> 🚧</h3>
-      <p class="project-desc">
-        <span data-es="Segmentación semántica de tumores en MRI con U-Net." data-en="Semantic segmentation of brain tumors in MRI images using U-Net.">Segmentación semántica de tumores en MRI con U-Net.</span>
-      </p>
-      <div class="project-meta">
-        <span class="tag">Deep Learning</span>
-        <span class="tag">U-Net</span>
-        <span class="tag">Medical AI</span>
-        <span class="tag">CV</span>
-      </div>
-      <a href="braintumor.html" class="project-link"><span data-es="Ver proyecto →" data-en="View project →">Ver proyecto →</span></a>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact">
-  <div class="contact-content">
-    <h2 style="font-style: italic;"><span data-es='<em style="color: var(--ink); font-style: italic;">¿</em>Hablamos<em style="color: var(--ink); font-style: italic;">?</em>' data-en="Let's talk?"><em style="color: var(--ink); font-style: italic;">¿</em>Hablamos<em style="color: var(--ink); font-style: italic;">?</em></span></h2>
-    <p style="font-size: 0.92rem; color: var(--mid); margin-bottom: 1.8rem; line-height: 1.7;"><span data-es="A las órdenes para discutir mis proyectos o nuevas colaboraciones." data-en="Happy to discuss my projects or new collaborations.">A las órdenes para discutir mis proyectos o nuevas colaboraciones.</span></p>
-    <div class="contact-list">
-      <div class="contact-item">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline-block; margin-right: 0.8rem; color: var(--accent); vertical-align: middle;">
-          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-          <polyline points="22,6 12,13 2,6"></polyline>
-        </svg>
-        <a href="#" class="contact-link" id="email-link">elena.salomon@gmail.com</a><script>var u="elena.salomon",d="gmail.com";var el=document.getElementById("email-link");el.href="mailto:"+u+"@"+d;el.textContent=u+"@"+d;</script>
-      </div>
-      <div class="contact-item">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="display: inline-block; margin-right: 0.8rem; color: var(--accent); vertical-align: middle;">
-          <path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"></path>
-        </svg>
-        <a href="https://www.linkedin.com/in/elena-salomon/" class="contact-link" target="_blank">linkedin.com/in/elena-salomon</a>
-      </div>
-      <div class="contact-item">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="display: inline-block; margin-right: 0.8rem; color: var(--accent); vertical-align: middle;">
-          <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path>
-        </svg>
-        <a href="https://github.com/elenasalomon" class="contact-link" target="_blank">github.com/elenasalomon</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <span data-es="© 2026 Elena Salomón López. Montevideo, Uruguay. Remoto." data-en="© 2026 Elena Salomón López. Montevideo, Uruguay. Remote.">© 2026 Elena Salomón López. Montevideo, Uruguay. Remoto.</span>
-</footer>
-
-<script d
+<!DOCTYPE html> <html lang="es"> 
+<head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Elena Salomón — Sr. Data Analyst</title> <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400&display=swap" rel="stylesheet"> 
+<style> :root { --bg: #faf7fc; --bg-alt: #f4eff8; --ink: #2a1f3d; --mid: #5a4a6f; --light: #9b7bb8; --accent: #c88dd4; --rule: #e8d9f0; --white: #fefbff; } * { margin: 0; padding: 0; box-sizing: border-box; } html { scroll-behavior: smooth; } body { background: var(--bg); color: var(--ink); font-family: 'DM Sans', sans-serif; font-size: 15px; line-height: 1.6; -webkit-font-smoothing: antialiased; } /* NAV */ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(250, 247, 252, 0.95); backdrop-filter: blur(16px); border-bottom: 1px solid var(--rule); padding: 1rem 3rem; } .nav-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; } .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 400; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink); text-decoration: none; } .nav-logo span { color: var(--accent); font-style: italic; } .nav-links { display: flex; gap: 2rem; align-items: center; } .nav-link { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.09em; text-transform: uppercase; color: var(--mid); text-decoration: none; transition: color 0.2s; } .nav-link:hover { color: var(--accent); } /* HERO */ .hero { min-height: 100vh; padding-top: 56px; display: flex; align-items: center; justify-content: space-between; gap: 4rem; max-width: 1100px; margin: 0 auto; padding-left: 3rem; padding-right: 3rem; position: relative; overflow: hidden; } .hero-image { flex: 1; display: flex; justify-content: center; align-items: center; } .hero-image img { width: 100%; max-width: 480px; border-radius: 16px; box-shadow: 0 12px 48px rgba(120,80,160,0.15); } .hero::before { position: absolute; top: -100px; right: -160px; width: 620px; height: 620px; border-radius: 50%; background: radial-gradient(circle, rgba(200, 141, 212, 0.15) 0%, rgba(155, 123, 184, 0.05) 50%, transparent 72%); pointer-events: none; } .hero::after { position: absolute; bottom: -60px; left: -80px; width: 380px; height: 380px; border-radius: 50%; background: radial-gradient(circle, rgba(155, 123, 184, 0.08) 0%, transparent 70%); pointer-events: none; } .hero-content { max-width: 500px; position: relative; z-index: 1; } .eyebrow { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.8rem; } .eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--accent); } h1 { font-family: 'Playfair Display', serif; font-size: 4rem; font-weight: 300; line-height: 1.0; margin-bottom: 1.2rem; color: var(--ink); letter-spacing: -0.01em; } h1 em { font-style: italic; color: var(--accent); } .bio { font-size: 0.92rem; color: var(--mid); line-height: 1.9; margin-bottom: 2rem; max-width: 450px; font-weight: 300; } .ctas { display: flex; gap: 1rem; flex-wrap: wrap; } .btn { padding: 0.72rem 1.7rem; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; border-radius: 3px; text-decoration: none; transition: all 0.25s; cursor: pointer; border: none; } .btn-primary { background: var(--accent); color: var(--white); box-shadow: 0 4px 15px rgba(200, 141, 212, 0.25); } .btn-primary:hover { background: var(--light); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(200, 141, 212, 0.4); } .btn-secondary { background: transparent; color: var(--ink); border: 1px solid var(--rule); } .btn-secondary:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); } /* ABOUT */ #about { background: var(--bg-alt); padding: 5rem 3rem; margin-top: 5rem; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); } .section-container { max-width: 1100px; margin: 0 auto; } h2 { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 300; margin-bottom: 2rem; color: var(--ink); letter-spacing: -0.01em; } h2 em { font-style: italic; color: var(--accent); } .about-text { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-bottom: 2rem; } .about-p { font-size: 0.92rem; color: var(--mid); line-height: 1.95; margin-bottom: 1rem; font-weight: 300; } .about-p strong { color: var(--ink); font-weight: 500; } .tools { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border: 1px solid var(--rule); margin-top: 2rem; border-radius: 3px; overflow: hidden; } .tool { padding: 0.85rem 1rem; border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); font-size: 0.78rem; color: var(--mid); background: var(--white); transition: all 0.2s; } .tool:hover { background: rgba(200, 141, 212, 0.08); color: var(--accent); } .tool:nth-child(3n) { border-right: none; } .tool:nth-last-child(-n+3) { border-bottom: none; } /* PROJECTS */ #projects { padding: 5rem 3rem; max-width: 1100px; margin: 0 auto; } .projects-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; margin-top: 2rem; } .project-card { background: var(--white); border: 1px solid var(--rule); border-radius: 3px; padding: 2rem; transition: all 0.2s; } .project-card:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(200, 141, 212, 0.15); } .project-num { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.8rem; font-family: 'DM Mono', monospace; } h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 300; margin-bottom: 0.8rem; color: var(--ink); letter-spacing: -0.01em; } h3 em { font-style: italic; color: var(--accent); } .project-desc { font-size: 0.88rem; color: var(--mid); line-height: 1.7; margin-bottom: 1.5rem; font-weight: 300; } .project-meta { display: flex; gap: 0.5rem; flex-wrap: wrap; margin: 1.5rem 0; } .tag { font-size: 0.63rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--light); background: rgba(155, 123, 184, 0.12); padding: 0.28rem 0.7rem; border-radius: 50px; } .project-link { display: inline-block; margin-top: 1rem; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); text-decoration: none; transition: color 0.2s; } .project-link:hover { color: var(--light); } /* CONTACT */ #contact { background: var(--bg-alt); padding: 5rem 3rem; text-align: center; border-top: 1px solid var(--rule); } .contact-content { max-width: 600px; margin: 0 auto; } .contact-list { display: flex; flex-direction: column; gap: 0.8rem; margin: 2rem 0; } .contact-item { font-size: 0.92rem; color: var(--mid); font-weight: 300; } .contact-link { color: var(--accent); text-decoration: none; transition: color 0.2s; } .contact-link:hover { color: var(--light); } /* FOOTER */ footer { border-top: 1px solid var(--rule); padding: 2rem 3rem; text-align: center; font-size: 0.78rem; color: var(--light); background: var(--bg-alt); } /* RESPONSIVE */ @media (max-width: 768px) { .hero { flex-direction: column; text-align: center; } .hero-content { max-width: 100%; } .hero-image { display: none; } h1 { font-size: 2.5rem; } .projects-grid { grid-template-columns: 1fr; } .about-text { grid-template-columns: 1fr; } .tools { grid-template-columns: repeat(2, 1fr); } nav { padding: 1rem 1.5rem; } .eyebrow::before { display: none; } } /* LANG TOGGLE */ .lang-toggle { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.1em; cursor: pointer; border: 1px solid var(--rule); border-radius: 50px; padding: 0.28rem 0.8rem; color: var(--mid); background: transparent; transition: all 0.2s; text-transform: uppercase; } .lang-toggle:hover { border-color: var(--accent); color: var(--accent); } </style>
+ </head>
+ 
+<body> 
+<!-- NAV --> 
+<nav> 
+<div class="nav-inner"> <a href="#" class="nav-logo">Elena <span>Salomón</span></a> 
+<div class="nav-links"> <a href="#about" class="nav-link" data-es="Sobre mí" data-en="About me">Sobre mí</a> <a href="#projects" class="nav-link" data-es="Proyectos" data-en="Projects">Proyectos</a> <a href="#contact" class="nav-link" data-es="Contacto" data-en="Contact">Contacto</a> <button class="lang-toggle" id="lang-btn">EN</button> </div>
+ </div>
+ </nav>
+ 
+<!-- HERO --> 
+<section class="hero"> 
+<div class="hero-content"> 
+<div class="eyebrow" data-es="— PORTAFOLIO · DATOS & IA" data-en="— PORTFOLIO · DATA & AI">— PORTAFOLIO · DATOS & IA</div>
+ 
+<h1 style="margin-bottom: 0;">Elena</h1>
+ 
+<h1 style="color: var(--accent); font-style: italic; margin-bottom: 0;">Salomón</h1>
+ 
+<h1 style="margin-bottom: 2rem;">López</h1>
+ 
+<p class="bio"> <span data-es="Licenciada en Economía, especializada en Ciencia de Datos e Inteligencia Artificial. Me apasiona diseñar productos de datos bajo una filosofía user-centric, traduciendo la complejidad técnica en soluciones intuitivas y de alto impacto." data-en="Economics graduate, specialized in Data Science and Artificial Intelligence. I love designing data products under a user-centric philosophy, translating technical complexity into intuitive, high-impact solutions.">Licenciada en Economía, especializada en Ciencia de Datos e Inteligencia Artificial. Me apasiona diseñar productos de datos bajo una filosofía user-centric, traduciendo la complejidad técnica en soluciones intuitivas y de alto impacto.</span> </p>
+ 
+<div class="ctas"> <a href="#about" class="btn btn-primary" data-es="Sobre mí →" data-en="About me →">Sobre mí →</a> <a href="#projects" class="btn btn-secondary" data-es="Ver proyectos" data-en="See projects">Ver proyectos</a> </div>
+ </div>
+ 
+<div class="hero-image"> <img src="about_illustration.jpeg" alt="Data science workspace illustration"> </div>
+ </section>
+ 
+<!-- ABOUT --> 
+<section id="about"> 
+<div class="section-container"> 
+<h2 data-es="Sobre <em>mí</em>" data-en="About <em>me</em>">Sobre <em>mí</em></h2>
+ 
+<div style="margin-bottom: 2rem;"> 
+<div style="display: flex; align-items: baseline; gap: 1rem; margin-bottom: 1rem;"> 
+<p style="font-size: 0.78rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin: 0;" data-es="Sr. Data Analyst" data-en="Sr. Data Analyst">Sr. Data Analyst</p>
+ 
+<p style="font-size: 0.78rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--mid); margin: 0;" data-es="· Ciencia de Datos e IA" data-en="· Data Science & AI">· Ciencia de Datos e IA</p>
+ </div>
+ 
+<h3 style="font-family: 'Playfair Display', serif; font-size: 2.4rem; font-weight: 300; color: var(--accent); font-style: italic; margin: 0; letter-spacing: -0.01em;"> <span data-es="¡Hola!" data-en="Hello!">¡Hola!</span> </h3>
+ 
+<div class="about-text" style="grid-template-columns: 1fr; margin-top: 1.5rem;"> 
+<div> 
+<p class="about-p"> <span data-es="Soy Elena, Licenciada en Economía por la UdelaR (Uruguay) y especialista en Ciencia de Datos e IA por la UTEC en colaboración con el MIT. Desde 2019 me especializo en análisis de datos avanzado, desarrollándome en sectores tecnológicos y banca. Actualmente me desempeño como Sr. Data Analyst en el área de Prevención de Fraude." data-en="I'm Elena, an Economics graduate from UdelaR (Uruguay) and a Data Science & AI specialist from UTEC in collaboration with MIT. Since 2019 I've specialized in advanced data analysis across tech and banking sectors. I currently work as a Sr. Data Analyst in Fraud Prevention.">Soy Elena, Licenciada en Economía por la UdelaR (Uruguay) y especialista en Ciencia de Datos e IA por la UTEC en colaboración con el MIT. Desde 2019 me especializo en análisis de datos avanzado, desarrollándome en sectores tecnológicos y banca. Actualmente me desempeño como Sr. Data Analyst en el área de Prevención de Fraude.</span> </p>
+ 
+<p class="about-p"> <span data-es="Para mi, un modelo de datos solo cobra valor cuando genera impacto en el negocio y es adoptado naturalmente por el usuario. Me apasiona diseñar productos de datos bajo una filosofía user-centric, traduciendo complejidad técnica en soluciones intuitivas. Mi objetivo es generar productos de datos que no solo funcionen, sino que se usen." data-en="For me, a data model only generates value when it creates real business impact and is naturally adopted by users. I love designing data products with a user-centric philosophy, translating technical complexity into intuitive solutions. My goal is to build data products that don't just work — they get used.">Para mi, un modelo de datos solo cobra valor cuando genera impacto en el negocio y es adoptado naturalmente por el usuario. Me apasiona diseñar productos de datos bajo una filosofía user-centric, traduciendo complejidad técnica en soluciones intuitivas. Mi objetivo es generar productos de datos que no solo funcionen, sino que se usen.</span> </p>
+ 
+<p class="about-p"> <span data-es="Me encanta involucrarme en todo el proceso: desde entender qué historias cuentan los datos hasta verlos en producción transformando el día a día del negocio y los usuarios." data-en="I love getting involved in the whole process: from understanding what stories the data tells, to seeing them in production transforming the day-to-day of the business and its users.">Me encanta involucrarme en todo el proceso: desde entender qué historias cuentan los datos hasta verlos en producción transformando el día a día del negocio y los usuarios.</span> </p>
+ 
+<p class="about-p"> <span data-es="Este sitio web, vinculado a mi repositorio en Github, tiene como objetivo difundir y poner a disposición los principales proyectos que desarrollé durante la especialización. Se presentan algunos de los proyectos más relevantes: cada uno representa los aprendizajes, competencias y desafíos más significativos de mi recorrido académico y profesional." data-en="This website, linked to my GitHub repository, aims to share and showcase the main projects I developed during my specialization. Each project represents the most significant learnings, skills, and challenges of my academic and professional journey.">Este sitio web, vinculado a mi repositorio en Github, tiene como objetivo difundir y poner a disposición los principales proyectos que desarrollé durante la especialización. Se presentan algunos de los proyectos más relevantes: cada uno representa los aprendizajes, competencias y desafíos más significativos de mi recorrido académico y profesional.</span> </p>
+ </div>
+ </div>
+ </div>
+ 
+<h3 style="font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 300; margin-bottom: 1.5rem; color: var(--ink); margin-top: 2.5rem;"><span data-es="Stack Técnico" data-en="Tech Stack">Stack Técnico</span></h3>
+ 
+<div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 2rem;"> 
+<!-- Skill Card 1 --> 
+<div style="background: var(--white); border: 1px solid var(--rule); border-radius: 3px; padding: 1.8rem; transition: all 0.25s;"> 
+<div style="font-size: 0.68rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.8rem;"><span data-es="Análisis & Datos" data-en="Analysis & Data">Análisis & Datos</span></div>
+ 
+<div style="font-size: 1rem; color: var(--ink); font-weight: 400; line-height: 1.6;">SQL · Python</div>
+ </div>
+ 
+<!-- Skill Card 2 --> 
+<div style="background: var(--white); border: 1px solid var(--rule); border-radius: 3px; padding: 1.8rem; transition: all 0.25s;"> 
+<div style="font-size: 0.68rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.8rem;"><span data-es="Visualización" data-en="Visualization">Visualización</span></div>
+ 
+<div style="font-size: 1rem; color: var(--ink); font-weight: 400; line-height: 1.6;">Tableau · Power BI</div>
+ </div>
+ 
+<!-- Skill Card 3 --> 
+<div style="background: var(--white); border: 1px solid var(--rule); border-radius: 3px; padding: 1.8rem; transition: all 0.25s;"> 
+<div style="font-size: 0.68rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.8rem;"><span data-es="Inteligencia Artificial" data-en="Artificial Intelligence">Inteligencia Artificial</span></div>
+ 
+<div style="font-size: 1rem; color: var(--ink); font-weight: 400; line-height: 1.6;">LLMs · RAG</div>
+ </div>
+ 
+<!-- Skill Card 4 --> 
+<div style="background: var(--white); border: 1px solid var(--rule); border-radius: 3px; padding: 1.8rem; transition: all 0.25s;"> 
+<div style="font-size: 0.68rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.8rem;"><span data-es="Dominios" data-en="Domains">Dominios</span></div>
+ 
+<div style="font-size: 1rem; color: var(--ink); font-weight: 400; line-height: 1.6;"><span data-es="Product Analytics · Prevención de Fraude" data-en="Product Analytics · Fraud Prevention">Product Analytics · Prevención de Fraude</span></div>
+ </div>
+ </div>
+ </div>
+ </section>
+ 
+<!-- PROJECTS --> 
+<section id="projects"> 
+<h2 data-es="Mis <em>proyectos</em>" data-en="My <em>projects</em>">Mis <em>proyectos</em></h2>
+ 
+<div class="projects-grid"> 
+<!-- Proyecto 1 --> 
+<div class="project-card"> 
+<div class="project-num">Proyecto 01 / 05</div>
+ 
+<h3>CLAR<em>IA</em></h3>
+ 
+<p class="project-desc"> <span data-es="Agente de IA para el sector financiero que analiza reclamos bancarios en lenguaje natural, identifica causas raíz y genera respuestas fundamentadas." data-en="AI agent for the financial sector that analyzes banking complaints in natural language, identifies root causes and generates data-grounded responses.">Agente de IA para el sector financiero que analiza reclamos bancarios en lenguaje natural, identifica causas raíz y genera respuestas fundamentadas.</span> </p>
+ 
+<div class="project-meta"> <span class="tag">NLP</span> <span class="tag">LLMs</span> <span class="tag">RAG</span> <span class="tag">Fintech</span> </div>
+ <a href="claria.html" class="project-link"><span data-es="Ver proyecto →" data-en="View project →">Ver proyecto →</span></a> </div>
+ 
+<!-- Proyecto 2 --> 
+<div class="project-card"> 
+<div class="project-num">Proyecto 02 / 05</div>
+ 
+<h3>DINE OR <em>DASH</em></h3>
+ 
+<p class="project-desc"> <span data-es="Sistema de recomendación de restaurantes con cinco modelos progresivos. Desde ranking simple a filtrado colaborativo enriquecido con sentimiento." data-en="Restaurant recommendation system with five progressive models. From simple ranking to collaborative filtering enriched with sentiment analysis.">Sistema de recomendación de restaurantes con cinco modelos progresivos. Desde ranking simple a filtrado colaborativo enriquecido con sentimiento.</span> </p>
+ 
+<div class="project-meta"> <span class="tag"><span data-es="Recomendación" data-en="Recommendation">Recomendación</span></span> <span class="tag">SVD</span> <span class="tag">NLP</span> <span class="tag">Grafos</span> </div>
+ <a href="dineordash.html" class="project-link"><span data-es="Ver proyecto →" data-en="View project →">Ver proyecto →</span></a> </div>
+ 
+<!-- Proyecto 3 --> 
+<div class="project-card"> 
+<div class="project-num">Proyecto 03 / 05</div>
+ 
+<h3>CLIENT <em>CATCH</em></h3>
+ 
+<p class="project-desc"> <span data-es="Segmentación de clientes retail mediante K-Means. Tres perfiles accionables con estrategias personalizadas por canal y comportamiento." data-en="Retail customer segmentation using K-Means. Three actionable profiles with personalized strategies by channel and behavior.">Segmentación de clientes retail mediante K-Means. Tres perfiles accionables con estrategias personalizadas por canal y comportamiento.</span> </p>
+ 
+<div class="project-meta"> <span class="tag">Clustering</span> <span class="tag">K-Means</span> <span class="tag">Marketing</span> <span class="tag">Retail</span> </div>
+ <a href="clientcatch.html" class="project-link"><span data-es="Ver proyecto →" data-en="View project →">Ver proyecto →</span></a> </div>
+ 
+<!-- Proyecto 4 --> 
+<div class="project-card"> 
+<div class="project-num">Proyecto 04 / 05</div>
+ 
+<h3>GOOD<em>READS</em></h3>
+ 
+<p class="project-desc"> <span data-es="Predicción de popularidad de libros con XGBoost. Variable objetivo inteligente usando NPS Ajustado normalizado por género." data-en="Book popularity prediction with XGBoost. Intelligent target variable using Adjusted NPS normalized by genre.">Predicción de popularidad de libros con XGBoost. Variable objetivo inteligente usando NPS Ajustado normalizado por género.</span> </p>
+ 
+<div class="project-meta"> <span class="tag"><span data-es="Clasificación" data-en="Classification">Clasificación</span></span> <span class="tag">XGBoost</span> <span class="tag">SHAP</span> <span class="tag">Feature Eng</span> </div>
+ <a href="goodreads.html" class="project-link"><span data-es="Ver proyecto →" data-en="View project →">Ver proyecto →</span></a> </div>
+ 
+<!-- Proyecto 5 --> 
+<div class="project-card"> 
+<div class="project-num">Proyecto 05 / 05</div>
+ 
+<h3>BRAIN TUMOR CANCER <em>Detection</em> 🚧</h3>
+ 
+<p class="project-desc"> <span data-es="Segmentación semántica de tumores en MRI con U-Net." data-en="Semantic segmentation of brain tumors in MRI images using U-Net.">Segmentación semántica de tumores en MRI con U-Net.</span> </p>
+ 
+<div class="project-meta"> <span class="tag">Deep Learning</span> <span class="tag">U-Net</span> <span class="tag">Medical AI</span> <span class="tag">CV</span> </div>
+ <a href="braintumor.html" class="project-link"><span data-es="Ver proyecto →" data-en="View project →">Ver proyecto →</span></a> </div>
+ </div>
+ </section>
+ 
+<!-- CONTACT --> 
+<section id="contact"> 
+<div class="contact-content"> 
+<h2 style="font-style: italic;"><span data-es='<em style="color: var(--ink); font-style: italic;">¿</em>Hablamos<em style="color: var(--ink); font-style: italic;">?</em>' data-en="Let's talk?"><em style="color: var(--ink); font-style: italic;">¿</em>Hablamos<em style="color: var(--ink); font-style: italic;">?</em></span></h2>
+ 
+<p style="font-size: 0.92rem; color: var(--mid); margin-bottom: 1.8rem; line-height: 1.7;"><span data-es="A las órdenes para discutir mis proyectos o nuevas colaboraciones." data-en="Happy to discuss my projects or new collaborations.">A las órdenes para discutir mis proyectos o nuevas colaboraciones.</span></p>
+ 
+<div class="contact-list"> 
+<div class="contact-item"> <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline-block; margin-right: 0.8rem; color: var(--accent); vertical-align: middle;"> <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path> <polyline points="22,6 12,13 2,6"></polyline> </svg> <a href="#" class="contact-link" id="email-link">elena.salomon@gmail.com</a>
+<script>var u="elena.salomon",d="gmail.com";var el=document.getElementById("email-link");el.href="mailto:"+u+"@"+d;el.textContent=u+"@"+d;</script>
+ </div>
+ 
+<div class="contact-item"> <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="display: inline-block; margin-right: 0.8rem; color: var(--accent); vertical-align: middle;"> <path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"></path> </svg> <a href="https://www.linkedin.com/in/elena-salomon/" class="contact-link" target="_blank">linkedin.com/in/elena-salomon</a> </div>
+ 
+<div class="contact-item"> <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="display: inline-block; margin-right: 0.8rem; color: var(--accent); vertical-align: middle;"> <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path> </svg> <a href="https://github.com/elenasalomon" class="contact-link" target="_blank">github.com/elenasalomon</a> </div>
+ </div>
+ </div>
+ </section>
+ 
+<!-- FOOTER --> 
+<footer> <span data-es="© 2026 Elena Salomón López. Montevideo, Uruguay. Remoto." data-en="© 2026 Elena Salomón López. Montevideo, Uruguay. Remote.">© 2026 Elena Salomón López. Montevideo, Uruguay. Remoto.</span> </footer>
+ 
+<script> (function() { var lang = localStorage.getItem('lang') || 'es'; var btn = document.getElementById('lang-btn'); function applyLang(l) { document.querySelectorAll('[data-es]').forEach(function(el) { el.innerHTML = l === 'en' ? el.getAttribute('data-en') : el.getAttribute('data-es'); }); if (btn) btn.textContent = l === 'es' ? 'EN' : 'ES'; document.documentElement.lang = l; } if (btn) { btn.addEventListener('click', function() { lang = lang === 'es' ? 'en' : 'es'; localStorage.setItem('lang', lang); applyLang(lang); }); } applyLang(lang); })(); </script>
+ </body> </html>
