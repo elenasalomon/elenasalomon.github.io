@@ -119,6 +119,28 @@
 
   <div class="section reveal">
     <div class="sg">
+      <span class="sl"><span data-es="Los datos" data-en="The data">Los datos</span></span>
+      <div>
+        <h2><span data-es="LGG MRI Segmentation" data-en="LGG MRI Segmentation">LGG MRI Segmentation</span></h2>
+        <p><span data-es="Las imágenes provienen del The Cancer Imaging Archive (TCIA), disponibles en Kaggle. El dataset contiene 3.929 imágenes de 110 pacientes con diagnóstico de glioma de bajo grado (LGG). Cada imagen tiene su correspondiente máscara de segmentación anotada manualmente por un especialista: píxeles blancos = tumor, píxeles negros = tejido sano." data-en="Images come from The Cancer Imaging Archive (TCIA), available on Kaggle. The dataset contains 3,929 images from 110 patients diagnosed with low-grade glioma (LGG). Each image has its corresponding segmentation mask manually annotated by a specialist: white pixels = tumor, black pixels = healthy tissue.">Las imágenes provienen del The Cancer Imaging Archive (TCIA), disponibles en Kaggle. El dataset contiene 3.929 imágenes de 110 pacientes con diagnóstico de glioma de bajo grado (LGG). Cada imagen tiene su correspondiente máscara de segmentación anotada manualmente por un especialista: píxeles blancos = tumor, píxeles negros = tejido sano.</span></p>
+        <img src="braintumor_tp.png" alt="MRI original y máscara de tumor" style="width:100%;margin-top:1.4rem;border:1px solid var(--rule);border-radius:6px;display:block;"/>
+        <p style="margin-top:0.8rem;font-size:0.82rem;color:var(--mid);"><span data-es="Así viene el dataset: una imagen de resonancia magnética y su correspondiente máscara que indica en la zona blanca el tumor." data-en="This is how the dataset comes: an MRI image and its corresponding mask indicating the tumor in the white area.">Así viene el dataset: una imagen de resonancia magnética y su correspondiente máscara que indica en la zona blanca el tumor.</span></p>
+        <p style="margin-top:1.4rem;margin-bottom:.6rem;font-size:.82rem;font-weight:500;color:var(--ink);"><span data-es="El dataset presenta un doble desbalance determinante:" data-en="The dataset presents a double determining imbalance:">El dataset presenta un doble desbalance determinante:</span></p>
+        <table class="bt" style="margin-top:.4rem;">
+          <thead>
+            <tr><th><span data-es="Tipo de desbalance" data-en="Imbalance type">Tipo de desbalance</span></th><th><span data-es="Valor" data-en="Value">Valor</span></th><th><span data-es="Impacto" data-en="Impact">Impacto</span></th></tr>
+          </thead>
+          <tbody>
+            <tr><td><span data-es="A nivel de imagen" data-en="At image level">A nivel de imagen</span></td><td>65% <span data-es="sin tumor" data-en="no tumor">sin tumor</span></td><td><span data-es="El modelo vería más negativos que positivos" data-en="The model would see more negatives than positives">El modelo vería más negativos que positivos</span></td></tr>
+            <tr><td><span data-es="A nivel de píxel" data-en="At pixel level">A nivel de píxel</span></td><td>1.03% <span data-es="tumor" data-en="tumor">tumor</span></td><td><span data-es="BCE ignoraría casi todos los píxeles positivos" data-en="BCE would ignore almost all positive pixels">BCE ignoraría casi todos los píxeles positivos</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="section reveal">
+    <div class="sg">
       <span class="sl"><span data-es="El problema" data-en="The problem">El problema</span></span>
       <div>
         <h2><span data-es="Seguimiento evolutivo del paciente" data-en="Patient evolutionary follow-up">Seguimiento evolutivo del paciente</span></h2>
