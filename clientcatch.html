@@ -72,10 +72,18 @@
     .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease;}
     .reveal.visible{opacity:1;transform:translateY(0);}
     @media(max-width:600px){.proj-hero-inner,.sg{grid-template-columns:1fr;gap:1rem;}.meta-grid,.seg-grid{grid-template-columns:1fr;}.pnav{flex-direction:column;align-items:flex-start;gap:1.2rem;}}
+
+    .lang-toggle {
+      font-size: 0.68rem; font-weight: 500; letter-spacing: 0.1em;
+      cursor: pointer; border: 1px solid var(--rule); border-radius: 50px;
+      padding: 0.28rem 0.8rem; color: var(--mid); background: transparent;
+      transition: all 0.2s; text-transform: uppercase;
+    }
+    .lang-toggle:hover { border-color: var(--accent); color: var(--accent); }
   </style>
 </head>
 <body>
-<nav><div class="nav-inner"><a href="index.html" class="nav-name">Elena Salomón</a><a href="index.html#projects" class="nav-back">← Proyectos</a></div></nav>
+<nav><div class="nav-inner"><a href="index.html" class="nav-name">Elena Salomón</a><a href="index.html#projects" class="nav-back" data-es="← Proyectos" data-en="← Projects">← Proyectos</a><button class="lang-toggle" id="lang-btn" style="margin-left:1rem;">EN</button></div></nav>
 
 <div class="proj-hero">
   <div class="proj-hero-inner">
@@ -89,11 +97,11 @@
       </div>
     </div>
     <div>
-      <h1>Client Catch: <em>¿Quién es<br>tu cliente?</em></h1>
-      <p class="proj-summary">Segmentación de clientes de una empresa retail mediante aprendizaje no supervisado. Tres perfiles accionables construidos a partir de datos demográficos, hábitos de gasto e interacción con campañas de marketing.</p>
+      <h1>Client Catch: <em><span data-es="¿Quién es<br>tu cliente?" data-en="Who is your<br>client?">¿Quién es<br>tu cliente?</span></em></h1>
+      <p class="proj-summary"><span data-es="Segmentación de clientes de una empresa retail mediante aprendizaje no supervisado. Tres perfiles accionables construidos a partir de datos demográficos, hábitos de gasto e interacción con campañas de marketing." data-en="Customer segmentation for a retail company using unsupervised learning. Three actionable profiles built from demographic data, spending habits, and marketing campaign interactions.">Segmentación de clientes de una empresa retail mediante aprendizaje no supervisado. Tres perfiles accionables construidos a partir de datos demográficos, hábitos de gasto e interacción con campañas de marketing.</span></p>
       <div class="proj-links">
-        <a href="https://github.com/elenasalomon/ClientCatch" class="proj-link" target="_blank">Ver en GitHub</a>
-        <a href="index.html#projects" class="proj-link ghost">← Volver</a>
+        <a href="https://github.com/elenasalomon/ClientCatch" class="proj-link" target="_blank"><span data-es="Ver en GitHub" data-en="View on GitHub">Ver en GitHub</span></a>
+        <a href="index.html#projects" class="proj-link ghost"><span data-es="← Volver" data-en="← Back">← Volver</span></a>
       </div>
     </div>
   </div>
@@ -103,52 +111,52 @@
 
   <div class="section reveal">
     <div class="sg">
-      <span class="sl">Ficha</span>
+      <span class="sl"><span data-es="Ficha" data-en="Overview">Ficha</span></span>
       <div class="meta-grid">
-        <div class="mr"><div class="ml">Tipo</div><div class="mv">Clustering no supervisado</div></div>
-        <div class="mr"><div class="ml">Dataset</div><div class="mv">Customer Personality Analysis — 2.240 clientes</div></div>
-        <div class="mr"><div class="ml">Algoritmo</div><div class="mv">K-Means (K=3, método del codo)</div></div>
-        <div class="mr"><div class="ml">Año</div><div class="mv">2025</div></div>
-        <div class="mr"><div class="ml">Dominio</div><div class="mv">Marketing estratégico · Retail</div></div>
-        <div class="mr"><div class="ml">Stack</div><div class="mv">Python · scikit-learn · yellowbrick · seaborn</div></div>
+        <div class="mr"><div class="ml"><span data-es="Tipo" data-en="Type">Tipo</span></div><div class="mv"><span data-es="Clustering no supervisado" data-en="Unsupervised clustering">Clustering no supervisado</span></div></div>
+        <div class="mr"><div class="ml">Dataset</div><div class="mv"><span data-es="Customer Personality Analysis — 2.240 clientes" data-en="Customer Personality Analysis — 2,240 customers">Customer Personality Analysis — 2.240 clientes</span></div></div>
+        <div class="mr"><div class="ml"><span data-es="Algoritmo" data-en="Algorithm">Algoritmo</span></div><div class="mv"><span data-es="K-Means (K=3, método del codo)" data-en="K-Means (K=3, elbow method)">K-Means (K=3, método del codo)</span></div></div>
+        <div class="mr"><div class="ml"><span data-es="Año" data-en="Year">Año</span></div><div class="mv">2025</div></div>
+        <div class="mr"><div class="ml">Dominio</div><div class="mv"><span data-es="Marketing estratégico · Retail" data-en="Strategic marketing · Retail">Marketing estratégico · Retail</span></div></div>
+        <div class="mr"><div class="ml"><span data-es="Stack" data-en="Stack">Stack</span></div><div class="mv">Python · scikit-learn · yellowbrick · seaborn</div></div>
       </div>
     </div>
   </div>
 
   <div class="section reveal">
     <div class="sg">
-      <span class="sl">El problema</span>
+      <span class="sl"><span data-es="El problema" data-en="The problem">El problema</span></span>
       <div>
-        <h2>Tratar a todos igual es una estrategia destinada al fracaso</h2>
-        <p>En un mercado saturado donde las empresas compiten por la atención del consumidor, la ventaja competitiva reside en la capacidad de identificar patrones de comportamiento que definen a cada individuo. Una empresa retail con base de clientes en crecimiento buscaba pasar de estrategias masivas a campañas hiper-personalizadas.</p>
-        <p>El objetivo fue implementar un flujo completo de ciencia de datos — desde la limpieza hasta el clustering — para <strong>segmentar clientes según su perfil de gasto y respuesta a campañas</strong>, identificando qué grupos son los más valiosos y cómo llegar a cada uno de forma distinta.</p>
+        <h2><span data-es="Tratar a todos igual es una estrategia destinada al fracaso" data-en="Treating everyone the same is a strategy destined to fail">Tratar a todos igual es una estrategia destinada al fracaso</span></h2>
+        <p><span data-es="En un mercado saturado donde las empresas compiten por la atención del consumidor, la ventaja competitiva reside en la capacidad de identificar patrones de comportamiento que definen a cada individuo." data-en="In a saturated market where companies compete for consumer attention, the competitive advantage lies in the ability to identify behavioral patterns that define each individual.">En un mercado saturado donde las empresas compiten por la atención del consumidor, la ventaja competitiva reside en la capacidad de identificar patrones de comportamiento que definen a cada individuo.</span> <span data-es="Una empresa retail con base de clientes en crecimiento buscaba pasar de estrategias masivas a campañas hiper-personalizadas." data-en="A retail company with a growing customer base sought to move from mass strategies to hyper-personalized campaigns.">Una empresa retail con base de clientes en crecimiento buscaba pasar de estrategias masivas a campañas hiper-personalizadas.</span></p>
+        <p><span data-es="El objetivo fue implementar un flujo completo de ciencia de datos — desde la limpieza hasta el clustering — para <strong>segmentar clientes según su perfil de gasto y respuesta a campañas</strong>, identificando qué grupos son los más valiosos y cómo llegar a cada uno de forma distinta." data-en="The goal was to implement a complete data science workflow — from cleaning to clustering — to <strong>segment customers by spending profile and campaign response</strong>, identifying which groups are the most valuable and how to reach each one differently.">El objetivo fue implementar un flujo completo de ciencia de datos — desde la limpieza hasta el clustering — para <strong>segmentar clientes según su perfil de gasto y respuesta a campañas</strong>, identificando qué grupos son los más valiosos y cómo llegar a cada uno de forma distinta.</span></p>
       </div>
     </div>
   </div>
 
   <div class="section reveal">
     <div class="sg">
-      <span class="sl">Los datos</span>
+      <span class="sl"><span data-es="Los datos" data-en="The data">Los datos</span></span>
       <div>
-        <h2>Dataset Customer Personality Analysis</h2>
-        <p>El dataset incluye datos demográficos (año de nacimiento, educación, estado civil, ingresos, número de hijos y adolescentes en el hogar), información de gasto en los últimos dos años (vino, frutas, carnes, pescado, dulces, productos gold), canales de compra (web, catálogo, tienda, ofertas) e interacción con 5 campañas de marketing.</p>
-        <p>Antes del modelado se construyeron nuevas variables: <strong>Edad</strong> del cliente, <strong>Gasto Total</strong> (suma de todas las categorías), <strong>Tamaño del hogar</strong> y <strong>TotalAcceptedCmp</strong> (suma de campañas aceptadas). Estas variables simplificaron la complejidad de los datos crudos y mejoraron la interpretabilidad de los clusters.</p>
+        <h2><span data-es="Dataset Customer Personality Analysis" data-en="Customer Personality Analysis Dataset">Dataset Customer Personality Analysis</span></h2>
+        <p><span data-es="El dataset incluye datos demográficos (año de nacimiento, educación, estado civil, ingresos, número de hijos y adolescentes en el hogar), información de gasto en los últimos dos años (vino, frutas, carnes, pescado, dulces, productos gold), canales de compra (web, catálogo, tienda, ofertas) e interacción con 5 campañas de marketing." data-en="The dataset includes demographic data (birth year, education, marital status, income, number of children and teenagers at home), spending data from the last two years (wine, fruits, meats, fish, sweets, gold products), purchase channels (web, catalog, store, deals) and interaction with 5 marketing campaigns.">El dataset incluye datos demográficos (año de nacimiento, educación, estado civil, ingresos, número de hijos y adolescentes en el hogar), información de gasto en los últimos dos años (vino, frutas, carnes, pescado, dulces, productos gold), canales de compra (web, catálogo, tienda, ofertas) e interacción con 5 campañas de marketing.</span></p>
+        <p><span data-es="Antes del modelado se construyeron nuevas variables: <strong>Edad</strong> del cliente, <strong>Gasto Total</strong> (suma de todas las categorías), <strong>Tamaño del hogar</strong> y <strong>TotalAcceptedCmp</strong> (suma de campañas aceptadas). Estas variables simplificaron la complejidad de los datos crudos y mejoraron la interpretabilidad de los clusters." data-en="Before modeling, new variables were engineered: customer <strong>Age</strong>, <strong>Total Spending</strong> (sum of all categories), <strong>Household Size</strong> and <strong>TotalAcceptedCmp</strong> (sum of accepted campaigns). These variables simplified the complexity of the raw data and improved cluster interpretability.">Antes del modelado se construyeron nuevas variables: <strong>Edad</strong> del cliente, <strong>Gasto Total</strong> (suma de todas las categorías), <strong>Tamaño del hogar</strong> y <strong>TotalAcceptedCmp</strong> (suma de campañas aceptadas). Estas variables simplificaron la complejidad de los datos crudos y mejoraron la interpretabilidad de los clusters.</span></p>
       </div>
     </div>
   </div>
 
   <div class="section reveal">
     <div class="sg">
-      <span class="sl">Metodología</span>
+      <span class="sl"><span data-es="Metodología" data-en="Methodology">Metodología</span></span>
       <div>
-        <h2>K-Means con método del codo</h2>
-        <p>Los datos fueron escalados con StandardScaler antes del clustering, dado que las variables tienen magnitudes muy distintas (ingresos en miles de dólares vs. variables binarias de campañas). Para determinar el número óptimo de clusters se evaluaron dos métricas, que arrojaron resultados distintos:</p>
+        <h2><span data-es="K-Means con método del codo" data-en="K-Means with the elbow method">K-Means con método del codo</span></h2>
+        <p><span data-es="Los datos fueron escalados con StandardScaler antes del clustering, dado que las variables tienen magnitudes muy distintas (ingresos en miles de dólares vs. variables binarias de campañas). Para determinar el número óptimo de clusters se evaluaron dos métricas, que arrojaron resultados distintos:" data-en="Data was scaled with StandardScaler before clustering, since variables have very different magnitudes (income in thousands of dollars vs. binary campaign variables). To determine the optimal number of clusters, two metrics were evaluated, which yielded different results:">Los datos fueron escalados con StandardScaler antes del clustering, dado que las variables tienen magnitudes muy distintas (ingresos en miles de dólares vs. variables binarias de campañas). Para determinar el número óptimo de clusters se evaluaron dos métricas, que arrojaron resultados distintos:</span></p>
         <div style="background: var(--card); border: 1px solid var(--rule); border-radius: 10px; padding: 2rem; margin: 1.8rem 0;">
           <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem;">
 
             <!-- Método del Codo -->
             <div>
-              <div style="font-size: 0.68rem; font-weight: 600; letter-spacing: 0.13em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.2rem;">Método del Codo (WCSS)</div>
+              <div style="font-size: 0.68rem; font-weight: 600; letter-spacing: 0.13em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.2rem;"><span data-es="Método del Codo (WCSS)" data-en="Elbow Method (WCSS)">Método del Codo (WCSS)</span></div>
               <svg viewBox="0 0 290 145" style="width:100%;overflow:visible;">
                 <!-- Grid -->
                 <line x1="35" y1="10" x2="35" y2="110" stroke="#e8e2dc" stroke-width="1"/>
@@ -180,12 +188,12 @@
                 <text x="155" y="140" text-anchor="middle" font-size="8.5" fill="#a89e94">Number of clusters</text>
                 <text x="10" y="65" text-anchor="middle" font-size="8.5" fill="#a89e94" transform="rotate(-90,10,65)">WCSS</text>
               </svg>
-              <div style="font-size: 0.73rem; color: var(--mid); margin-top: 0.5rem;">Inflexión en K=3 — la varianza interna deja de reducirse significativamente.</div>
+              <div style="font-size: 0.73rem; color: var(--mid); margin-top: 0.5rem;"><span data-es="Inflexión en K=3 — la varianza interna deja de reducirse significativamente." data-en="Inflection at K=3 — internal variance stops reducing significantly.">Inflexión en K=3 — la varianza interna deja de reducirse significativamente.</span></div>
             </div>
 
             <!-- Silhouette -->
             <div>
-              <div style="font-size: 0.68rem; font-weight: 600; letter-spacing: 0.13em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.2rem;">Coeficiente de Silueta</div>
+              <div style="font-size: 0.68rem; font-weight: 600; letter-spacing: 0.13em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.2rem;"><span data-es="Coeficiente de Silueta" data-en="Silhouette Coefficient">Coeficiente de Silueta</span></div>
               <svg viewBox="0 0 290 145" style="width:100%;overflow:visible;">
                 <defs>
                   <marker id="arr2" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
@@ -217,52 +225,52 @@
                 <text x="155" y="140" text-anchor="middle" font-size="8.5" fill="#a89e94">Number of clusters</text>
                 <text x="10" y="65" text-anchor="middle" font-size="8.5" fill="#a89e94" transform="rotate(-90,10,65)">Silhouette Score</text>
               </svg>
-              <div style="font-size: 0.73rem; color: var(--mid); margin-top: 0.5rem;">Pico en K=2, pero K=3 elegido por mayor valor interpretativo de negocio.</div>
+              <div style="font-size: 0.73rem; color: var(--mid); margin-top: 0.5rem;"><span data-es="Pico en K=2, pero K=3 elegido por mayor valor interpretativo de negocio." data-en="Peak at K=2, but K=3 chosen for greater business interpretive value.">Pico en K=2, pero K=3 elegido por mayor valor interpretativo de negocio.</span></div>
             </div>
 
           </div>
         </div>
-        <p><strong>Método del codo (WCSS):</strong> sugería K=3 como punto de inflexión donde la varianza interna deja de reducirse significativamente. <strong>Coeficiente de Silueta:</strong> estadísticamente señalaba K=2 como la división más precisa.</p>
-        <p>La decisión fue mantener <strong>K=3</strong>. Desde el punto de vista estadístico puro, dos grupos eran más cohesivos — pero en términos de negocio, el tercer cluster ofrecía matices y oportunidades de personalización que se habrían perdido en una segmentación demasiado simplificada. Esa tensión entre precisión estadística y utilidad práctica es parte del trabajo real de ciencia de datos.</p>
-        <p>El resultado: tres grupos con tamaños sustanciales (909, 628 y 493 clientes), ninguno marginal, todos con perfiles accionables.</p>
+        <p><span data-es="<strong>Método del codo (WCSS):</strong> sugería K=3 como punto de inflexión donde la varianza interna deja de reducirse significativamente. <strong>Coeficiente de Silueta:</strong> estadísticamente señalaba K=2 como la división más precisa." data-en="<strong>Elbow Method (WCSS):</strong> suggested K=3 as the inflection point where internal variance stops reducing significantly. <strong>Silhouette Coefficient:</strong> statistically pointed to K=2 as the most precise split."><strong>Método del codo (WCSS):</strong> sugería K=3 como punto de inflexión donde la varianza interna deja de reducirse significativamente. <strong>Coeficiente de Silueta:</strong> estadísticamente señalaba K=2 como la división más precisa.</span></p>
+        <p><span data-es="La decisión fue mantener <strong>K=3</strong>. Desde el punto de vista estadístico puro, dos grupos eran más cohesivos — pero en términos de negocio, el tercer cluster ofrecía matices y oportunidades de personalización que se habrían perdido en una segmentación demasiado simplificada. Esa tensión entre precisión estadística y utilidad práctica es parte del trabajo real de ciencia de datos." data-en="The decision was to keep <strong>K=3</strong>. From a purely statistical standpoint, two groups were more cohesive — but in business terms, the third cluster offered nuances and personalization opportunities that would have been lost in an oversimplified segmentation. That tension between statistical precision and practical utility is part of real data science work.">La decisión fue mantener <strong>K=3</strong>. Desde el punto de vista estadístico puro, dos grupos eran más cohesivos — pero en términos de negocio, el tercer cluster ofrecía matices y oportunidades de personalización que se habrían perdido en una segmentación demasiado simplificada. Esa tensión entre precisión estadística y utilidad práctica es parte del trabajo real de ciencia de datos.</span></p>
+        <p><span data-es="El resultado: tres grupos con tamaños sustanciales (909, 628 y 493 clientes), ninguno marginal, todos con perfiles accionables." data-en="The result: three groups with substantial sizes (909, 628 and 493 customers), none marginal, all with actionable profiles.">El resultado: tres grupos con tamaños sustanciales (909, 628 y 493 clientes), ninguno marginal, todos con perfiles accionables.</span></p>
       </div>
     </div>
   </div>
 
   <div class="section reveal">
     <div class="sg">
-      <span class="sl">Segmentos</span>
+      <span class="sl"><span data-es="Segmentos" data-en="Segments">Segmentos</span></span>
       <div>
         <h2>Tres perfiles de cliente</h2>
         <div class="seg-grid" style="margin-top:.4rem;">
           <div class="seg">
-            <div class="seg-id">Cluster 0 — Cliente premium in-store</div>
-            <div class="seg-name">Cliente premium in-store</div>
+            <div class="seg-id"><span data-es="Cluster 0 — Cliente premium in-store" data-en="Cluster 0 — Premium in-store customer">Cluster 0 — Cliente premium in-store</span></div>
+            <div class="seg-name"><span data-es="Cliente premium in-store" data-en="Premium in-store customer">Cliente premium in-store</span></div>
             <div class="seg-stat">
-              <strong>Ingreso medio:</strong> Alto, sin niños<br>
-              <strong>Gasto:</strong> El más elevado en todas las categorías<br>
-              <strong>Canal preferido:</strong> Tienda física y catálogo<br><br>
-              Segmento más rentable y menos presente en web. Receptivos a campañas (31% de interacción). Valoran la exclusividad — debemos ofrecerles preventas y vinos de alta gama. El espacio en tienda debe destacar productos exclusivos para este segmento.
+              <span data-es="<strong>Ingreso medio:</strong> Alto, sin niños" data-en="<strong>Average income:</strong> High, no children"><strong>Ingreso medio:</strong> Alto, sin niños</span><br>
+              <span data-es="<strong>Gasto:</strong> El más elevado en todas las categorías" data-en="<strong>Spending:</strong> Highest across all categories"><strong>Gasto:</strong> El más elevado en todas las categorías</span><br>
+              <span data-es="<strong>Canal preferido:</strong> Tienda física y catálogo" data-en="<strong>Preferred channel:</strong> Physical store and catalog"><strong>Canal preferido:</strong> Tienda física y catálogo</span><br><br>
+              <span data-es="Segmento más rentable y menos presente en web. Receptivos a campañas (31% de interacción). Valoran la exclusividad — debemos ofrecerles preventas y vinos de alta gama. El espacio en tienda debe destacar productos exclusivos para este segmento." data-en="Most profitable segment with lower web presence. Responsive to campaigns (31% interaction). They value exclusivity — offer them presales and premium wines. In-store space should highlight exclusive products for this segment.">Segmento más rentable y menos presente en web. Receptivos a campañas (31% de interacción). Valoran la exclusividad — debemos ofrecerles preventas y vinos de alta gama. El espacio en tienda debe destacar productos exclusivos para este segmento.</span>
             </div>
           </div>
           <div class="seg">
-            <div class="seg-id">Cluster 1 — Comprador digital maduro</div>
-            <div class="seg-name">Comprador digital maduro</div>
+            <div class="seg-id"><span data-es="Cluster 1 — Comprador digital maduro" data-en="Cluster 1 — Mature digital buyer">Cluster 1 — Comprador digital maduro</span></div>
+            <div class="seg-name"><span data-es="Comprador digital maduro" data-en="Mature digital buyer">Comprador digital maduro</span></div>
             <div class="seg-stat">
-              <strong>Edad mediana:</strong> 60 años<br>
-              <strong>Ingresos:</strong> Medios con adolescentes en casa<br>
-              <strong>Comportamiento:</strong> Más activos en compras digitales<br><br>
-              Lideran transacciones web. Muy sensibles al precio — mayor uso de ofertas y descuentos. A pesar de su edad, son nativos digitales para transacciones. Dirigirles descuentos exclusivos online para movilizar inventario. Son los que más usan cupones — comunicar proactivamente ofertas web para elevar ticket promedio.
+              <span data-es="<strong>Edad mediana:</strong> 60 años" data-en="<strong>Median age:</strong> 60 years"><strong>Edad mediana:</strong> 60 años</span><br>
+              <span data-es="<strong>Ingresos:</strong> Medios con adolescentes en casa" data-en="<strong>Income:</strong> Middle income with teenagers at home"><strong>Ingresos:</strong> Medios con adolescentes en casa</span><br>
+              <span data-es="<strong>Comportamiento:</strong> Más activos en compras digitales" data-en="<strong>Behavior:</strong> Most active in digital purchases"><strong>Comportamiento:</strong> Más activos en compras digitales</span><br><br>
+              <span data-es="Lideran transacciones web. Muy sensibles al precio — mayor uso de ofertas y descuentos. A pesar de su edad, son nativos digitales para transacciones. Dirigirles descuentos exclusivos online para movilizar inventario. Son los que más usan cupones — comunicar proactivamente ofertas web para elevar ticket promedio." data-en="Lead web transactions. Very price-sensitive — heavy use of deals and discounts. Despite their age, they are digital natives for transactions. Target them with exclusive online discounts to move inventory. They are the heaviest coupon users — proactively communicate web offers to raise average ticket.">Lideran transacciones web. Muy sensibles al precio — mayor uso de ofertas y descuentos. A pesar de su edad, son nativos digitales para transacciones. Dirigirles descuentos exclusivos online para movilizar inventario. Son los que más usan cupones — comunicar proactivamente ofertas web para elevar ticket promedio.</span>
             </div>
           </div>
           <div class="seg">
-            <div class="seg-id">Cluster 2 — Cliente digital con hijos</div>
-            <div class="seg-name">Cliente digital con hijos</div>
+            <div class="seg-id"><span data-es="Cluster 2 — Cliente digital con hijos" data-en="Cluster 2 — Digital customer with children">Cluster 2 — Cliente digital con hijos</span></div>
+            <div class="seg-name"><span data-es="Cliente digital con hijos" data-en="Digital customer with children">Cliente digital con hijos</span></div>
             <div class="seg-stat">
-              <strong>Tamaño:</strong> Segmento más numeroso<br>
-              <strong>Ingresos:</strong> Comparativamente menores<br>
-              <strong>Web:</strong> Visitantes más frecuentes (7.5 visitas/mes)<br><br>
-              Familias jóvenes con hijos — gasto total más bajo pero visitantes web más frecuentes. Utilizan la web como herramienta de consulta, con tasa de conversión más baja. Son cazadores de ofertas — destacar descuentos claros para convertir visitas en transacciones. Promover artículos esenciales — dejar productos de lujo fuera del radar.
+              <strong>Tamaño:</strong> <span data-es="Segmento más numeroso" data-en="Largest segment">Segmento más numeroso</span><br>
+              <strong>Income:</strong> Comparatively lower<br>
+              <strong>Web:</strong> Most frequent visitors (7.5 visits/month)<br><br>
+              <span data-es="Familias jóvenes con hijos — gasto total más bajo pero visitantes web más frecuentes. Utilizan la web como herramienta de consulta, con tasa de conversión más baja. Son cazadores de ofertas — destacar descuentos claros para convertir visitas en transacciones. Promover artículos esenciales — dejar productos de lujo fuera del radar." data-en="Young families with children — lower total spending but most frequent web visitors. They use the web as a research tool, with lower conversion rate. They are deal hunters — highlight clear discounts to convert visits into transactions. Promote essential items — keep luxury products off their radar.">Familias jóvenes con hijos — gasto total más bajo pero visitantes web más frecuentes. Utilizan la web como herramienta de consulta, con tasa de conversión más baja. Son cazadores de ofertas — destacar descuentos claros para convertir visitas en transacciones. Promover artículos esenciales — dejar productos de lujo fuera del radar.</span>
             </div>
           </div>
         </div>
@@ -272,29 +280,29 @@
 
   <div class="section reveal">
     <div class="sg">
-      <span class="sl">Recomendaciones</span>
+      <span class="sl"><span data-es="Recomendaciones" data-en="Recommendations">Recomendaciones</span></span>
       <div>
-        <h2>Estrategia por segmento</h2>
+        <h2><span data-es="Estrategia por segmento" data-en="Strategy by segment">Estrategia por segmento</span></h2>
         <div class="rec-list">
           <div class="rec-item">
             <div class="ri-n">C0</div>
             <div>
-              <div class="ri-title">Experiencia exclusiva premium, no descuentos</div>
-              <div class="ri-desc">Segmento más rentable y más receptivo a campañas. La retención debe enfocarse en acceso exclusivo y experiencias premium en tienda y catálogo — no en descuentos, que erosionan margen. Ofrecerles preventas y vinos de alta gama. El espacio en tienda y catálogo debe priorizar productos de alto valor orientados a este segmento.</div>
+              <div class="ri-title"><span data-es="Experiencia exclusiva premium, no descuentos" data-en="Premium exclusive experience, no discounts">Experiencia exclusiva premium, no descuentos</span></div>
+              <div class="ri-desc"><span data-es="Segmento más rentable y más receptivo a campañas. La retención debe enfocarse en acceso exclusivo y experiencias premium en tienda y catálogo — no en descuentos, que erosionan margen. Ofrecerles preventas y vinos de alta gama. El espacio en tienda y catálogo debe priorizar productos de alto valor orientados a este segmento." data-en="Most profitable and most campaign-responsive segment. Retention should focus on exclusive access and premium in-store and catalog experiences — not discounts, which erode margin. Offer them pre-sales and high-end wines. Store and catalog space should prioritize high-value products targeted at this segment.">Segmento más rentable y más receptivo a campañas. La retención debe enfocarse en acceso exclusivo y experiencias premium en tienda y catálogo — no en descuentos, que erosionan margen. Ofrecerles preventas y vinos de alta gama. El espacio en tienda y catálogo debe priorizar productos de alto valor orientados a este segmento.</span></div>
             </div>
           </div>
           <div class="rec-item">
             <div class="ri-n">C1</div>
             <div>
-              <div class="ri-title">Descuentos web en productos de alto valor</div>
-              <div class="ri-desc">Nativos digitales sensibles al precio que sí compran productos de valor como vinos y carnes. Promover descuentos exclusivos online en estas categorías para mover inventario aprovechando su canal preferido. Comunicar proactivamente cupones y ofertas para elevar ticket promedio aprovechando que están cómodos comprando digitalmente.</div>
+              <div class="ri-title"><span data-es="Descuentos web en productos de alto valor" data-en="Online discounts on high-value products">Descuentos web en productos de alto valor</span></div>
+              <div class="ri-desc"><span data-es="Nativos digitales sensibles al precio que sí compran productos de valor como vinos y carnes. Promover descuentos exclusivos online en estas categorías para mover inventario aprovechando su canal preferido. Comunicar proactivamente cupones y ofertas para elevar ticket promedio aprovechando que están cómodos comprando digitalmente." data-en="Price-sensitive digital natives who do buy high-value products like wines and meats. Promote exclusive online discounts in these categories to move inventory via their preferred channel. Proactively communicate coupons and offers to raise average ticket, leveraging their comfort with digital purchasing.">Nativos digitales sensibles al precio que sí compran productos de valor como vinos y carnes. Promover descuentos exclusivos online en estas categorías para mover inventario aprovechando su canal preferido. Comunicar proactivamente cupones y ofertas para elevar ticket promedio aprovechando que están cómodos comprando digitalmente.</span></div>
             </div>
           </div>
           <div class="rec-item">
             <div class="ri-n">C2</div>
             <div>
-              <div class="ri-title">Optimizar experiencia web para conversión en familias</div>
-              <div class="ri-desc">Segmento más numeroso — visitantes frecuentes del sitio pero conversión más baja. Priorizar ofertas en productos de primera necesidad y simplificar la experiencia de compra. Son cazadores de ofertas — destacar descuentos claros. Al ser el grupo más grande, mejorar usabilidad y conversión web tiene impacto directo en volumen total.</div>
+              <div class="ri-title"><span data-es="Optimizar experiencia web para conversión en familias" data-en="Optimize web experience for family conversion">Optimizar experiencia web para conversión en familias</span></div>
+              <div class="ri-desc"><span data-es="Segmento más numeroso" data-en="Largest segment">Segmento más numeroso</span><span data-es=" — visitantes frecuentes del sitio pero conversión más baja. Priorizar ofertas en productos de primera necesidad y simplificar la experiencia de compra. Son cazadores de ofertas — destacar descuentos claros. Al ser el grupo más grande, mejorar usabilidad y conversión web tiene impacto directo en volumen total." data-en=" — frequent site visitors but lower conversion rate. Prioritize deals on everyday products and simplify the shopping experience. They are deal hunters — highlight clear discounts. Being the largest group, improving web usability and conversion has a direct impact on total volume."> — visitantes frecuentes del sitio pero conversión más baja. Priorizar ofertas en productos de primera necesidad y simplificar la experiencia de compra. Son cazadores de ofertas — destacar descuentos claros. Al ser el grupo más grande, mejorar usabilidad y conversión web tiene impacto directo en volumen total.</span></div>
             </div>
           </div>
         </div>
@@ -304,31 +312,53 @@
 
   <div class="section reveal">
     <div class="sg">
-      <span class="sl">Conclusiones</span>
+      <span class="sl"><span data-es="Conclusiones" data-en="Conclusions">Conclusiones</span></span>
       <div>
-        <h2>Lo que aprendimos</h2>
+        <h2><span data-es="Lo que aprendimos" data-en="What we learned">Lo que aprendimos</span></h2>
         <div class="cl">
-          <div class="ci"><div class="cn">1</div><div class="ct"><strong>La segmentación equilibra métricas con intuición estratégica.</strong> Elegir K=3 sobre K=2 fue decisión de negocio, no solo matemática. El costo de ignorar oportunidades de personalización fue mayor que el costo de menor pureza estadística.</div></div>
-          <div class="ci"><div class="cn">2</div><div class="ct"><strong>Los perfiles revelan trade-offs accionables.</strong> Alto valor vs. volumen, sensibilidad al precio vs. gasto absoluto. Cada segmento requiere un mix táctico diferente de canales, precios y mensajería.</div></div>
-          <div class="ci"><div class="cn">3</div><div class="ct"><strong>La edad y la familia son predictores potentes.</strong> El ciclo de vida del cliente (joven con hijos, maduro con adolescentes, adulto sin dependientes) correlaciona fuertemente con canal preferido, sensibilidad al precio y gasto total.</div></div>
-          <div class="ci"><div class="cn">4</div><div class="ct"><strong>El canal predice el comportamiento.</strong> Quiénes compran digitalmente son distintos a quiénes prefieren la tienda física — no es solo un medio, es un indicador de personalidad y hábito de compra.</div></div>
-          <div class="ci"><div class="cn">5</div><div class="ct"><strong>K=3 capturó la estructura real sin sobreajuste.</strong> El método del codo confirmó que tres clusters son suficientes. Más clusters habrían fragmentado perfiles sin agregar interpretabilidad accionable para el negocio.</div></div>
+          <div class="ci"><div class="cn">1</div><div class="ct"><span data-es="<strong>La segmentación equilibra métricas con intuición estratégica.</strong> Elegir K=3 sobre K=2 fue decisión de negocio, no solo matemática. El costo de ignorar oportunidades de personalización fue mayor que el costo de menor pureza estadística." data-en="<strong>Segmentation balances metrics with strategic intuition.</strong> Choosing K=3 over K=2 was a business decision, not just math. The cost of ignoring personalization opportunities was greater than the cost of lower statistical purity."><strong>La segmentación equilibra métricas con intuición estratégica.</strong> Elegir K=3 sobre K=2 fue decisión de negocio, no solo matemática. El costo de ignorar oportunidades de personalización fue mayor que el costo de menor pureza estadística.</span></div></div>
+          <div class="ci"><div class="cn">2</div><div class="ct"><span data-es="<strong>Los perfiles revelan trade-offs accionables.</strong> Alto valor vs. volumen, sensibilidad al precio vs. gasto absoluto. Cada segmento requiere un mix táctico diferente de canales, precios y mensajería." data-en="<strong>Profiles reveal actionable trade-offs.</strong> High value vs. volume, price sensitivity vs. absolute spending. Each segment requires a different tactical mix of channels, prices and messaging."><strong>Los perfiles revelan trade-offs accionables.</strong> Alto valor vs. volumen, sensibilidad al precio vs. gasto absoluto. Cada segmento requiere un mix táctico diferente de canales, precios y mensajería.</span></div></div>
+          <div class="ci"><div class="cn">3</div><div class="ct"><span data-es="<strong>La edad y la familia son predictores potentes.</strong> El ciclo de vida del cliente (joven con hijos, maduro con adolescentes, adulto sin dependientes) correlaciona fuertemente con canal preferido, sensibilidad al precio y gasto total." data-en="<strong>Age and family are powerful predictors.</strong> The customer lifecycle (young with children, mature with teenagers, adult without dependents) strongly correlates with preferred channel, price sensitivity and total spending."><strong>La edad y la familia son predictores potentes.</strong> El ciclo de vida del cliente (joven con hijos, maduro con adolescentes, adulto sin dependientes) correlaciona fuertemente con canal preferido, sensibilidad al precio y gasto total.</span></div></div>
+          <div class="ci"><div class="cn">4</div><div class="ct"><span data-es="<strong>El canal predice el comportamiento.</strong> Quiénes compran digitalmente son distintos a quiénes prefieren la tienda física — no es solo un medio, es un indicador de personalidad y hábito de compra." data-en="<strong>Channel predicts behavior.</strong> Those who buy digitally are different from those who prefer the physical store — it&#39;s not just a medium, it&#39;s an indicator of personality and purchasing habit."><strong>El canal predice el comportamiento.</strong> Quiénes compran digitalmente son distintos a quiénes prefieren la tienda física — no es solo un medio, es un indicador de personalidad y hábito de compra.</span></div></div>
+          <div class="ci"><div class="cn">5</div><div class="ct"><span data-es="<strong>K=3 capturó la estructura real sin sobreajuste.</strong> El método del codo confirmó que tres clusters son suficientes. Más clusters habrían fragmentado perfiles sin agregar interpretabilidad accionable para el negocio." data-en="<strong>K=3 captured the real structure without overfitting.</strong> The elbow method confirmed that three clusters are sufficient. More clusters would have fragmented profiles without adding actionable interpretability for the business."><strong>K=3 capturó la estructura real sin sobreajuste.</strong> El método del codo confirmó que tres clusters son suficientes. Más clusters habrían fragmentado perfiles sin agregar interpretabilidad accionable para el negocio.</span></div></div>
         </div>
       </div>
     </div>
   </div>
 
   <div class="pnav reveal">
-    <a href="dineordash.html" style="text-decoration:none;color:inherit;"><div class="pnl">Anterior</div><div class="pnt">Dine or Dash</div></a>
-    <a href="goodreads.html" style="text-decoration:none;color:inherit;text-align:right;display:block;"><div class="pnl">Siguiente proyecto</div><div class="pnt">Goodreads</div></a>
-    <a href="goodreads.html" class="pna">Ver proyecto →</a>
+    <a href="dineordash.html" style="text-decoration:none;color:inherit;"><div class="pnl"><span data-es="Anterior" data-en="Previous">Anterior</span></div><div class="pnt">Dine or Dash</div></a>
+    <a href="goodreads.html" style="text-decoration:none;color:inherit;text-align:right;display:block;"><div class="pnl"><span data-es="Siguiente proyecto" data-en="Next project">Siguiente proyecto</span></div><div class="pnt">Goodreads</div></a>
+    <a href="goodreads.html" class="pna"><span data-es="Ver proyecto →" data-en="View project →">Ver proyecto →</span></a>
   </div>
 
 </div>
-<footer>© 2026 Elena Salomón López</footer>
+<footer><span data-es="© 2026 Elena Salomón López" data-en="© 2026 Elena Salomón López">© 2026 Elena Salomón López</span></footer>
 <script>
   const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.08});
   document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+
+<script>
+(function() {
+  var lang = localStorage.getItem('lang') || 'es';
+  var btn = document.getElementById('lang-btn');
+  function applyLang(l) {
+    document.querySelectorAll('[data-es]').forEach(function(el) {
+      el.innerHTML = l === 'en' ? el.getAttribute('data-en') : el.getAttribute('data-es');
+    });
+    if (btn) btn.textContent = l === 'es' ? 'EN' : 'ES';
+    document.documentElement.lang = l;
+  }
+  if (btn) {
+    btn.addEventListener('click', function() {
+      lang = lang === 'es' ? 'en' : 'es';
+      localStorage.setItem('lang', lang);
+      applyLang(lang);
+    });
+  }
+  applyLang(lang);
+})();
 </script>
 </body>
 </html>

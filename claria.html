@@ -66,10 +66,19 @@
     .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease;}
     .reveal.visible{opacity:1;transform:translateY(0);}
     @media(max-width:600px){.proj-hero-inner,.sg{grid-template-columns:1fr;gap:1rem;}.meta-grid{grid-template-columns:1fr;}.pnav{flex-direction:column;align-items:flex-start;gap:1.2rem;}}
+
+    /* LANG TOGGLE */
+    .lang-toggle {
+      font-size: 0.68rem; font-weight: 500; letter-spacing: 0.1em;
+      cursor: pointer; border: 1px solid var(--rule); border-radius: 50px;
+      padding: 0.28rem 0.8rem; color: var(--mid); background: transparent;
+      transition: all 0.2s; text-transform: uppercase;
+    }
+    .lang-toggle:hover { border-color: var(--accent); color: var(--accent); }
   </style>
 </head>
 <body>
-<nav><div class="nav-inner"><a href="index.html" class="nav-name">Elena Salomón</a><a href="index.html#projects" class="nav-back">← Proyectos</a></div></nav>
+<nav><div class="nav-inner"><a href="index.html" class="nav-name">Elena Salomón</a><a href="index.html#projects" class="nav-back" data-es="← Proyectos" data-en="← Projects">← Proyectos</a><button class="lang-toggle" id="lang-btn" style="margin-left:1rem;">EN</button></div></nav>
 
 <div class="proj-hero">
   <div class="proj-hero-inner">
@@ -83,10 +92,10 @@
     </div>
     <div>
       <h1>ClarIA: <em>From claims<br>to clarity</em></h1>
-      <p class="proj-summary">Agente de IA para el sector financiero que analiza reclamos bancarios en lenguaje natural, identifica causas raíz y genera respuestas fundamentadas en datos reales.</p>
+      <p class="proj-summary"><span data-es="Agente de IA para el sector financiero que analiza reclamos bancarios en lenguaje natural, identifica causas raíz y genera respuestas fundamentadas en datos reales." data-en="AI agent for the financial sector that analyzes banking complaints in natural language, identifies root causes, and generates data-grounded responses.">Agente de IA para el sector financiero que analiza reclamos bancarios en lenguaje natural, identifica causas raíz y genera respuestas fundamentadas en datos reales.</span></p>
       <div class="proj-links">
-        <a href="https://github.com/elenasalomon/ClarIA" class="proj-link" target="_blank">Ver en GitHub</a>
-        <a href="index.html#projects" class="proj-link ghost">← Volver</a>
+        <a href="https://github.com/elenasalomon/ClarIA" class="proj-link" target="_blank"><span data-es="Ver en GitHub" data-en="View on GitHub">Ver en GitHub</span></a>
+        <a href="index.html#projects" class="proj-link ghost"><span data-es="← Volver" data-en="← Back">← Volver</span></a>
       </div>
     </div>
   </div>
@@ -96,47 +105,47 @@
 
   <div class="section reveal">
     <div class="sg">
-      <span class="sl">Ficha</span>
+      <span class="sl"><span data-es="Ficha" data-en="Overview">Ficha</span></span>
       <div class="meta-grid">
-        <div class="mr"><div class="ml">Tipo</div><div class="mv">Deep Learning · NLP</div></div>
+        <div class="mr"><div class="ml"><span data-es="Tipo" data-en="Type">Tipo</span></div><div class="mv">Deep Learning · NLP</div></div>
         <div class="mr"><div class="ml">Dataset</div><div class="mv">CFPB — 1.28M reclamos</div></div>
-        <div class="mr"><div class="ml">Modelo</div><div class="mv">Llama 3.2 1B + RAG</div></div>
-        <div class="mr"><div class="ml">Año</div><div class="mv">2025</div></div>
-        <div class="mr"><div class="ml">Equipo</div><div class="mv">Ibarra · Salomón · Nebot</div></div>
-        <div class="mr"><div class="ml">Stack</div><div class="mv">Python · FAISS · Ollama · all-MiniLM-L6-v2</div></div>
+        <div class="mr"><div class="ml"><span data-es="Modelo" data-en="Model">Modelo</span></div><div class="mv">Llama 3.2 1B + RAG</div></div>
+        <div class="mr"><div class="ml"><span data-es="Año" data-en="Year">Año</span></div><div class="mv">2026</div></div>
+        <div class="mr"><div class="ml"><span data-es="Equipo" data-en="Team">Equipo</span></div><div class="mv"><span data-es="Ibarra · Salomón · Nebot" data-en="Ibarra · Salomón · Nebot">Ibarra · Salomón · Nebot</span></div></div>
+        <div class="mr"><div class="ml"><span data-es="Stack" data-en="Stack">Stack</span></div><div class="mv">Python · FAISS · Ollama · all-MiniLM-L6-v2</div></div>
       </div>
     </div>
   </div>
 
   <div class="section reveal">
     <div class="sg">
-      <span class="sl">El problema</span>
+      <span class="sl"><span data-es="El problema" data-en="The problem">El problema</span></span>
       <div>
-        <h2>Caos de datos en la banca</h2>
-        <p>Las instituciones financieras reciben miles de reclamos diarios pero carecen de herramientas para identificar automáticamente sus causas raíz. El resultado: análisis manual lento, reacción a síntomas en lugar de problemas estructurales, y recursos desperdiciados.</p>
-        <p>El objetivo de ClarIA era doble: convertir comentarios no estructurados en una base de conocimiento accionable, y detectar tendencias emergentes antes de que se conviertan en problemas sistémicos.</p>
+        <h2><span data-es="Caos de datos en la banca" data-en="Data chaos in banking">Caos de datos en la banca</span></h2>
+        <p><span data-es="Las instituciones financieras reciben miles de reclamos diarios pero carecen de herramientas para identificar automáticamente sus causas raíz. El resultado: análisis manual lento, reacción a síntomas en lugar de problemas estructurales, y recursos desperdiciados." data-en="Financial institutions receive thousands of daily complaints but lack tools to automatically identify their root causes. The result: slow manual analysis, reaction to symptoms instead of structural problems, and wasted resources.">Las instituciones financieras reciben miles de reclamos diarios pero carecen de herramientas para identificar automáticamente sus causas raíz. El resultado: análisis manual lento, reacción a síntomas en lugar de problemas estructurales, y recursos desperdiciados.</span></p>
+        <p><span data-es="El objetivo de ClarIA era doble: convertir comentarios no estructurados en una base de conocimiento accionable, y detectar tendencias emergentes antes de que se conviertan en problemas sistémicos." data-en="ClarIA's objective was twofold: to convert unstructured comments into an actionable knowledge base, and to detect emerging trends before they become systemic problems.">El objetivo de ClarIA era doble: convertir comentarios no estructurados en una base de conocimiento accionable, y detectar tendencias emergentes antes de que se conviertan en problemas sistémicos.</span></p>
       </div>
     </div>
   </div>
 
   <div class="section reveal">
     <div class="sg">
-      <span class="sl">Los datos</span>
+      <span class="sl"><span data-es="Los datos" data-en="The data">Los datos</span></span>
       <div>
-        <h2>Dataset CFPB</h2>
-        <p>Se utilizó el dataset público del Consumer Financial Protection Bureau (CFPB). Contiene 1.28 millones de reclamos; de ellos, 383.000 incluyen narrativa semántica del cliente — el insumo clave del sistema.</p>
-        <p>Se trabajó exclusivamente con banca tradicional, descartando fintechs y otras instituciones. La limpieza incluyó remoción de secuencias de anonimización ("XXXX"), filtrado de narrativas incoherentes, y un filtro de calidad con Llama 3.2 que descartó el 2.47% de los registros como ruido de baja densidad informativa.</p>
+        <h2><span data-es="Dataset CFPB" data-en="CFPB Dataset">Dataset CFPB</span></h2>
+        <p><span data-es="Se utilizó el dataset público del Consumer Financial Protection Bureau (CFPB). Contiene 1.28 millones de reclamos; de ellos, 383.000 incluyen narrativa semántica del cliente — el insumo clave del sistema." data-en="The public Consumer Financial Protection Bureau (CFPB) dataset was used. It contains 1.28 million complaints; of those, 383,000 include customer narrative — the key input for the system.">Se utilizó el dataset público del Consumer Financial Protection Bureau (CFPB). Contiene 1.28 millones de reclamos; de ellos, 383.000 incluyen narrativa semántica del cliente — el insumo clave del sistema.</span></p>
+        <p><span data-es="Se trabajó exclusivamente con banca tradicional, descartando fintechs y otras instituciones. La limpieza incluyó remoción de secuencias de anonimización ("XXXX"), filtrado de narrativas incoherentes, y un filtro de calidad con Llama 3.2 que descartó el 2.47% de los registros como ruido de baja densidad informativa." data-en="We worked exclusively with traditional banking, discarding fintechs and other institutions. Cleaning included removal of anonymization sequences ("XXXX"), filtering of incoherent narratives, and a quality filter with Llama 3.2 that discarded 2.47% of records as low-information noise.">Se trabajó exclusivamente con banca tradicional, descartando fintechs y otras instituciones. La limpieza incluyó remoción de secuencias de anonimización ("XXXX"), filtrado de narrativas incoherentes, y un filtro de calidad con Llama 3.2 que descartó el 2.47% de los registros como ruido de baja densidad informativa.</span></p>
       </div>
     </div>
   </div>
 
   <div class="section reveal">
     <div class="sg">
-      <span class="sl">Arquitectura</span>
+      <span class="sl"><span data-es="Arquitectura" data-en="Architecture">Arquitectura</span></span>
       <div>
-        <h2>Pipeline RAG</h2>
-        <p>La arquitectura implementa seis pasos: el usuario consulta al agente → la consulta se vectoriza con all-MiniLM-L6-v2 → se recuperan los fragmentos más relevantes del índice FAISS → el modelo genera una respuesta anclada en esos fragmentos reales.</p>
-        <p>La clave del sistema RAG es que el modelo no inventa: cada respuesta está anclada en fragmentos reales del dataset. La división semántica en chunks de 300 caracteres con solapamiento de 20 preserva el hilo narrativo del reclamo. La búsqueda por cercanía semántica — no por coincidencia de palabras — permite encontrar casos relacionados aunque usen vocabulario distinto.</p>
+        <h2><span data-es="Pipeline RAG" data-en="RAG Pipeline">Pipeline RAG</span></h2>
+        <p><span data-es="La arquitectura implementa seis pasos: el usuario consulta al agente → la consulta se vectoriza con all-MiniLM-L6-v2 → se recuperan los fragmentos más relevantes del índice FAISS → el modelo genera una respuesta anclada en esos fragmentos reales." data-en="The architecture implements six steps: the user queries the agent → the query is vectorized with all-MiniLM-L6-v2 → the most relevant fragments are retrieved from the FAISS index → the model generates a response anchored in those real fragments.">La arquitectura implementa seis pasos: el usuario consulta al agente → la consulta se vectoriza con all-MiniLM-L6-v2 → se recuperan los fragmentos más relevantes del índice FAISS → el modelo genera una respuesta anclada en esos fragmentos reales.</span></p>
+        <p><span data-es="La clave del sistema RAG es que el modelo no inventa: cada respuesta está anclada en fragmentos reales del dataset. La división semántica en chunks de 300 caracteres con solapamiento de 20 preserva el hilo narrativo del reclamo. La búsqueda por cercanía semántica — no por coincidencia de palabras — permite encontrar casos relacionados aunque usen vocabulario distinto." data-en="The key of the RAG system is that the model does not hallucinate: each response is anchored in real dataset fragments. Semantic chunking at 300 characters with 20-character overlap preserves the narrative thread. Semantic similarity search — not keyword matching — finds related cases even when they use different vocabulary.">La clave del sistema RAG es que el modelo no inventa: cada respuesta está anclada en fragmentos reales del dataset. La división semántica en chunks de 300 caracteres con solapamiento de 20 preserva el hilo narrativo del reclamo. La búsqueda por cercanía semántica — no por coincidencia de palabras — permite encontrar casos relacionados aunque usen vocabulario distinto.</span></p>
         <img src="claria_arquitectura.png" alt="Diagrama de arquitectura ClarIA" style="width: 100%; margin-top: 1.5rem; border-radius: 3px; display: block;">
       </div>
     </div>
@@ -144,9 +153,9 @@
 
   <div class="section reveal">
     <div class="sg">
-      <span class="sl">Prompt</span>
+      <span class="sl"><span data-es="Prompt" data-en="Prompt">Prompt</span></span>
       <div>
-        <h2>System prompt</h2>
+        <h2><span data-es="System prompt" data-en="System prompt">System prompt</span></h2>
         <p style="font-family: 'DM Mono', monospace; font-size: .82rem; background: var(--bg-alt); padding: 1rem; border-radius: 3px; border-left: 3px solid var(--accent); margin-top: 1rem; color: var(--ink);">
 SYSTEM INSTRUCTIONS:<br>
 You are a neutral and analytical Compliance Senior Assistant.<br>
@@ -166,19 +175,19 @@ USER QUESTION: {query}
 
   <div class="section reveal">
     <div class="sg">
-      <span class="sl">Benchmark</span>
+      <span class="sl"><span data-es="Benchmark" data-en="Benchmark">Benchmark</span></span>
       <div>
-        <h2>Comparación de modelos</h2>
-        <p>Se evaluaron cuatro modelos locales via Ollama en velocidad, estabilidad y calidad del resumen.</p>
+        <h2><span data-es="Comparación de modelos" data-en="Model comparison">Comparación de modelos</span></h2>
+        <p><span data-es="Se evaluaron cuatro modelos locales via Ollama en velocidad, estabilidad y calidad del resumen." data-en="Four local models were evaluated via Ollama on speed, stability and summary quality.">Se evaluaron cuatro modelos locales via Ollama en velocidad, estabilidad y calidad del resumen.</span></p>
         <table class="bt">
           <thead>
-            <tr><th>Modelo</th><th>Tiempo (seg)</th><th>Estabilidad</th><th>Calidad</th></tr>
+            <tr><th>Modelo</th><th><span data-es="Tiempo (seg)" data-en="Time (sec)">Tiempo (seg)</span></th><th><span data-es="Estabilidad" data-en="Stability">Estabilidad</span></th><th><span data-es="Calidad" data-en="Quality">Calidad</span></th></tr>
           </thead>
           <tbody>
-            <tr><td>Llama 3.2 1B <span class="wb">elegido</span></td><td>2.06 – 2.08</td><td>Alta (±0.01s)</td><td>Objetivo y profesional</td></tr>
-            <tr><td>Phi-3 Mini</td><td>15.49 – 51.95</td><td>Muy baja (±36s)</td><td>Capta frustración</td></tr>
-            <tr><td>Mistral 7B</td><td>30.47 – 45.18</td><td>Baja (±14s)</td><td>Exhaustivo y técnico</td></tr>
-            <tr><td>Solar 10.7B</td><td>36.01 – 38.98</td><td>Media (±2s)</td><td>Directo a los dolores</td></tr>
+            <tr><td>Llama 3.2 1B <span class="wb"><span data-es="elegido" data-en="chosen">elegido</span></span></td><td>2.06 – 2.08</td><td><span data-es="Alta (±0.01s)" data-en="High (±0.01s)">Alta (±0.01s)</span></td><td><span data-es="Objetivo y profesional" data-en="Objective and professional">Objetivo y profesional</span></td></tr>
+            <tr><td>Phi-3 Mini</td><td>15.49 – 51.95</td><td><span data-es="Muy baja (±36s)" data-en="Very low (±36s)">Muy baja (±36s)</span></td><td><span data-es="Capta frustración" data-en="Captures frustration">Capta frustración</span></td></tr>
+            <tr><td>Mistral 7B</td><td>30.47 – 45.18</td><td><span data-es="Baja (±14s)" data-en="Low (±14s)">Baja (±14s)</span></td><td><span data-es="Exhaustivo y técnico" data-en="Exhaustive and technical">Exhaustivo y técnico</span></td></tr>
+            <tr><td>Solar 10.7B</td><td>36.01 – 38.98</td><td><span data-es="Media (±2s)" data-en="Medium (±2s)">Media (±2s)</span></td><td><span data-es="Directo a los dolores" data-en="Straight to pain points">Directo a los dolores</span></td></tr>
           </tbody>
         </table>
       </div>
@@ -187,22 +196,22 @@ USER QUESTION: {query}
 
   <div class="section reveal">
     <div class="sg">
-      <span class="sl">Validación</span>
+      <span class="sl"><span data-es="Validación" data-en="Validation">Validación</span></span>
       <div>
-        <h2>Filtro anti-alucinaciones</h2>
-        <p>Se implementó un control que mide la distancia semántica entre la consulta del usuario y la base de conocimiento indexada. Si el score supera 1.0, el sistema limita la respuesta en lugar de generar contenido inventado.</p>
-        <p>La prueba con una consulta fuera de dominio ("What is the recipe for a chocolate cake?") devolvió scores de 1.55 a 1.60 — correctamente identificada como fuera de alcance y bloqueada.</p>
+        <h2><span data-es="Filtro anti-alucinaciones" data-en="Anti-hallucination filter">Filtro anti-alucinaciones</span></h2>
+        <p><span data-es="Se implementó un control que mide la distancia semántica entre la consulta del usuario y la base de conocimiento indexada. Si el score supera 1.0, el sistema limita la respuesta en lugar de generar contenido inventado." data-en="A control was implemented that measures the semantic distance between the user query and the indexed knowledge base. If the score exceeds 1.0, the system limits the response instead of generating invented content.">Se implementó un control que mide la distancia semántica entre la consulta del usuario y la base de conocimiento indexada. Si el score supera 1.0, el sistema limita la respuesta en lugar de generar contenido inventado.</span></p>
+        <p><span data-es="La prueba con una consulta fuera de dominio ("What is the recipe for a chocolate cake?") devolvió scores de 1.55 a 1.60 — correctamente identificada como fuera de alcance y bloqueada." data-en="The test with an out-of-domain query ("What is the recipe for a chocolate cake?") returned scores of 1.55 to 1.60 — correctly identified as out of scope and blocked.">La prueba con una consulta fuera de dominio ("What is the recipe for a chocolate cake?") devolvió scores de 1.55 a 1.60 — correctamente identificada como fuera de alcance y bloqueada.</span></p>
       </div>
     </div>
   </div>
 
   <div class="section reveal">
     <div class="sg">
-      <span class="sl">Caso de uso</span>
+      <span class="sl"><span data-es="Caso de uso" data-en="Use case">Caso de uso</span></span>
       <div>
-        <h2>Hipotecas</h2>
-        <p>Para ilustrar el funcionamiento del sistema, se consultó: "What issues are reported regarding mortgage interest rate calculations?"</p>
-        <p>El sistema recuperó cinco fragmentos relevantes del dataset y generó el siguiente resumen:</p>
+        <h2><span data-es="Hipotecas" data-en="Mortgages">Hipotecas</span></h2>
+        <p><span data-es="Para ilustrar el funcionamiento del sistema, se consultó: "What issues are reported regarding mortgage interest rate calculations?"" data-en="To illustrate the system's functionality, the following was queried: "What issues are reported regarding mortgage interest rate calculations?"">Para ilustrar el funcionamiento del sistema, se consultó: "What issues are reported regarding mortgage interest rate calculations?"</span></p>
+        <p><span data-es="El sistema recuperó cinco fragmentos relevantes del dataset y generó el siguiente resumen:" data-en="The system retrieved five relevant dataset fragments and generated the following summary:">El sistema recuperó cinco fragmentos relevantes del dataset y generó el siguiente resumen:</span></p>
         <p style="font-family: 'DM Mono', monospace; font-size: .82rem; background: var(--bg-alt); padding: 1rem; border-radius: 3px; border-left: 3px solid var(--accent); margin-top: 1rem; color: var(--ink);">
 PREGUNTA: What issues are reported regarding mortgage<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;interest rate calculations?<br><br>
@@ -216,22 +225,22 @@ regarding mortgage interest rate calculations are:<br><br>
 3. The interest calculation costs more money due to incorrect<br>
 &nbsp;&nbsp;&nbsp;numbers, which also affect the amortization schedule.
         </p>
-        <p style="margin-top: 1.2rem;">Los tres problemas identificados — errores en el cálculo de intereses, fallas de comunicación en pagos mensuales, y aplicación incorrecta de pagos extraordinarios al capital — son exactamente los puntos críticos que un analista de riesgos necesitaría escalar. ClarIA los sintetizó en segundos desde miles de reclamos individuales.</p>
+        <p style="margin-top: 1.2rem;"><span data-es="Los tres problemas identificados — errores en el cálculo de intereses, fallas de comunicación en pagos mensuales, y aplicación incorrecta de pagos extraordinarios al capital — son exactamente los puntos críticos que un analista de riesgos necesitaría escalar. ClarIA los sintetizó en segundos desde miles de reclamos individuales." data-en="The three identified problems — errors in interest calculations, communication failures on monthly payments, and incorrect application of extraordinary payments to principal — are exactly the critical points a risk analyst would need to escalate. ClarIA synthesized them in seconds from thousands of individual complaints.">Los tres problemas identificados — errores en el cálculo de intereses, fallas de comunicación en pagos mensuales, y aplicación incorrecta de pagos extraordinarios al capital — son exactamente los puntos críticos que un analista de riesgos necesitaría escalar. ClarIA los sintetizó en segundos desde miles de reclamos individuales.</span></p>
       </div>
     </div>
   </div>
 
   <div class="section reveal">
     <div class="sg">
-      <span class="sl">Conclusiones</span>
+      <span class="sl"><span data-es="Conclusiones" data-en="Conclusions">Conclusiones</span></span>
       <div>
-        <h2>Lo que aprendimos</h2>
+        <h2><span data-es="Lo que aprendimos" data-en="What we learned">Lo que aprendimos</span></h2>
         <div class="cl">
-          <div class="ci"><div class="cn">1</div><div class="ct"><strong>Llama 3.2 1B fue la mejor opción práctica.</strong> Mayor velocidad y estabilidad que modelos más grandes, con resumen objetivo — ideal para compliance.</div></div>
-          <div class="ci"><div class="cn">2</div><div class="ct"><strong>La calidad del chunking es decisiva.</strong> La división semántica con solapamiento preservó el contexto narrativo, mejorando la relevancia de los fragmentos recuperados.</div></div>
-          <div class="ci"><div class="cn">3</div><div class="ct"><strong>El ruido de anonimización afecta los embeddings.</strong> Las secuencias "XXXX" del CFPB generaban vectores ruidosos. Su remoción previa fue necesaria para obtener representaciones semánticas útiles.</div></div>
-          <div class="ci"><div class="cn">4</div><div class="ct"><strong>Búsqueda semántica vs. palabras clave.</strong> El sistema encuentra reclamos relacionados aunque usen vocabulario diferente — algo imposible con búsqueda literal.</div></div>
-          <div class="ci"><div class="cn">5</div><div class="ct"><strong>El prompt engineering fue tan importante como el modelo.</strong> Un rol claro y reglas explícitas de no opinar redujeron significativamente las respuestas sesgadas.</div></div>
+          <div class="ci"><div class="cn">1</div><div class="ct"><span data-es="<strong>Llama 3.2 1B fue la mejor opción práctica.</strong> Mayor velocidad y estabilidad que modelos más grandes, con resumen objetivo — ideal para compliance." data-en="<strong>Llama 3.2 1B was the best practical option.</strong> Faster and more stable than larger models, with objective summarization — ideal for compliance."><strong>Llama 3.2 1B fue la mejor opción práctica.</strong> Mayor velocidad y estabilidad que modelos más grandes, con resumen objetivo — ideal para compliance.</span></div></div>
+          <div class="ci"><div class="cn">2</div><div class="ct"><span data-es="<strong>La calidad del chunking es decisiva.</strong> La división semántica con solapamiento preservó el contexto narrativo, mejorando la relevancia de los fragmentos recuperados." data-en="<strong>Chunking quality is decisive.</strong> Semantic splitting with overlap preserved the narrative context, improving the relevance of retrieved fragments."><strong>La calidad del chunking es decisiva.</strong> La división semántica con solapamiento preservó el contexto narrativo, mejorando la relevancia de los fragmentos recuperados.</span></div></div>
+          <div class="ci"><div class="cn">3</div><div class="ct"><span data-es="<strong>El ruido de anonimización afecta los embeddings.</strong> Las secuencias &quot;XXXX&quot; del CFPB generaban vectores ruidosos. Su remoción previa fue necesaria para obtener representaciones semánticas útiles." data-en="<strong>Anonymization noise affects embeddings.</strong> The &quot;XXXX&quot; sequences from CFPB generated noisy vectors. Prior removal was necessary to obtain useful semantic representations."><strong>El ruido de anonimización afecta los embeddings.</strong> Las secuencias "XXXX" del CFPB generaban vectores ruidosos. Su remoción previa fue necesaria para obtener representaciones semánticas útiles.</span></div></div>
+          <div class="ci"><div class="cn">4</div><div class="ct"><span data-es="<strong>Búsqueda semántica vs. palabras clave.</strong> El sistema encuentra reclamos relacionados aunque usen vocabulario diferente — algo imposible con búsqueda literal." data-en="<strong>Semantic search vs. keywords.</strong> The system finds related complaints even if they use different vocabulary — something impossible with literal search."><strong>Búsqueda semántica vs. palabras clave.</strong> El sistema encuentra reclamos relacionados aunque usen vocabulario diferente — algo imposible con búsqueda literal.</span></div></div>
+          <div class="ci"><div class="cn">5</div><div class="ct"><span data-es="<strong>El prompt engineering fue tan importante como el modelo.</strong> Un rol claro y reglas explícitas de no opinar redujeron significativamente las respuestas sesgadas." data-en="<strong>Prompt engineering was as important as the model.</strong> A clear role and explicit no-opinion rules significantly reduced biased responses."><strong>El prompt engineering fue tan importante como el modelo.</strong> Un rol claro y reglas explícitas de no opinar redujeron significativamente las respuestas sesgadas.</span></div></div>
         </div>
       </div>
     </div>
@@ -239,31 +248,53 @@ regarding mortgage interest rate calculations are:<br><br>
 
   <div class="section reveal">
     <div class="sg">
-      <span class="sl">Próximos pasos</span>
+      <span class="sl"><span data-es="Próximos pasos" data-en="Next steps">Próximos pasos</span></span>
       <div>
-        <h2>Escalabilidad</h2>
+        <h2><span data-es="Escalabilidad" data-en="Scalability">Escalabilidad</span></h2>
         <div class="fl">
-          <div class="fi"><div class="fit">Pipeline en tiempo real</div><div class="fid">Incorporación continua de reclamos nuevos sin re-indexar toda la base.</div></div>
-          <div class="fi"><div class="fit">Dashboard para auditores</div><div class="fid">Interfaz visual para consultar tendencias sin usar la línea de comando.</div></div>
-          <div class="fi"><div class="fit">Expansión multi-sector</div><div class="fid">Extender a fintechs y otras instituciones con el mismo core RAG.</div></div>
-          <div class="fi"><div class="fit">Agente de resolución</div><div class="fid">Incorporar políticas bancarias para pasar de analizar a sugerir resoluciones.</div></div>
-          <div class="fi"><div class="fit">Benchmark con FinGPT</div><div class="fid">Probar modelos especializados en finanzas frente a los generales evaluados.</div></div>
+          <div class="fi"><div class="fit"><span data-es="Pipeline en tiempo real" data-en="Real-time pipeline">Pipeline en tiempo real</span></div><div class="fid"><span data-es="Incorporación continua de reclamos nuevos sin re-indexar toda la base." data-en="Continuous ingestion of new complaints without re-indexing the entire base.">Incorporación continua de reclamos nuevos sin re-indexar toda la base.</span></div></div>
+          <div class="fi"><div class="fit"><span data-es="Dashboard para auditores" data-en="Auditor dashboard">Dashboard para auditores</span></div><div class="fid"><span data-es="Interfaz visual para consultar tendencias sin usar la línea de comando." data-en="Visual interface for querying trends without using the command line.">Interfaz visual para consultar tendencias sin usar la línea de comando.</span></div></div>
+          <div class="fi"><div class="fit"><span data-es="Expansión multi-sector" data-en="Multi-sector expansion">Expansión multi-sector</span></div><div class="fid"><span data-es="Extender a fintechs y otras instituciones con el mismo core RAG." data-en="Extend to fintechs and other institutions with the same RAG core.">Extender a fintechs y otras instituciones con el mismo core RAG.</span></div></div>
+          <div class="fi"><div class="fit"><span data-es="Agente de resolución" data-en="Resolution agent">Agente de resolución</span></div><div class="fid"><span data-es="Incorporar políticas bancarias para pasar de analizar a sugerir resoluciones." data-en="Incorporate banking policies to move from analyzing to suggesting resolutions.">Incorporar políticas bancarias para pasar de analizar a sugerir resoluciones.</span></div></div>
+          <div class="fi"><div class="fit"><span data-es="Benchmark con FinGPT" data-en="Benchmark with FinGPT">Benchmark con FinGPT</span></div><div class="fid"><span data-es="Probar modelos especializados en finanzas frente a los generales evaluados." data-en="Test finance-specialized models against the general ones evaluated.">Probar modelos especializados en finanzas frente a los generales evaluados.</span></div></div>
         </div>
       </div>
     </div>
   </div>
 
   <div class="pnav reveal">
-    <a href="dineordash.html" style="text-decoration:none;color:inherit;"><div class="pnl">Anterior</div><div class="pnt">Dine or Dash</div></a>
-    <a href="clientcatch.html" style="text-decoration:none;color:inherit;text-align:right;display:block;"><div class="pnl">Siguiente proyecto</div><div class="pnt">Client Catch</div></a>
-    <a href="clientcatch.html" class="pna">Ver proyecto →</a>
+    <a href="dineordash.html" style="text-decoration:none;color:inherit;"><div class="pnl"><span data-es="Anterior" data-en="Previous">Anterior</span></div><div class="pnt">Dine or Dash</div></a>
+    <a href="clientcatch.html" style="text-decoration:none;color:inherit;text-align:right;display:block;"><div class="pnl"><span data-es="Siguiente proyecto" data-en="Next project">Siguiente proyecto</span></div><div class="pnt">Client Catch</div></a>
+    <a href="clientcatch.html" class="pna"><span data-es="Ver proyecto →" data-en="View project →">Ver proyecto →</span></a>
   </div>
 
 </div>
-<footer>© 2026 Elena Salomón López</footer>
+<footer><span data-es="© 2026 Elena Salomón López" data-en="© 2026 Elena Salomón López"><span data-es="© 2026 Elena Salomón López" data-en="© 2026 Elena Salomón López">© 2026 Elena Salomón López</span></span></footer>
 <script>
   const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.08});
   document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+
+<script>
+(function() {
+  var lang = localStorage.getItem('lang') || 'es';
+  var btn = document.getElementById('lang-btn');
+  function applyLang(l) {
+    document.querySelectorAll('[data-es]').forEach(function(el) {
+      el.innerHTML = l === 'en' ? el.getAttribute('data-en') : el.getAttribute('data-es');
+    });
+    if (btn) btn.textContent = l === 'es' ? 'EN' : 'ES';
+    document.documentElement.lang = l;
+  }
+  if (btn) {
+    btn.addEventListener('click', function() {
+      lang = lang === 'es' ? 'en' : 'es';
+      localStorage.setItem('lang', lang);
+      applyLang(lang);
+    });
+  }
+  applyLang(lang);
+})();
 </script>
 </body>
 </html>

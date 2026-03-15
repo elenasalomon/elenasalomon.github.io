@@ -78,28 +78,36 @@
     .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease;}
     .reveal.visible{opacity:1;transform:translateY(0);}
     @media(max-width:600px){.proj-hero-inner,.sg{grid-template-columns:1fr;gap:1rem;}.meta-grid{grid-template-columns:1fr;}.pnav{flex-direction:column;align-items:flex-start;gap:1.2rem;}}
+
+    .lang-toggle {
+      font-size: 0.68rem; font-weight: 500; letter-spacing: 0.1em;
+      cursor: pointer; border: 1px solid var(--rule); border-radius: 50px;
+      padding: 0.28rem 0.8rem; color: var(--mid); background: transparent;
+      transition: all 0.2s; text-transform: uppercase;
+    }
+    .lang-toggle:hover { border-color: var(--accent); color: var(--accent); }
   </style>
 </head>
 <body>
-<nav><div class="nav-inner"><a href="index.html" class="nav-name">Elena Salomón</a><a href="index.html#projects" class="nav-back">← Proyectos</a></div></nav>
+<nav><div class="nav-inner"><a href="index.html" class="nav-name">Elena Salomón</a><a href="index.html#projects" class="nav-back" data-es="← Proyectos" data-en="← Projects">← Proyectos</a><button class="lang-toggle" id="lang-btn" style="margin-left:1rem;">EN</button></div></nav>
 
 <div class="proj-hero">
   <div class="proj-hero-inner">
     <div>
       <div class="proj-num">02 / 05</div>
       <div class="proj-tags">
-        <span class="proj-tag">Sistemas de recomendación</span>
+        <span class="proj-tag"><span data-es="Sistemas de recomendación" data-en="Recommendation systems">Sistemas de recomendación</span></span>
         <span class="proj-tag">Collaborative Filtering</span>
         <span class="proj-tag">NLP</span>
         <span class="proj-tag">Social Graphs</span>
       </div>
     </div>
     <div>
-      <h1>Dine or Dash: <em>¿Dónde<br>comemos?</em></h1>
-      <p class="proj-summary">Sistema de recomendación de restaurantes construido con reseñas de Yelp para restaurantes de Philadelphia. Cinco modelos progresivos — desde ranking simple hasta filtrado colaborativo enriquecido con análisis de sentimiento y red social de amigos.</p>
+      <h1>Dine or Dash: <em><span data-es="¿Dónde<br>comemos?" data-en="Should we stay or<br>should we go?">¿Dónde<br>comemos?</span></em></h1>
+      <p class="proj-summary"><span data-es="Sistema de recomendación de restaurantes construido con reseñas de Yelp para restaurantes de Philadelphia. Cinco modelos progresivos — desde ranking simple hasta filtrado colaborativo enriquecido con análisis de sentimiento y red social de amigos." data-en="Restaurant recommendation system built on Yelp reviews for Philadelphia restaurants. Five progressive models — from simple ranking to collaborative filtering enriched with sentiment analysis and social network of friends.">Sistema de recomendación de restaurantes construido con reseñas de Yelp para restaurantes de Philadelphia. Cinco modelos progresivos — desde ranking simple hasta filtrado colaborativo enriquecido con análisis de sentimiento y red social de amigos.</span></p>
       <div class="proj-links">
-        <a href="https://github.com/elenasalomon/DineOrDash" class="proj-link" target="_blank">Ver en GitHub</a>
-        <a href="index.html#projects" class="proj-link ghost">← Volver</a>
+        <a href="https://github.com/elenasalomon/DineOrDash" class="proj-link" target="_blank"><span data-es="Ver en GitHub" data-en="View on GitHub">Ver en GitHub</span></a>
+        <a href="index.html#projects" class="proj-link ghost"><span data-es="← Volver" data-en="← Back">← Volver</span></a>
       </div>
     </div>
   </div>
@@ -109,32 +117,32 @@
 
   <div class="section reveal">
     <div class="sg">
-      <span class="sl">Ficha</span>
+      <span class="sl"><span data-es="Ficha" data-en="Overview">Ficha</span></span>
       <div class="meta-grid">
-        <div class="mr"><div class="ml">Tipo</div><div class="mv">Sistema de recomendación</div></div>
-        <div class="mr"><div class="ml">Dataset</div><div class="mv">Yelp — 112K reseñas, 8.714 usuarios, 3.372 restaurantes</div></div>
-        <div class="mr"><div class="ml">Modelo elegido</div><div class="mv">SVD + Sentiment Analysis (Recall 84%)</div></div>
-        <div class="mr"><div class="ml">Año</div><div class="mv">2025</div></div>
-        <div class="mr"><div class="ml">Equipo</div><div class="mv">Ibarra · Salomón · Nebot</div></div>
-        <div class="mr"><div class="ml">Stack</div><div class="mv">Python · Surprise · VADER · NetworkX · spaCy</div></div>
+        <div class="mr"><div class="ml"><span data-es="Tipo" data-en="Type">Tipo</span></div><div class="mv"><span data-es="Sistema de recomendación" data-en="Recommendation system">Sistema de recomendación</span></div></div>
+        <div class="mr"><div class="ml">Dataset</div><div class="mv"><span data-es="Yelp — 112K reseñas, 8.714 usuarios, 3.372 restaurantes" data-en="Yelp — 112K reviews, 8,714 users, 3,372 restaurants">Yelp — 112K reseñas, 8.714 usuarios, 3.372 restaurantes</span></div></div>
+        <div class="mr"><div class="ml"><span data-es="Modelo" data-en="Model">Modelo</span> elegido</div><div class="mv">SVD + Sentiment Analysis (Recall 84%)</div></div>
+        <div class="mr"><div class="ml"><span data-es="Año" data-en="Year">Año</span></div><div class="mv">2026</div></div>
+        <div class="mr"><div class="ml"><span data-es="Equipo" data-en="Team">Equipo</span></div><div class="mv"><span data-es="Ibarra · Salomón · Nebot" data-en="Ibarra · Salomón · Nebot">Ibarra · Salomón · Nebot</span></div></div>
+        <div class="mr"><div class="ml"><span data-es="Stack" data-en="Stack">Stack</span></div><div class="mv">Python · Surprise · VADER · NetworkX · spaCy</div></div>
       </div>
     </div>
   </div>
 
   <div class="section reveal">
     <div class="sg">
-      <span class="sl">El problema</span>
+      <span class="sl"><span data-es="El problema" data-en="The problem">El problema</span></span>
       <div>
-        <h2>La paradoja de la elección</h2>
-        <p>Demasiadas opciones no liberan al usuario — lo paralizan. En el ecosistema actual de plataformas digitales, las reseñas de desconocidos generan sobrecarga de información. Sin embargo, las decisiones de consumo siguen profundamente ligadas a la confianza: lo que recomienda un amigo pesa más que mil reseñas anónimas.</p>
-        <p>El objetivo fue construir un sistema de recomendación personalizado que transforme el dataset masivo de Yelp en sugerencias con significado — incorporando no solo patrones de comportamiento individuales, sino también la influencia de la red social del usuario.</p>
+        <h2><span data-es="La paradoja de la elección" data-en="The paradox of choice">La paradoja de la elección</span></h2>
+        <p><span data-es="Demasiadas opciones no liberan al usuario — lo paralizan. En el ecosistema actual de plataformas digitales, las reseñas de desconocidos generan sobrecarga de información. Sin embargo, las decisiones de consumo siguen profundamente ligadas a la confianza: lo que recomienda un amigo pesa más que mil reseñas anónimas." data-en="Too many options don't free users — they paralyze them. In today's digital ecosystem, reviews from strangers generate information overload. Yet consumption decisions remain deeply tied to trust: a friend's recommendation outweighs a thousand anonymous reviews.">Demasiadas opciones no liberan al usuario — lo paralizan. En el ecosistema actual de plataformas digitales, las reseñas de desconocidos generan sobrecarga de información. Sin embargo, las decisiones de consumo siguen profundamente ligadas a la confianza: lo que recomienda un amigo pesa más que mil reseñas anónimas.</span></p>
+        <p><span data-es="El objetivo fue construir un sistema de recomendación personalizado que transforme el dataset masivo de Yelp en sugerencias con significado — incorporando no solo patrones de comportamiento individuales, sino también la influencia de la red social del usuario." data-en="The goal was to build a personalized recommendation system that transforms Yelp's massive dataset into meaningful suggestions — incorporating not only individual behavior patterns, but also the influence of the user's social network.">El objetivo fue construir un sistema de recomendación personalizado que transforme el dataset masivo de Yelp en sugerencias con significado — incorporando no solo patrones de comportamiento individuales, sino también la influencia de la red social del usuario.</span></p>
 
-        <h2 style="margin-top: 2.5rem;">Por qué las 5 estrellas no alcanzan</h2>
-        <p>Los sistemas de rating tradicionales tienen un problema estructural: el sesgo positivo. El promedio de ratings en el dataset es 3.93 sobre 5, y la distribución está fuertemente sesgada hacia calificaciones altas. Los usuarios escriben reseñas principalmente luego de experiencias excepcionales, no promedio.</p>
-        <p>Además, cada usuario tiene una escala diferente: el usuario 52500 tiene un promedio de 4.60, mientras el usuario 51007 promedia 3.59. Una estrella de uno no equivale a una estrella del otro. El sistema de recomendación debe capturar estas diferencias individuales.</p>
+        <h2 style="margin-top: 2.5rem;"><span data-es="Por qué las 5 estrellas no alcanzan" data-en="Why 5 stars are not enough">Por qué las 5 estrellas no alcanzan</span></h2>
+        <p><span data-es="Los sistemas de rating tradicionales tienen un problema estructural: el sesgo positivo. El promedio de ratings en el dataset es 3.93 sobre 5, y la distribución está fuertemente sesgada hacia calificaciones altas. Los usuarios escriben reseñas principalmente luego de experiencias excepcionales, no promedio." data-en="Traditional rating systems have a structural problem: positive bias. The average rating in the dataset is 3.93 out of 5, and the distribution is heavily skewed toward high ratings. Users write reviews primarily after exceptional experiences, not average ones.">Los sistemas de rating tradicionales tienen un problema estructural: el sesgo positivo. El promedio de ratings en el dataset es 3.93 sobre 5, y la distribución está fuertemente sesgada hacia calificaciones altas. Los usuarios escriben reseñas principalmente luego de experiencias excepcionales, no promedio.</span></p>
+        <p><span data-es="Además, cada usuario tiene una escala diferente: el usuario 52500 tiene un promedio de 4.60, mientras el usuario 51007 promedia 3.59. Una estrella de uno no equivale a una estrella del otro. El sistema de recomendación debe capturar estas diferencias individuales." data-en="Additionally, each user has a different scale: user 52500 averages 4.60, while user 51007 averages 3.59. One star from one user does not equal one star from another. The recommendation system must capture these individual differences.">Además, cada usuario tiene una escala diferente: el usuario 52500 tiene un promedio de 4.60, mientras el usuario 51007 promedia 3.59. Una estrella de uno no equivale a una estrella del otro. El sistema de recomendación debe capturar estas diferencias individuales.</span></p>
 
         <div style="background: var(--card); border: 1px solid var(--rule); border-radius: 10px; padding: 2rem 2.4rem; margin-top: 2rem; max-width: 560px;">
-          <div style="font-size: 0.7rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.4rem;">Sesgo positivo del dataset</div>
+          <div style="font-size: 0.7rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.4rem;"><span data-es="Sesgo positivo del dataset" data-en="Dataset positive bias">Sesgo positivo del dataset</span></div>
           
           <div style="display: flex; flex-direction: column; gap: 0.85rem;">
             <div style="display: flex; align-items: center; gap: 1rem;">
@@ -181,11 +189,11 @@
 
   <div class="section reveal">
     <div class="sg">
-      <span class="sl">Los datos</span>
+      <span class="sl"><span data-es="Los datos" data-en="The data">Los datos</span></span>
       <div>
-        <h2>Dataset Yelp</h2>
-        <p>El dataset original de Yelp contiene 1.84 millones de reseñas con 40 variables: datos del usuario (id, amigos, tipo de usuario, índice de influencia), del restaurante (nombre, ubicación, cocina principal, atributos como WiFi, alcohol, reservas) y de la reseña (rating, texto, fecha, score de impacto). Para el modelado se filtró el subconjunto de Restaurantes ubicados en Philadelphia.</p>
-        <p>El dataset filtrado tiene <strong>8.714 usuarios únicos</strong> y <strong>3.372 restaurantes únicos</strong>, con 111.831 ratings reales sobre un universo teórico de 29.3 millones de combinaciones posibles. Esa alta dispersión — menos del 0.4% de la matriz completa — es precisamente el problema que el sistema de recomendación viene a resolver. El grafo social construido con NetworkX conectó esos usuarios con <strong>32.917 vínculos</strong> entre amigos.</p>
+        <h2><span data-es="Dataset Yelp" data-en="Yelp Dataset">Dataset Yelp</span></h2>
+        <p><span data-es="El dataset original de Yelp contiene 1.84 millones de reseñas con 40 variables: datos del usuario (id, amigos, tipo de usuario, índice de influencia), del restaurante (nombre, ubicación, cocina principal, atributos como WiFi, alcohol, reservas) y de la reseña (rating, texto, fecha, score de impacto)" data-en="The original Yelp dataset contains 1.84 million reviews with 40 variables: user data (id, friends, user type, influence index), restaurant data (name, location, main cuisine, attributes like WiFi, alcohol, reservations) and review data (rating, text, date, impact score)">El dataset original de Yelp contiene 1.84 millones de reseñas con 40 variables: datos del usuario (id, amigos, tipo de usuario, índice de influencia), del restaurante (nombre, ubicación, cocina principal, atributos como WiFi, alcohol, reservas) y de la reseña (rating, texto, fecha, score de impacto)</span>. <span data-es="Para el modelado se filtró el subconjunto de Restaurantes ubicados en Philadelphia." data-en="For modeling, the subset of Restaurants located in Philadelphia was filtered.">Para el modelado se filtró el subconjunto de Restaurantes ubicados en Philadelphia.</span></p>
+        <p><span data-es="El dataset filtrado tiene <strong>8.714 usuarios únicos</strong> y <strong>3.372 restaurantes únicos</strong>, con 111.831 ratings reales sobre un universo teórico de 29.3 millones de combinaciones posibles. Esa alta dispersión — menos del 0.4% de la matriz completa — es precisamente el problema que el sistema de recomendación viene a resolver. El grafo social construido con NetworkX conectó esos usuarios con <strong>32.917 vínculos</strong> entre amigos." data-en="The filtered dataset has <strong>8,714 unique users</strong> and <strong>3,372 unique restaurants</strong>, with 111,831 real ratings over a theoretical universe of 29.3 million possible combinations. This high sparsity — less than 0.4% of the full matrix — is precisely the problem the recommendation system solves. The social graph built with NetworkX connected those users with <strong>32,917 friendship links</strong>.">El dataset filtrado tiene <strong>8.714 usuarios únicos</strong> y <strong>3.372 restaurantes únicos</strong>, con 111.831 ratings reales sobre un universo teórico de 29.3 millones de combinaciones posibles. Esa alta dispersión — menos del 0.4% de la matriz completa — es precisamente el problema que el sistema de recomendación viene a resolver. El grafo social construido con NetworkX conectó esos usuarios con <strong>32.917 vínculos</strong> entre amigos.</span></p>
 
 
       </div>
@@ -194,44 +202,44 @@
 
   <div class="section reveal">
     <div class="sg">
-      <span class="sl">Los modelos</span>
+      <span class="sl"><span data-es="Los modelos" data-en="The models">Los modelos</span></span>
       <div>
-        <h2>Cinco enfoques progresivos</h2>
-        <p style="margin-bottom:1.4rem;">Cada modelo agrega una capa de inteligencia sobre el anterior, desde el baseline más simple hasta la integración de texto y red social.</p>
+        <h2><span data-es="Cinco enfoques progresivos" data-en="Five progressive approaches">Cinco enfoques progresivos</span></h2>
+        <p style="margin-bottom:1.4rem;"><span data-es="Cada modelo agrega una capa de inteligencia sobre el anterior, desde el baseline más simple hasta la integración de texto y red social." data-en="Each model adds a layer of intelligence over the previous one, from the simplest baseline to the integration of text and social network.">Cada modelo agrega una capa de inteligencia sobre el anterior, desde el baseline más simple hasta la integración de texto y red social.</span></p>
         <div class="model-list">
           <div class="model-item">
             <div class="mi-n">M1</div>
             <div class="mi-body">
               <div class="mi-title">Rank Based (baseline)</div>
-              <div class="mi-desc">Recomienda los restaurantes con mejor rating promedio (mín. 55 interacciones). Útil para el cold start: usuarios nuevos sin historial. Sin personalización.</div>
+              <div class="mi-desc"><span data-es="Recomienda los restaurantes con mejor rating promedio (mín. 55 interacciones). Útil para el cold start: usuarios nuevos sin historial. Sin personalización." data-en="Recommends restaurants with the best average rating (min. 55 interactions). Useful for cold start: new users without history. No personalization.">Recomienda los restaurantes con mejor rating promedio (mín. 55 interacciones). Útil para el cold start: usuarios nuevos sin historial. Sin personalización.</span></div>
             </div>
           </div>
           <div class="model-item">
             <div class="mi-n">M2</div>
             <div class="mi-body">
               <div class="mi-title">Collaborative Filtering — User-User (KNN)</div>
-              <div class="mi-desc">Identifica usuarios con patrones de rating similares. Recomendaciones basadas puramente en comportamiento, sin metadata del restaurante. Recall 82%, F1 0.777.</div>
+              <div class="mi-desc"><span data-es="Identifica usuarios con patrones de rating similares. Recomendaciones basadas puramente en comportamiento, sin metadata del restaurante. Recall 82%, F1 0.777." data-en="Identifies users with similar rating patterns. Recommendations based purely on behavior, without restaurant metadata. Recall 82%, F1 0.777.">Identifica usuarios con patrones de rating similares. Recomendaciones basadas puramente en comportamiento, sin metadata del restaurante. Recall 82%, F1 0.777.</span></div>
             </div>
           </div>
           <div class="model-item">
             <div class="mi-n">M3</div>
             <div class="mi-body">
               <div class="mi-title">Collaborative Filtering — Matrix Factorization (SVD)</div>
-              <div class="mi-desc">Descompone la matriz usuario-restaurante en factores latentes. Menor RMSE que KNN (1.03 vs 1.12). Precisión 72%, Recall 79%.</div>
+              <div class="mi-desc">Descompone la matriz usuario-restaurante en factores latentes. Menor RMSE que KNN (1.03 vs 1.12). <span data-es="Precisión" data-en="Precision">Precisión</span> 72%, Recall 79%.</div>
             </div>
           </div>
           <div class="model-item">
             <div class="mi-n">M4</div>
             <div class="mi-body">
               <div class="mi-title">SVD + Social Graphs (Friends)</div>
-              <div class="mi-desc">Incorpora la red social del usuario al SVD mediante regularización social: las valoraciones de los amigos "guían" la predicción. Especialmente útil para restaurantes con datos escasos.</div>
+              <div class="mi-desc"><span data-es="Incorpora la red social del usuario al SVD mediante regularización social: las valoraciones de los amigos &quot;guían&quot; la predicción. Especialmente útil para restaurantes con datos escasos." data-en="Incorporates the user&#39;s social network into SVD via social regularization: friends&#39; ratings &quot;guide&quot; the prediction. Especially useful for restaurants with sparse data.">Incorpora la red social del usuario al SVD mediante regularización social: las valoraciones de los amigos "guían" la predicción. Especialmente útil para restaurantes con datos escasos.</span></div>
             </div>
           </div>
           <div class="model-item">
             <div class="mi-n">M5</div>
             <div class="mi-body">
               <div class="mi-title">SVD + Sentiment Analysis (VADER) <span class="wb">elegido</span></div>
-              <div class="mi-desc">Enriquece el SVD con el score de sentimiento extraído del texto de cada reseña usando VADER. El sentimiento del texto correlaciona positivamente con el rating — aporta señal que el número de estrellas solo no captura. Recall 84%, F1 0.783.</div>
+              <div class="mi-desc"><span data-es="Enriquece el SVD con el score de sentimiento extraído del texto de cada reseña usando VADER. El sentimiento del texto correlaciona positivamente con el rating — aporta señal que el número de estrellas solo no captura. Recall 84%, F1 0.783." data-en="Enriches SVD with the sentiment score extracted from each review text using VADER. Text sentiment correlates positively with rating — adding signal that star ratings alone do not capture. Recall 84%, F1 0.783.">Enriquece el SVD con el score de sentimiento extraído del texto de cada reseña usando VADER. El sentimiento del texto correlaciona positivamente con el rating — aporta señal que el número de estrellas solo no captura. Recall 84%, F1 0.783.</span></div>
             </div>
           </div>
         </div>
@@ -241,13 +249,13 @@
 
   <div class="section reveal">
     <div class="sg">
-      <span class="sl">Resultados</span>
+      <span class="sl"><span data-es="Resultados" data-en="Results">Resultados</span></span>
       <div>
-        <h2>Comparación de modelos</h2>
-        <p style="margin-bottom:1.4rem;">La métrica prioritaria fue <strong>Recall</strong>: la proporción de restaurantes relevantes que el sistema logra capturar y recomendar.</p>
+        <h2><span data-es="Comparación de modelos" data-en="Model comparison">Comparación de modelos</span></h2>
+        <p style="margin-bottom:1.4rem;"><span data-es="La métrica prioritaria fue <strong>Recall</strong>: la proporción de restaurantes relevantes que el sistema logra capturar y recomendar." data-en="The priority metric was <strong>Recall</strong>: the proportion of relevant restaurants the system manages to capture and recommend.">La métrica prioritaria fue <strong>Recall</strong>: la proporción de restaurantes relevantes que el sistema logra capturar y recomendar.</span></p>
         <table class="bt">
           <thead>
-            <tr><th>Modelo</th><th>RMSE</th><th>Precisión</th><th>Recall</th><th>F1</th></tr>
+            <tr><th>Modelo</th><th>RMSE</th><th><span data-es="<span data-es="Precisión" data-en="Precision">Precisión</span>" data-en="Precision"><span data-es="Precisión" data-en="Precision">Precisión</span></span></th><th>Recall</th><th>F1</th></tr>
           </thead>
           <tbody>
             <tr><td>Rank Based (baseline)</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
@@ -258,22 +266,22 @@
             <tr><td>SVD + Sentiment <span class="wb">elegido</span></td><td>1.1103</td><td>0.728</td><td>0.846</td><td>0.783</td></tr>
           </tbody>
         </table>
-        <p style="margin-top:1.4rem;">Aunque el RMSE no es el más bajo, el objetivo no era predecir el rating exacto sino identificar el mayor número posible de restaurantes que el usuario realmente disfrutaría. En ese criterio, SVD + Sentiment lidera con un Recall del 84%.</p>
+        <p style="margin-top:1.4rem;"><span data-es="Aunque el RMSE no es el más bajo, el objetivo no era predecir el rating exacto sino identificar el mayor número posible de restaurantes que el usuario realmente disfrutaría. En ese criterio, SVD + Sentiment lidera con un Recall del 84%." data-en="Although the RMSE is not the lowest, the goal was not to predict the exact rating but to identify the largest number of restaurants the user would truly enjoy. By that criterion, SVD + Sentiment leads with a Recall of 84%.">Aunque el RMSE no es el más bajo, el objetivo no era predecir el rating exacto sino identificar el mayor número posible de restaurantes que el usuario realmente disfrutaría. En ese criterio, SVD + Sentiment lidera con un Recall del 84%.</span></p>
       </div>
     </div>
   </div>
 
   <div class="section reveal">
     <div class="sg">
-      <span class="sl">Recomendación</span>
+      <span class="sl"><span data-es="Recomendación" data-en="Recommendation">Recomendación</span></span>
       <div>
-        <h2>Estrategia híbrida por sección</h2>
-        <p>El sistema no propone un único modelo sino una arquitectura por secciones dentro de la plataforma, según el estado del usuario:</p>
+        <h2><span data-es="Estrategia híbrida por sección" data-en="Hybrid strategy by section">Estrategia híbrida por sección</span></h2>
+        <p><span data-es="El sistema no propone un único modelo sino una arquitectura por secciones dentro de la plataforma, según el estado del usuario:" data-en="The system proposes not a single model but a section-based architecture within the platform, based on the user&#39;s state:">El sistema no propone un único modelo sino una arquitectura por secciones dentro de la plataforma, según el estado del usuario:</span></p>
         <div class="fl" style="margin-top:.8rem;">
-          <div class="fi"><div class="fit">Usuarios nuevos (cold start)</div><div class="fid">Rank Based — los restaurantes mejor valorados con suficiente volumen de reseñas.</div></div>
-          <div class="fi"><div class="fit">"Basado en tus reseñas anteriores"</div><div class="fid">SVD + Sentiment Analysis — el modelo con mayor recall para usuarios activos.</div></div>
-          <div class="fi"><div class="fit">"Lo que recomiendan tus amigos"</div><div class="fid">SVD + Friends — aprovecha la red social para descubrir lugares fuera del historial propio.</div></div>
-          <div class="fi"><div class="fit">"Restaurantes similares a tu historial"</div><div class="fid">CF Item-Item — encuentra locales con perfiles parecidos a los que ya visitaste.</div></div>
+          <div class="fi"><div class="fit"><span data-es="Usuarios nuevos (cold start)" data-en="New users (cold start)">Usuarios nuevos (cold start)</span></div><div class="fid"><span data-es="Rank Based — los restaurantes mejor valorados con suficiente volumen de reseñas." data-en="Rank Based — the highest-rated restaurants with sufficient review volume.">Rank Based — los restaurantes mejor valorados con suficiente volumen de reseñas.</span></div></div>
+          <div class="fi"><div class="fit"><span data-es="&quot;Basado en tus reseñas anteriores&quot;" data-en="&quot;Based on your previous reviews&quot;">"Basado en tus reseñas anteriores"</span></div><div class="fid"><span data-es="SVD + Sentiment Analysis — el modelo con mayor recall para usuarios activos." data-en="SVD + Sentiment Analysis — the model with the highest recall for active users.">SVD + Sentiment Analysis — el modelo con mayor recall para usuarios activos.</span></div></div>
+          <div class="fi"><div class="fit"><span data-es="&quot;Lo que recomiendan tus amigos&quot;" data-en="&quot;What your friends recommend&quot;">"Lo que recomiendan tus amigos"</span></div><div class="fid"><span data-es="SVD + Friends — aprovecha la red social para descubrir lugares fuera del historial propio." data-en="SVD + Friends — leverages the social network to discover places outside your own history.">SVD + Friends — aprovecha la red social para descubrir lugares fuera del historial propio.</span></div></div>
+          <div class="fi"><div class="fit"><span data-es="&quot;Restaurantes similares a tu historial&quot;" data-en="&quot;Restaurants similar to your history&quot;">"Restaurantes similares a tu historial"</span></div><div class="fid"><span data-es="CF Item-Item — encuentra locales con perfiles parecidos a los que ya visitaste." data-en="CF Item-Item — finds venues with profiles similar to places you already visited.">CF Item-Item — encuentra locales con perfiles parecidos a los que ya visitaste.</span></div></div>
         </div>
       </div>
     </div>
@@ -281,14 +289,14 @@
 
   <div class="section reveal">
     <div class="sg">
-      <span class="sl">Conclusiones</span>
+      <span class="sl"><span data-es="Conclusiones" data-en="Conclusions">Conclusiones</span></span>
       <div>
-        <h2>Lo que aprendimos</h2>
+        <h2><span data-es="Lo que aprendimos" data-en="What we learned">Lo que aprendimos</span></h2>
         <div class="cl">
-          <div class="ci"><div class="cn">1</div><div class="ct"><strong>El texto de la reseña contiene señal que el rating no captura.</strong> El análisis de sentimiento con VADER mostró correlación positiva clara entre texto y estrellas — integrar ambos mejoró el Recall del modelo base.</div></div>
-          <div class="ci"><div class="cn">2</div><div class="ct"><strong>La red social amplifica la recomendación, no la reemplaza.</strong> El modelo de amigos fue especialmente valioso para restaurantes con pocos datos (long tail), donde el filtrado colaborativo clásico falla.</div></div>
-          <div class="ci"><div class="cn">3</div><div class="ct"><strong>RMSE no es la métrica correcta para este problema.</strong> Predecir el rating exacto importa menos que capturar todos los lugares que el usuario disfrutaría. Recall fue la guía real del desarrollo.</div></div>
-          <div class="ci"><div class="cn">4</div><div class="ct"><strong>Un solo modelo no sirve para todos los usuarios.</strong> La arquitectura híbrida por sección resuelve el cold start y maximiza la personalización según el ciclo de vida del usuario en la plataforma.</div></div>
+          <div class="ci"><div class="cn">1</div><div class="ct"><span data-es="<strong>El texto de la reseña contiene señal que el rating no captura.</strong> El análisis de sentimiento con VADER mostró correlación positiva clara entre texto y estrellas — integrar ambos mejoró el Recall del modelo base." data-en="<strong>Review text contains signal that the rating does not capture.</strong> Sentiment analysis with VADER showed a clear positive correlation between text and stars — integrating both improved the Recall of the base model."><strong>El texto de la reseña contiene señal que el rating no captura.</strong> El análisis de sentimiento con VADER mostró correlación positiva clara entre texto y estrellas — integrar ambos mejoró el Recall del modelo base.</span></div></div>
+          <div class="ci"><div class="cn">2</div><div class="ct"><span data-es="<strong>La red social amplifica la recomendación, no la reemplaza.</strong> El modelo de amigos fue especialmente valioso para restaurantes con pocos datos (long tail), donde el filtrado colaborativo clásico falla." data-en="<strong>The social network amplifies the recommendation, it doesn&#39;t replace it.</strong> The friends model was especially valuable for restaurants with little data (long tail), where classic collaborative filtering fails."><strong>La red social amplifica la recomendación, no la reemplaza.</strong> El modelo de amigos fue especialmente valioso para restaurantes con pocos datos (long tail), donde el filtrado colaborativo clásico falla.</span></div></div>
+          <div class="ci"><div class="cn">3</div><div class="ct"><span data-es="<strong>RMSE no es la métrica correcta para este problema.</strong> Predecir el rating exacto importa menos que capturar todos los lugares que el usuario disfrutaría. Recall fue la guía real del desarrollo." data-en="<strong>RMSE is not the right metric for this problem.</strong> Predicting the exact rating matters less than capturing all the places the user would enjoy. Recall was the real development guide."><strong>RMSE no es la métrica correcta para este problema.</strong> Predecir el rating exacto importa menos que capturar todos los lugares que el usuario disfrutaría. Recall fue la guía real del desarrollo.</span></div></div>
+          <div class="ci"><div class="cn">4</div><div class="ct"><span data-es="<strong>Un solo modelo no sirve para todos los usuarios.</strong> La arquitectura híbrida por sección resuelve el cold start y maximiza la personalización según el ciclo de vida del usuario en la plataforma." data-en="<strong>A single model doesn&#39;t work for all users.</strong> The hybrid section-based architecture solves cold start and maximizes personalization based on the user&#39;s lifecycle on the platform."><strong>Un solo modelo no sirve para todos los usuarios.</strong> La arquitectura híbrida por sección resuelve el cold start y maximiza la personalización según el ciclo de vida del usuario en la plataforma.</span></div></div>
         </div>
       </div>
     </div>
@@ -296,31 +304,53 @@
 
   <div class="section reveal">
     <div class="sg">
-      <span class="sl">Próximos pasos</span>
+      <span class="sl"><span data-es="Próximos pasos" data-en="Next steps">Próximos pasos</span></span>
       <div>
         <h2>Escalabilidad</h2>
         <div class="fl">
-          <div class="fi"><div class="fit">Análisis semántico profundo</div><div class="fid">Integrar embeddings de texto para capturar matices que VADER no detecta.</div></div>
-          <div class="fi"><div class="fit">LightFM con metadata</div><div class="fid">Incorporar atributos del restaurante (precio, categoría, apto para grupos) al modelo de factorización.</div></div>
-          <div class="fi"><div class="fit">Neural Collaborative Filtering</div><div class="fid">Capturar relaciones no lineales entre usuarios e ítems que SVD no puede representar.</div></div>
-          <div class="fi"><div class="fit">SVD + Friends + Sentiment</div><div class="fid">Consolidar el modelo que integra red social y análisis de texto en un único pipeline.</div></div>
-          <div class="fi"><div class="fit">Despliegue local</div><div class="fid">Desarrollo de una aplicación móvil orientada al mercado uruguayo.</div></div>
+          <div class="fi"><div class="fit"><span data-es="Análisis semántico profundo" data-en="Deep semantic analysis">Análisis semántico profundo</span></div><div class="fid"><span data-es="Integrar embeddings de texto para capturar matices que VADER no detecta." data-en="Integrate text embeddings to capture nuances that VADER does not detect.">Integrar embeddings de texto para capturar matices que VADER no detecta.</span></div></div>
+          <div class="fi"><div class="fit"><span data-es="LightFM con metadata" data-en="LightFM with metadata">LightFM con metadata</span></div><div class="fid"><span data-es="Incorporar atributos del restaurante (precio, categoría, apto para grupos) al modelo de factorización." data-en="Incorporate restaurant attributes (price, category, group-friendly) into the matrix factorization model.">Incorporar atributos del restaurante (precio, categoría, apto para grupos) al modelo de factorización.</span></div></div>
+          <div class="fi"><div class="fit">Neural Collaborative Filtering</div><div class="fid"><span data-es="Capturar relaciones no lineales entre usuarios e ítems que SVD no puede representar." data-en="Capture non-linear relationships between users and items that SVD cannot represent.">Capturar relaciones no lineales entre usuarios e ítems que SVD no puede representar.</span></div></div>
+          <div class="fi"><div class="fit">SVD + Friends + Sentiment</div><div class="fid"><span data-es="Consolidar el modelo que integra red social y análisis de texto en un único pipeline." data-en="Consolidate the model integrating social network and text analysis into a single pipeline.">Consolidar el modelo que integra red social y análisis de texto en un único pipeline.</span></div></div>
+          <div class="fi"><div class="fit"><span data-es="Despliegue local" data-en="Local deployment">Despliegue local</span></div><div class="fid"><span data-es="Desarrollo de una aplicación móvil orientada al mercado uruguayo." data-en="Development of a mobile application targeting the Uruguayan market.">Desarrollo de una aplicación móvil orientada al mercado uruguayo.</span></div></div>
         </div>
       </div>
     </div>
   </div>
 
   <div class="pnav reveal">
-    <a href="claria.html" style="text-decoration:none;color:inherit;"><div class="pnl">Anterior</div><div class="pnt">ClarIA</div></a>
-    <a href="clientcatch.html" style="text-decoration:none;color:inherit;text-align:right;display:block;"><div class="pnl">Siguiente proyecto</div><div class="pnt">Client Catch</div></a>
-    <a href="clientcatch.html" class="pna">Ver proyecto →</a>
+    <a href="claria.html" style="text-decoration:none;color:inherit;"><div class="pnl"><span data-es="Anterior" data-en="Previous">Anterior</span></div><div class="pnt">ClarIA</div></a>
+    <a href="clientcatch.html" style="text-decoration:none;color:inherit;text-align:right;display:block;"><div class="pnl"><span data-es="Siguiente proyecto" data-en="Next project">Siguiente proyecto</span></div><div class="pnt">Client Catch</div></a>
+    <a href="clientcatch.html" class="pna"><span data-es="Ver proyecto →" data-en="View project →">Ver proyecto →</span></a>
   </div>
 
 </div>
-<footer>© 2026 Elena Salomón López</footer>
+<footer><span data-es="© 2026 Elena Salomón López" data-en="© 2026 Elena Salomón López">© 2026 Elena Salomón López</span></footer>
 <script>
   const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.08});
   document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+
+<script>
+(function() {
+  var lang = localStorage.getItem('lang') || 'es';
+  var btn = document.getElementById('lang-btn');
+  function applyLang(l) {
+    document.querySelectorAll('[data-es]').forEach(function(el) {
+      el.innerHTML = l === 'en' ? el.getAttribute('data-en') : el.getAttribute('data-es');
+    });
+    if (btn) btn.textContent = l === 'es' ? 'EN' : 'ES';
+    document.documentElement.lang = l;
+  }
+  if (btn) {
+    btn.addEventListener('click', function() {
+      lang = lang === 'es' ? 'en' : 'es';
+      localStorage.setItem('lang', lang);
+      applyLang(lang);
+    });
+  }
+  applyLang(lang);
+})();
 </script>
 </body>
 </html>

@@ -66,10 +66,18 @@
     .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease;}
     .reveal.visible{opacity:1;transform:translateY(0);}
     @media(max-width:600px){.proj-hero-inner,.sg{grid-template-columns:1fr;gap:1rem;}.meta-grid{grid-template-columns:1fr;}.pnav{flex-direction:column;align-items:flex-start;gap:1.2rem;}}
+
+    .lang-toggle {
+      font-size: 0.68rem; font-weight: 500; letter-spacing: 0.1em;
+      cursor: pointer; border: 1px solid var(--rule); border-radius: 50px;
+      padding: 0.28rem 0.8rem; color: var(--mid); background: transparent;
+      transition: all 0.2s; text-transform: uppercase;
+    }
+    .lang-toggle:hover { border-color: var(--accent); color: var(--accent); }
   </style>
 </head>
 <body>
-<nav><div class="nav-inner"><a href="index.html" class="nav-name">Elena Salomón</a><a href="index.html#projects" class="nav-back">← Proyectos</a></div></nav>
+<nav><div class="nav-inner"><a href="index.html" class="nav-name">Elena Salomón</a><a href="index.html#projects" class="nav-back" data-es="← Proyectos" data-en="← Projects">← Proyectos</a><button class="lang-toggle" id="lang-btn" style="margin-left:1rem;">EN</button></div></nav>
 
 <div class="proj-hero">
   <div class="proj-hero-inner">
@@ -84,10 +92,10 @@
     </div>
     <div>
       <h1>Brain Tumor <em>Cancer Detection</em></h1>
-      <p class="proj-summary">Segmentación semántica de tumores cerebrales en imágenes de resonancia magnética con arquitectura U-Net. El modelo clasifica cada píxel de la imagen identificando tejido sano y masa tumoral.</p>
+      <p class="proj-summary"><span data-es="Segmentación semántica de tumores cerebrales en imágenes de resonancia magnética con arquitectura U-Net. El modelo clasifica cada píxel de la imagen identificando tejido sano y masa tumoral." data-en="Semantic segmentation of brain tumors in MRI images using U-Net architecture. The model classifies each pixel of the image identifying healthy tissue and tumor mass.">Segmentación semántica de tumores cerebrales en imágenes de resonancia magnética con arquitectura U-Net. El modelo clasifica cada píxel de la imagen identificando tejido sano y masa tumoral.</span></p>
       <div class="proj-links">
-        <a href="https://github.com/elenasalomon/BrainCancerTumorDetection" class="proj-link" target="_blank">GitHub</a>
-        <a href="index.html#projects" class="proj-link ghost">← Volver</a>
+        <a href="https://github.com/elenasalomon/BrainCancerTumorDetection" class="proj-link" target="_blank"><span data-es="GitHub" data-en="GitHub">GitHub</span></a>
+        <a href="index.html#projects" class="proj-link ghost"><span data-es="← Volver" data-en="← Back">← Volver</span></a>
       </div>
     </div>
   </div>
@@ -97,115 +105,38 @@
 
   <div class="section reveal">
     <div class="sg">
-      <span class="sl">Ficha</span>
+      <span class="sl"><span data-es="Ficha" data-en="Overview">Ficha</span></span>
       <div class="meta-grid">
-        <div class="mr"><div class="ml">Tipo</div><div class="mv">Deep Learning · Segmentación</div></div>
+        <div class="mr"><div class="ml"><span data-es="Tipo" data-en="Type">Tipo</span></div><div class="mv"><span data-es="Deep Learning · Segmentación" data-en="Deep Learning · Segmentation">Deep Learning · Segmentación</span></div></div>
         <div class="mr"><div class="ml">Dataset</div><div class="mv">LGG MRI · TCIA / Kaggle</div></div>
-        <div class="mr"><div class="ml">Arquitectura</div><div class="mv">U-Net (encoder–decoder)</div></div>
-        <div class="mr"><div class="ml">Año</div><div class="mv">2025</div></div>
-        <div class="mr"><div class="ml">Loss</div><div class="mv">Dice Loss</div></div>
-        <div class="mr"><div class="ml">Stack</div><div class="mv">Python · TensorFlow · OpenCV · NumPy</div></div>
+        <div class="mr"><div class="ml"><span data-es="Arquitectura" data-en="Architecture">Arquitectura</span></div><div class="mv">U-Net (encoder–decoder)</div></div>
+        <div class="mr"><div class="ml"><span data-es="Año" data-en="Year">Año</span></div><div class="mv">2026</div></div>
+        <div class="mr"><div class="ml">Loss</div><div class="mv"><span data-es="Dice Loss" data-en="Dice Loss">Dice Loss</span></div></div>
+        <div class="mr"><div class="ml"><span data-es="Stack" data-en="Stack">Stack</span></div><div class="mv">Python · TensorFlow · OpenCV · NumPy</div></div>
       </div>
     </div>
   </div>
 
   <div class="section reveal">
     <div class="sg">
-      <span class="sl">El problema</span>
+      <span class="sl"><span data-es="El problema" data-en="The problem">El problema</span></span>
       <div>
-        <h2>Seguimiento evolutivo del paciente</h2>
-        <p>La evaluación del éxito en tratamientos contra el cáncer de cerebro (quimioterapia, radioterapia o cirugía) depende de la medición precisa de cambios volumétricos en el tiempo. Sin embargo, la inspección visual humana es subjetiva y tiene dificultades para detectar variaciones milimétricas críticas.</p>
-        <p>Este proyecto presenta una solución de Deep Learning para segmentación semántica de MRI, diseñada para transformar la delimitación manual —lenta y dependiente del especialista— en una cuantificación objetiva y reproducible. El objetivo es proporcionar a los médicos una "segunda opinión" basada en datos precisos, facilitando el seguimiento evolutivo del paciente y optimizando la toma de decisiones terapéuticas ante cambios mínimos en la carga tumoral.</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="section reveal">
-    <div class="sg">
-      <span class="sl">Los datos</span>
-      <div>
-        <h2>LGG MRI Segmentation</h2>
-        <p>Las imágenes provienen del The Cancer Imaging Archive (TCIA), disponibles en Kaggle. Los pacientes seleccionados cuentan con al menos una secuencia FLAIR — una modalidad de resonancia magnética que resalta las lesiones anulando la señal del líquido cefalorraquídeo — y datos de clusters genómicos.</p>
-        <p>El dataset contiene 3.929 imágenes de 110 pacientes con diagnóstico de glioma de bajo grado (LGG). Cada imagen tiene su máscara de segmentación correspondiente, anotada manualmente por un especialista: píxeles blancos = tumor, píxeles negros = tejido sano.</p>
-        <p style="margin-top:1.4rem;margin-bottom:.6rem;font-size:.82rem;font-weight:500;color:var(--ink);">El dataset presenta un doble desbalance determinante:</p>
-        <table class="bt">
-          <thead>
-            <tr><th></th><th>Porcentaje</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>Imágenes con tumor</td><td>34.9%</td></tr>
-            <tr><td>Imágenes sin tumor</td><td>65.1%</td></tr>
-            <tr><td>Píxeles de tumor</td><td>1.03%</td></tr>
-            <tr><td>Píxeles tejido sano</td><td>98.97%</td></tr>
-          </tbody>
-        </table>
-        <p style="margin-top:1.2rem;">El desbalance a nivel de imagen se resolvió balanceando el dataset. El desbalance a nivel de píxel — donde menos de 2 de cada 100 píxeles son tumor — justifica directamente la elección de Dice Loss como función de pérdida.</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="section reveal">
-    <div class="sg">
-      <span class="sl">Arquitectura</span>
-      <div>
-        <h2>U-Net: encoder–decoder con skip connections</h2>
-        <p>U-Net fue diseñada específicamente para segmentación biomédica. Su estructura simétrica tiene dos caminos: el encoder comprime la imagen buscando patrones (primero bordes simples, luego estructuras complejas como texturas tumorales), y el decoder reconstruye la resolución original para producir la máscara de segmentación píxel a píxel.</p>
-        <p>El elemento diferencial de U-Net son las skip connections: en cada nivel del decoder se concatena el feature map del encoder del mismo nivel. Al comprimir la imagen, el encoder pierde información espacial de alta resolución — bordes, contornos. Las skip connections transfieren esa información directamente al decoder, permitiendo reconstruir bordes precisos del tumor. Sin ellas, la segmentación sería difusa.</p>
-        <table class="bt" style="margin-top:1.4rem;font-size:.78rem;">
-          <thead>
-            <tr><th>Bloque</th><th>Operación</th><th>Filtros</th><th>Salida</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>enc1</td><td>Conv2D × 2 + ReLU</td><td>64</td><td>256 × 256 × 64</td></tr>
-            <tr><td>MaxPool</td><td>MaxPool2D</td><td>—</td><td>128 × 128 × 64</td></tr>
-            <tr><td>enc2</td><td>Conv2D × 2 + ReLU</td><td>128</td><td>128 × 128 × 128</td></tr>
-            <tr><td>enc3</td><td>Conv2D × 2 + ReLU</td><td>256</td><td>64 × 64 × 256</td></tr>
-            <tr><td>enc4</td><td>Conv2D × 2 + ReLU</td><td>512</td><td>32 × 32 × 512</td></tr>
-            <tr><td>Bridge</td><td>Conv2D × 2 + ReLU</td><td>1024</td><td>16 × 16 × 1024</td></tr>
-            <tr><td>up1 + skip</td><td>ConvTranspose + concat</td><td>512</td><td>32 × 32 × 512</td></tr>
-            <tr><td>up2 + skip</td><td>ConvTranspose + concat</td><td>256</td><td>64 × 64 × 256</td></tr>
-            <tr><td>up3 + skip</td><td>ConvTranspose + concat</td><td>128</td><td>128 × 128 × 128</td></tr>
-            <tr><td>up4 + skip</td><td>ConvTranspose + concat</td><td>64</td><td>256 × 256 × 64</td></tr>
-            <tr><td>Salida</td><td>Conv2D + Sigmoid</td><td>1</td><td>256 × 256 × 1</td></tr>
-          </tbody>
-        </table>
-        <p style="margin-top:1.2rem;">La activación ReLU se usa en todos los bloques intermedios — deja pasar valores positivos y convierte los negativos en cero, permitiendo que la red aprenda relaciones no lineales. La Sigmoid solo aparece en la última capa: convierte la salida en una probabilidad por píxel entre 0 y 1, donde valores cercanos a 1 indican tumor.</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="section reveal">
-    <div class="sg">
-      <span class="sl">Entrenamiento</span>
-      <div>
-        <h2>Dice Loss y Early Stopping</h2>
-        <p>Se eligió Dice Loss en lugar de Binary Cross-Entropy porque en problemas con clases desbalanceadas, la BCE penaliza igual todos los píxeles — ignorando la rareza de los píxeles positivos. La Dice Loss mide directamente el solapamiento entre predicción y máscara real, siendo invariante al desbalance:</p>
-        <p style="font-family:'DM Mono',monospace;font-size:.82rem;margin:1rem 0;">Dice = 2·|X∩Y| / (|X| + |Y|) → Loss = 1 − Dice</p>
-        <p>Se implementó Early Stopping monitoreando la val_loss con paciencia de 5 épocas: si luego de 5 épocas consecutivas la pérdida en validación no mejora, el entrenamiento se detiene y se restauran los pesos del mejor epoch. Esto resolvió el problema observado en el entrenamiento inicial de 15 épocas, donde el modelo aún estaba convergiendo al finalizar.</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="section reveal">
-    <div class="sg">
-      <span class="sl">Resultados</span>
-      <div>
-        <h2>Matriz de confusión pixel a pixel</h2>
-        <p>La evaluación se realizó clasificando cada píxel individual del set de test:</p>
+        <h2><span data-es="Seguimiento evolutivo del paciente" data-en="Patient evolutionary follow-up">Seguimiento evolutivo del paciente</span></h2>
+        <p><span data-es="La evaluación se realizó clasificando cada píxel individual del set de test:" data-en="Evaluation was performed by classifying each individual pixel of the test set:">La evaluación se realizó clasificando cada píxel individual del set de test:</span></p>
         <table class="bt" style="margin:1.2rem 0;">
           <thead>
-            <tr><th>Métrica</th><th>Valor</th><th>Interpretación</th></tr>
+            <tr><th><span data-es="Métrica" data-en="Metric">Métrica</span></th><th>Valor</th><th><span data-es="Interpretación" data-en="Interpretation">Interpretación</span></th></tr>
           </thead>
           <tbody>
-            <tr><td>TN — Tejido sano</td><td>~20 M píxeles</td><td>Gran mayoría de la imagen, bien clasificada</td></tr>
-            <tr><td>TP — Tumor detectado</td><td>178 K píxeles</td><td>Objetivo a maximizar</td></tr>
-            <tr><td>FP — Falso positivo</td><td>120 K píxeles</td><td>Bajo: el modelo no es "paranoico"</td></tr>
-            <tr><td>FN — Tumor no detectado</td><td>169 K píxeles</td><td>Objetivo a reducir</td></tr>
+            <tr><td>TN — Tejido sano</td><td><span data-es="~20 M píxeles" data-en="~20 M pixels">~20 M píxeles</span></td><td><span data-es="Gran mayoría de la imagen, bien clasificada" data-en="Vast majority of the image, well classified">Gran mayoría de la imagen, bien clasificada</span></td></tr>
+            <tr><td>TP — Tumor detectado</td><td><span data-es="178 K píxeles" data-en="178 K pixels">178 K píxeles</span></td><td>Objetivo a maximizar</td></tr>
+            <tr><td>FP — Falso positivo</td><td><span data-es="120 K píxeles" data-en="120 K pixels">120 K píxeles</span></td><td>Bajo: el modelo no es "paranoico"</td></tr>
+            <tr><td>FN — Tumor no detectado</td><td><span data-es="169 K píxeles" data-en="169 K pixels">169 K píxeles</span></td><td>Objetivo a reducir</td></tr>
           </tbody>
         </table>
         <table class="bt">
           <thead>
-            <tr><th>Métrica</th><th>Valor</th></tr>
+            <tr><th><span data-es="Métrica" data-en="Metric">Métrica</span></th><th>Valor</th></tr>
           </thead>
           <tbody>
             <tr><td>Precision</td><td>0.597</td></tr>
@@ -221,26 +152,26 @@
     <div class="sg">
       <span class="sl">Verdaderos Positivos</span>
       <div>
-        <h2>Casos de éxito</h2>
-        <p>Las siguientes imágenes muestran casos donde el modelo detectó correctamente la presencia de tumor. Se visualizan la resonancia magnética original, la máscara real anotada por el médico y la predicción de la IA con su coeficiente Dice individual.</p>
-        <p style="margin-top:1.2rem;">En la Muestra 8 (Dice: 0.42) el modelo localiza y segmenta la masa tumoral con buena cobertura, aunque los bordes son algo más amplios que la máscara real. En la Muestra 9 (Dice: 0.42) el tumor es más pequeño: la predicción identifica la ubicación correctamente pero evidencia la dificultad del modelo para delimitar lesiones de menor tamaño — una oportunidad de mejora concreta.</p>
-        <img src="braintumor_tp.png" alt="True Positives — Muestras con tumores detectados correctamente" style="width:100%;margin-top:1.4rem;border:1px solid var(--rule);border-radius:2px;display:block;"/>
-        <p style="margin-top:1.2rem;font-size:.85rem;color:var(--light);">La arquitectura U-Net logra pasar de una detección nula a una identificación clara de la masa tumoral. El modelo localiza correctamente los tumores pero falla en la delimitación precisa de sus bordes — exactamente el patrón esperado en una primera iteración.</p>
+        <h2><span data-es="Casos de éxito" data-en="Success cases">Casos de éxito</span></h2>
+        <p><span data-es="Las siguientes imágenes muestran casos donde el modelo detectó correctamente la presencia de tumor. Se visualizan la resonancia magnética original, la máscara real anotada por el médico y la predicción de la IA con su coeficiente Dice individual." data-en="The following images show cases where the model correctly detected the presence of a tumor. The original MRI, the real mask annotated by the physician, and the AI prediction with its individual Dice coefficient are shown.">Las siguientes imágenes muestran casos donde el modelo detectó correctamente la presencia de tumor. Se visualizan la resonancia magnética original, la máscara real anotada por el médico y la predicción de la IA con su coeficiente Dice individual.</span></p>
+        <p style="margin-top:1rem;"><span data-es="En la Muestra 8 (Dice: 0.42) el modelo localiza y segmenta la masa tumoral con buena cobertura, aunque los bordes son algo más amplios que la máscara real. En la Muestra 9 (Dice: 0.42) el tumor es más pequeño: la predicción identifica la ubicación correctamente pero evidencia la dificultad del modelo para delimitar lesiones de menor tamaño — una oportunidad de mejora concreta." data-en="In Sample 8 (Dice: 0.42) the model localizes and segments the tumor mass with good coverage, although the borders are somewhat wider than the real mask. In Sample 9 (Dice: 0.42) the tumor is smaller: the prediction correctly identifies the location but shows the model's difficulty in delimiting smaller lesions — a concrete improvement opportunity.">En la Muestra 8 (Dice: 0.42) el modelo localiza y segmenta la masa tumoral con buena cobertura, aunque los bordes son algo más amplios que la máscara real. En la Muestra 9 (Dice: 0.42) el tumor es más pequeño: la predicción identifica la ubicación correctamente pero evidencia la dificultad del modelo para delimitar lesiones de menor tamaño — una oportunidad de mejora concreta.</span></p>
+        <p style="margin-top:1rem;"><span data-es="La arquitectura U-Net logra pasar de una detección nula a una identificación de la masa tumoral. El modelo localiza correctamente los tumores pero falla en la delimitación de su tamaño y de los bordes — exactamente el patrón esperado en una primera iteración." data-en="The U-Net architecture manages to go from zero detection to identification of the tumor mass. The model correctly localizes tumors but fails in delimiting their size and borders — exactly the expected pattern in a first iteration.">La arquitectura U-Net logra pasar de una detección nula a una identificación de la masa tumoral. El modelo localiza correctamente los tumores pero falla en la delimitación de su tamaño y de los bordes — exactamente el patrón esperado en una primera iteración.</span></p>
+        <img src="braintumor_unet.png" alt="Predicciones U-Net vs máscara real" style="width:100%;margin-top:1.6rem;border:1px solid var(--rule);border-radius:6px;display:block;"/>
       </div>
     </div>
   </div>
 
   <div class="section reveal">
     <div class="sg">
-      <span class="sl">Conclusiones</span>
+      <span class="sl"><span data-es="Conclusiones" data-en="Conclusions">Conclusiones</span></span>
       <div>
-        <h2>Lo que aprendimos</h2>
+        <h2><span data-es="Lo que aprendimos" data-en="What we learned">Lo que aprendimos</span></h2>
         <div class="cl">
-          <div class="ci"><div class="cn">1</div><div class="ct"><strong>El doble desbalance es el desafío central.</strong> El 65% de las imágenes no tienen tumor visible y solo el 1.03% de los píxeles totales corresponde a tumor. Este desbalance extremo condiciona todas las decisiones de diseño.</div></div>
-          <div class="ci"><div class="cn">2</div><div class="ct"><strong>Dice Loss fue la elección correcta.</strong> La Binary Cross-Entropy hubiera ignorado el desbalance de píxeles. Dice mide directamente el solapamiento entre predicción y realidad, siendo invariante a la proporción de clases.</div></div>
-          <div class="ci"><div class="cn">3</div><div class="ct"><strong>Las skip connections son el diferencial de U-Net.</strong> Sin ellas, la segmentación pierde detalle espacial al reconstruir la imagen. La concatenación encoder–decoder en cada nivel preserva la información de bordes y contornos.</div></div>
-          <div class="ci"><div class="cn">4</div><div class="ct"><strong>Early stopping resolvió la convergencia incompleta.</strong> El entrenamiento original de 15 épocas se detuvo antes de tiempo. El criterio automático sobre val_loss garantiza que el modelo entrena el tiempo exacto necesario.</div></div>
-          <div class="ci"><div class="cn">5</div><div class="ct"><strong>El modelo localiza bien, delimita mal.</strong> Los TP muestran que el tumor se detecta en la ubicación correcta. La imprecisión de borde es la oportunidad de mejora principal para la siguiente iteración.</div></div>
+          <div class="ci"><div class="cn">1</div><div class="ct"><span data-es="<strong>El doble desbalance es el desafío central.</strong> El 65% de las imágenes no tienen tumor visible y solo el 1.03% de los píxeles totales corresponde a tumor. Este desbalance extremo condiciona todas las decisiones de diseño." data-en="<strong>The double imbalance is the central challenge.</strong> 65% of images have no visible tumor and only 1.03% of total pixels correspond to tumor. This extreme imbalance conditions every design decision."><strong>El doble desbalance es el desafío central.</strong> El 65% de las imágenes no tienen tumor visible y solo el 1.03% de los píxeles totales corresponde a tumor. Este desbalance extremo condiciona todas las decisiones de diseño.</span></div></div>
+          <div class="ci"><div class="cn">2</div><div class="ct"><span data-es="<strong>Dice Loss fue la elección correcta.</strong> La Binary Cross-Entropy hubiera ignorado el desbalance de píxeles. Dice mide directamente el solapamiento entre predicción y realidad, siendo invariante a la proporción de clases." data-en="<strong>Dice Loss was the right choice.</strong> Binary Cross-Entropy would have ignored the pixel imbalance. Dice directly measures the overlap between prediction and reality, being invariant to class proportions."><strong>Dice Loss fue la elección correcta.</strong> La Binary Cross-Entropy hubiera ignorado el desbalance de píxeles. Dice mide directamente el solapamiento entre predicción y realidad, siendo invariante a la proporción de clases.</span></div></div>
+          <div class="ci"><div class="cn">3</div><div class="ct"><span data-es="<strong>Las skip connections son el diferencial de U-Net.</strong> Sin ellas, la segmentación pierde detalle espacial al reconstruir la imagen. La concatenación encoder–decoder en cada nivel preserva la información de bordes y contornos." data-en="<strong>Skip connections are what sets U-Net apart.</strong> Without them, segmentation loses spatial detail when reconstructing the image. The encoder–decoder concatenation at each level preserves edge and contour information."><strong>Las skip connections son el diferencial de U-Net.</strong> Sin ellas, la segmentación pierde detalle espacial al reconstruir la imagen. La concatenación encoder–decoder en cada nivel preserva la información de bordes y contornos.</span></div></div>
+          <div class="ci"><div class="cn">4</div><div class="ct"><span data-es="<strong>Early stopping resolvió la convergencia incompleta.</strong> El entrenamiento original de 15 épocas se detuvo antes de tiempo. El criterio automático sobre val_loss garantiza que el modelo entrena el tiempo exacto necesario." data-en="<strong>Early stopping resolved incomplete convergence.</strong> The original 15-epoch training stopped too soon. The automatic criterion on val_loss ensures the model trains for exactly as long as needed."><strong>Early stopping resolvió la convergencia incompleta.</strong> El entrenamiento original de 15 épocas se detuvo antes de tiempo. El criterio automático sobre val_loss garantiza que el modelo entrena el tiempo exacto necesario.</span></div></div>
+          <div class="ci"><div class="cn">5</div><div class="ct"><span data-es="<strong>El modelo localiza bien, delimita mal.</strong> Los TP muestran que el tumor se detecta en la ubicación correcta. La imprecisión de borde es la oportunidad de mejora principal para la siguiente iteración." data-en="<strong>The model localizes well, delineates poorly.</strong> TPs show the tumor is detected in the correct location. Border imprecision is the main improvement opportunity for the next iteration."><strong>El modelo localiza bien, delimita mal.</strong> Los TP muestran que el tumor se detecta en la ubicación correcta. La imprecisión de borde es la oportunidad de mejora principal para la siguiente iteración.</span></div></div>
         </div>
       </div>
     </div>
@@ -248,14 +179,14 @@
 
   <div class="section reveal">
     <div class="sg">
-      <span class="sl">Próximos pasos</span>
+      <span class="sl"><span data-es="Próximos pasos" data-en="Next steps">Próximos pasos</span></span>
       <div>
         <h2>Siguientes iteraciones</h2>
         <div class="fl">
-          <div class="fi"><div class="fit">Data Augmentation</div><div class="fid">Rotaciones, flips y variaciones de brillo sobre las máscaras para aumentar la variabilidad del set de entrenamiento y mejorar la generalización.</div></div>
-          <div class="fi"><div class="fit">Optimización del threshold Sigmoid</div><div class="fid">Explorar valores por debajo de 0.5 para capturar más TP a costa de aumentar FP — calibrar según el trade-off clínico acceptable.</div></div>
-          <div class="fi"><div class="fit">Más épocas con menor learning rate</div><div class="fid">Las curvas no mostraron overfitting al final del entrenamiento. Continuar convergiendo con lr reducido debería mejorar la precisión de borde.</div></div>
-          <div class="fi"><div class="fit">Análisis volumétrico</div><div class="fid">Con un Dice más alto, usar la segmentación para cuantificar el volumen tumoral y habilitar el seguimiento evolutivo que motivó el proyecto.</div></div>
+          <div class="fi"><div class="fit">Data Augmentation</div><div class="fid"><span data-es="Rotaciones, flips y variaciones de brillo sobre las máscaras para aumentar la variabilidad del set de entrenamiento y mejorar la generalización." data-en="Rotations, flips and brightness variations on masks to increase training set variability and improve generalization.">Rotaciones, flips y variaciones de brillo sobre las máscaras para aumentar la variabilidad del set de entrenamiento y mejorar la generalización.</span></div></div>
+          <div class="fi"><div class="fit"><span data-es="Optimización del threshold Sigmoid" data-en="Sigmoid threshold optimization">Optimización del threshold Sigmoid</span></div><div class="fid"><span data-es="Explorar valores por debajo de 0.5 para capturar más TP a costa de aumentar FP — calibrar según el trade-off clínico acceptable." data-en="Explore values below 0.5 to capture more TP at the cost of increasing FP — calibrate according to the clinically acceptable trade-off.">Explorar valores por debajo de 0.5 para capturar más TP a costa de aumentar FP — calibrar según el trade-off clínico acceptable.</span></div></div>
+          <div class="fi"><div class="fit"><span data-es="Más épocas con menor learning rate" data-en="More epochs with lower learning rate">Más épocas con menor learning rate</span></div><div class="fid"><span data-es="Las curvas no mostraron overfitting al final del entrenamiento. Continuar convergiendo con lr reducido debería mejorar la precisión de borde." data-en="Curves showed no overfitting at the end of training. Continuing to converge with reduced lr should improve border precision.">Las curvas no mostraron overfitting al final del entrenamiento. Continuar convergiendo con lr reducido debería mejorar la precisión de borde.</span></div></div>
+          <div class="fi"><div class="fit"><span data-es="Análisis volumétrico" data-en="Volumetric analysis">Análisis volumétrico</span></div><div class="fid"><span data-es="Con un Dice más alto, usar la segmentación para cuantificar el volumen tumoral y habilitar el seguimiento evolutivo que motivó el proyecto." data-en="With a higher Dice, use segmentation to quantify tumor volume and enable the evolutionary follow-up that motivated the project.">Con un Dice más alto, usar la segmentación para cuantificar el volumen tumoral y habilitar el seguimiento evolutivo que motivó el proyecto.</span></div></div>
         </div>
       </div>
     </div>
@@ -264,16 +195,38 @@
   <div class="pnav reveal">
     <a href="goodreads.html" style="text-decoration:none;color:inherit;"><div class="pnl">Anterior</div><div class="pnt">Goodreads</div></a>
     <div style="text-align:right">
-<a href="index.html#projects" style="text-decoration:none;color:inherit;text-align:center;display:block;"><div class="pnl">Todos los proyectos</div><div class="pnt">← Ver proyectos</div></a>
+<a href="index.html#projects" style="text-decoration:none;color:inherit;text-align:center;display:block;"><div class="pnl"><span data-es="Todos los proyectos" data-en="All projects">Todos los proyectos</span></div><div class="pnt"><span data-es="← Ver proyectos" data-en="← See projects">← Ver proyectos</span></div></a>
     </div>
-    <a href="index.html#projects" class="pna">Ver proyectos →</a>
+    <a href="index.html#projects" class="pna"><span data-es="Ver proyectos →" data-en="See projects →">Ver proyectos →</span></a>
   </div>
 
 </div>
-<footer>© 2026 Elena Salomón López</footer>
+<footer><span data-es="© 2026 Elena Salomón López" data-en="© 2026 Elena Salomón López">© 2026 Elena Salomón López</span></footer>
 <script>
   const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.08});
   document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+
+<script>
+(function() {
+  var lang = localStorage.getItem('lang') || 'es';
+  var btn = document.getElementById('lang-btn');
+  function applyLang(l) {
+    document.querySelectorAll('[data-es]').forEach(function(el) {
+      el.innerHTML = l === 'en' ? el.getAttribute('data-en') : el.getAttribute('data-es');
+    });
+    if (btn) btn.textContent = l === 'es' ? 'EN' : 'ES';
+    document.documentElement.lang = l;
+  }
+  if (btn) {
+    btn.addEventListener('click', function() {
+      lang = lang === 'es' ? 'en' : 'es';
+      localStorage.setItem('lang', lang);
+      applyLang(lang);
+    });
+  }
+  applyLang(lang);
+})();
 </script>
 </body>
 </html>

@@ -72,17 +72,25 @@
     .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease;}
     .reveal.visible{opacity:1;transform:translateY(0);}
     @media(max-width:600px){.proj-hero-inner,.sg{grid-template-columns:1fr;gap:1rem;}.meta-grid{grid-template-columns:1fr;}.pnav{flex-direction:column;align-items:flex-start;gap:1.2rem;}}
+
+    .lang-toggle {
+      font-size: 0.68rem; font-weight: 500; letter-spacing: 0.1em;
+      cursor: pointer; border: 1px solid var(--rule); border-radius: 50px;
+      padding: 0.28rem 0.8rem; color: var(--mid); background: transparent;
+      transition: all 0.2s; text-transform: uppercase;
+    }
+    .lang-toggle:hover { border-color: var(--accent); color: var(--accent); }
   </style>
 </head>
 <body>
-<nav><div class="nav-inner"><a href="index.html" class="nav-name">Elena Salomón</a><a href="index.html#projects" class="nav-back">← Proyectos</a></div></nav>
+<nav><div class="nav-inner"><a href="index.html" class="nav-name">Elena Salomón</a><a href="index.html#projects" class="nav-back" data-es="← Proyectos" data-en="← Projects">← Proyectos</a><button class="lang-toggle" id="lang-btn" style="margin-left:1rem;">EN</button></div></nav>
 
 <div class="proj-hero">
   <div class="proj-hero-inner">
     <div>
       <div class="proj-num">04 / 05</div>
       <div class="proj-tags">
-        <span class="proj-tag">Clasificación</span>
+        <span class="proj-tag"><span data-es="Clasificación" data-en="Classification">Clasificación</span></span>
         <span class="proj-tag">NLP</span>
         <span class="proj-tag">XGBoost</span>
         <span class="proj-tag">Random Forest</span>
@@ -90,10 +98,10 @@
     </div>
     <div>
       <h1>Goodreads: <em>¿Será<br>popular?</em></h1>
-      <p class="proj-summary">Modelo de clasificación que predice la popularidad de un libro a partir de sus características — sin leerlo. Entrenado con 16.225 libros del catálogo global de Goodreads.</p>
+      <p class="proj-summary"><span data-es="Modelo de clasificación que predice la popularidad de un libro a partir de sus características — sin leerlo. Entrenado con 16.225 libros del catálogo global de Goodreads." data-en="Classification model that predicts a book's popularity from its characteristics — without reading it. Trained on 16,225 books from the global Goodreads catalog.">Modelo de clasificación que predice la popularidad de un libro a partir de sus características — sin leerlo. Entrenado con 16.225 libros del catálogo global de Goodreads.</span></p>
       <div class="proj-links">
-        <a href="https://github.com/elenasalomon/Goodreads_project" class="proj-link" target="_blank">Ver en GitHub</a>
-        <a href="index.html#projects" class="proj-link ghost">← Volver</a>
+        <a href="https://github.com/elenasalomon/Goodreads_project" class="proj-link" target="_blank"><span data-es="Ver en GitHub" data-en="View on GitHub">Ver en GitHub</span></a>
+        <a href="index.html#projects" class="proj-link ghost"><span data-es="← Volver" data-en="← Back">← Volver</span></a>
       </div>
     </div>
   </div>
@@ -103,36 +111,36 @@
 
   <div class="section reveal">
     <div class="sg">
-      <span class="sl">Ficha</span>
+      <span class="sl"><span data-es="Ficha" data-en="Overview">Ficha</span></span>
       <div class="meta-grid">
-        <div class="mr"><div class="ml">Tipo</div><div class="mv">Clasificación supervisada</div></div>
+        <div class="mr"><div class="ml"><span data-es="Tipo" data-en="Type">Tipo</span></div><div class="mv"><span data-es="<span data-es="Clasificación" data-en="Classification">Clasificación</span> supervisada" data-en="Supervised classification"><span data-es="Clasificación" data-en="Classification">Clasificación</span> supervisada</span></div></div>
         <div class="mr"><div class="ml">Dataset</div><div class="mv">16.225 libros — Kaggle/Goodreads</div></div>
-        <div class="mr"><div class="ml">Modelo elegido</div><div class="mv">XGBoost (accuracy 76%, AUC 0.81)</div></div>
-        <div class="mr"><div class="ml">Año</div><div class="mv">2025</div></div>
-        <div class="mr"><div class="ml">Equipo</div><div class="mv">Ibarra · Salomón · Nebot</div></div>
-        <div class="mr"><div class="ml">Stack</div><div class="mv">Python · scikit-learn · XGBoost · SHAP</div></div>
+        <div class="mr"><div class="ml"><span data-es="Modelo elegido" data-en="Chosen model">Modelo elegido</span></div><div class="mv">XGBoost (accuracy 76%, AUC 0.81)</div></div>
+        <div class="mr"><div class="ml"><span data-es="Año" data-en="Year">Año</span></div><div class="mv">2025</div></div>
+        <div class="mr"><div class="ml"><span data-es="Equipo" data-en="Team">Equipo</span></div><div class="mv"><span data-es="Ibarra · Salomón · Nebot" data-en="Ibarra · Salomón · Nebot">Ibarra · Salomón · Nebot</span></div></div>
+        <div class="mr"><div class="ml"><span data-es="Stack" data-en="Stack">Stack</span></div><div class="mv">Python · scikit-learn · XGBoost · SHAP</div></div>
       </div>
     </div>
   </div>
 
   <div class="section reveal">
     <div class="sg">
-      <span class="sl">El problema</span>
+      <span class="sl"><span data-es="El problema" data-en="The problem">El problema</span></span>
       <div>
-        <h2>No juzgues un libro por su portada</h2>
-        <p>Al cierre de 2024, se publicaban entre 2.2 y 2.4 millones de libros al año — unos 6.000 diarios. Para una aplicación como Goodreads, identificar de antemano qué libros van a resonar con sus usuarios es la diferencia entre una buena recomendación y un bloqueo lector.</p>
-        <p>El objetivo fue construir un <strong>modelo de clasificación</strong> que, a partir de las características de un libro (título, autor, género, formato, fecha de publicación, cantidad de páginas), prediga si será popular — sin depender de las reseñas acumuladas.</p>
+        <h2><span data-es="No juzgues un libro por su portada" data-en="Don't judge a book by its cover">No juzgues un libro por su portada</span></h2>
+        <p><span data-es="Al cierre de 2024, se publicaban entre 2.2 y 2.4 millones de libros al año — unos 6.000 diarios. Para una aplicación como Goodreads, identificar de antemano qué libros van a resonar con sus usuarios es la diferencia entre una buena recomendación y un bloqueo lector." data-en="By the end of 2024, between 2.2 and 2.4 million books were published per year — about 6,000 daily. For an application like Goodreads, identifying in advance which books will resonate with users is the difference between a good recommendation and reader fatigue.">Al cierre de 2024, se publicaban entre 2.2 y 2.4 millones de libros al año — unos 6.000 diarios. Para una aplicación como Goodreads, identificar de antemano qué libros van a resonar con sus usuarios es la diferencia entre una buena recomendación y un bloqueo lector.</span></p>
+        <p><span data-es="El objetivo fue construir un <strong>modelo de clasificación</strong> que, a partir de las características de un libro (título, autor, género, formato, fecha de publicación, cantidad de páginas), prediga si será popular — sin depender de las reseñas acumuladas." data-en="The goal was to build a <strong>classification model</strong> that, based on a book's characteristics (title, author, genre, format, publication date, number of pages), predicts whether it will be popular — without relying on accumulated reviews.">El objetivo fue construir un <strong>modelo de clasificación</strong> que, a partir de las características de un libro (título, autor, género, formato, fecha de publicación, cantidad de páginas), prediga si será popular — sin depender de las reseñas acumuladas.</span></p>
       </div>
     </div>
   </div>
 
   <div class="section reveal">
     <div class="sg">
-      <span class="sl">Los datos</span>
+      <span class="sl"><span data-es="Los datos" data-en="The data">Los datos</span></span>
       <div>
         <h2>Dataset Goodreads</h2>
-        <p>El dataset contiene <strong>16.225 libros</strong> con 15 variables: 10 de tipo objeto y 5 numéricas. Las variables clave incluyen título, autor, género, formato, número de páginas, puntuación promedio, cantidad de ratings y distribución de reseñas.</p>
-        <p>La variable objetivo <strong>popular</strong> fue construida a partir del NPS ajustado del libro: 62% no populares / 38% populares — un desbalance moderado que no requirió técnicas extremas de balanceo.</p>
+        <p><span data-es="El dataset contiene <strong>16.225 libros</strong> con 15 variables: 10 de tipo objeto y 5 numéricas. Las variables clave incluyen título, autor, género, formato, número de páginas, puntuación promedio, cantidad de ratings y distribución de reseñas." data-en="The dataset contains <strong>16,225 books</strong> with 15 variables: 10 object type and 5 numeric. Key variables include title, author, genre, format, number of pages, average score, number of ratings and review distribution.">El dataset contiene <strong>16.225 libros</strong> con 15 variables: 10 de tipo objeto y 5 numéricas. Las variables clave incluyen título, autor, género, formato, número de páginas, puntuación promedio, cantidad de ratings y distribución de reseñas.</span></p>
+        <p><span data-es="La variable objetivo <strong>popular</strong> fue construida a partir del NPS ajustado del libro: 62% no populares / 38% populares — un desbalance moderado que no requirió técnicas extremas de balanceo." data-en="The target variable <strong>popular</strong> was built from the book's adjusted NPS: 62% not popular / 38% popular — a moderate imbalance that did not require extreme balancing techniques.">La variable objetivo <strong>popular</strong> fue construida a partir del NPS ajustado del libro: 62% no populares / 38% populares — un desbalance moderado que no requirió técnicas extremas de balanceo.</span></p>
       </div>
     </div>
   </div>
@@ -141,17 +149,17 @@
     <div class="sg">
       <span class="sl">Variable objetivo</span>
       <div>
-        <h2>El dilema del promedio engañoso</h2>
-        <p>El dataset tiene una trampa: un libro con una sola calificación de 5 estrellas aparece "mejor" que un clásico con promedio 4.2 basado en un millón de reseñas. Usar el promedio simple directamente haría que el modelo recomendara títulos con una sola reseña perfecta, ignorando los éxitos consolidados.</p>
-        <p>La solución fue construir una métrica propia: el <strong>NPS Ajustado</strong>, que pondera la calificación por el volumen de interacción recibida. Esto neutraliza el ruido estadístico de libros con pocas reseñas.</p>
+        <h2><span data-es="El dilema del promedio engañoso" data-en="The misleading average dilemma">El dilema del promedio engañoso</span></h2>
+        <p><span data-es="El dataset tiene una trampa: un libro con una sola calificación de 5 estrellas aparece &quot;mejor&quot; que un clásico con promedio 4.2 basado en un millón de reseñas. Usar el promedio simple directamente haría que el modelo recomendara títulos con una sola reseña perfecta, ignorando los éxitos consolidados." data-en="The dataset has a trap: a book with a single 5-star rating appears &quot;better&quot; than a classic averaging 4.2 based on a million reviews. Using the simple average directly would make the model recommend titles with a single perfect review, ignoring established successes.">El dataset tiene una trampa: un libro con una sola calificación de 5 estrellas aparece "mejor" que un clásico con promedio 4.2 basado en un millón de reseñas. Usar el promedio simple directamente haría que el modelo recomendara títulos con una sola reseña perfecta, ignorando los éxitos consolidados.</span></p>
+        <p><span data-es="La solución fue construir una métrica propia: el <strong>NPS Ajustado</strong>, que pondera la calificación por el volumen de interacción recibida. Esto neutraliza el ruido estadístico de libros con pocas reseñas." data-en="The solution was to build a custom metric: the <strong>Adjusted NPS</strong>, which weights the rating by the volume of interaction received. This neutralizes the statistical noise of books with few reviews.">La solución fue construir una métrica propia: el <strong>NPS Ajustado</strong>, que pondera la calificación por el volumen de interacción recibida. Esto neutraliza el ruido estadístico de libros con pocas reseñas.</span></p>
 
-        <p style="margin-top:1.6rem;margin-bottom:.6rem;font-size:.82rem;font-weight:500;color:var(--ink);">Paso 1 — Normalización por género (Z-Score)</p>
-        <p>No es válido comparar el éxito de un libro de ficción juvenil con uno de no ficción: tienen audiencias y volúmenes distintos. Se calculó el Z-Score del NPS ajustado <em>dentro de cada género</em>:</p>
-        <p>Z &gt; 0 → el libro supera el promedio de su propio género.<br>Z &lt; 0 → el libro está por debajo de la media de su categoría.</p>
+        <p style="margin-top:1.6rem;margin-bottom:.6rem;font-size:.82rem;font-weight:500;color:var(--ink);"><span data-es="Paso 1 — Normalización por género (Z-Score)" data-en="Step 1 — Genre normalization (Z-Score)">Paso 1 — Normalización por género (Z-Score)</span></p>
+        <p><span data-es="No es válido comparar el éxito de un libro de ficción juvenil con uno de no ficción: tienen audiencias y volúmenes distintos. Se calculó el Z-Score del NPS ajustado <em>dentro de cada género</em>:" data-en="It is not valid to compare the success of a young adult fiction book with a non-fiction one: they have different audiences and volumes. The Z-Score of the adjusted NPS was calculated <em>within each genre</em>:">No es válido comparar el éxito de un libro de ficción juvenil con uno de no ficción: tienen audiencias y volúmenes distintos. Se calculó el Z-Score del NPS ajustado <em>dentro de cada género</em>:</span></p>
+        <p><span data-es="Z &gt; 0 → el libro supera el promedio de su propio género.<br>Z &lt; 0 → el libro está por debajo de la media de su categoría." data-en="Z &gt; 0 → the book surpasses the average of its own genre.<br>Z &lt; 0 → the book is below the average of its category.">Z &gt; 0 → el libro supera el promedio de su propio género.<br>Z &lt; 0 → el libro está por debajo de la media de su categoría.</span></p>
 
-        <p style="margin-top:1.6rem;margin-bottom:.6rem;font-size:.82rem;font-weight:500;color:var(--ink);">Paso 2 — Umbral del percentil 70</p>
-        <p>Para convertir la métrica continua en una clasificación binaria útil para el modelo, se estableció el <strong>percentil 70 del Z-Score</strong> como punto de corte. Todo libro que supere ese umbral es etiquetado como <strong>POPULAR</strong>. El resultado: 62% no populares / 38% populares — un desbalance moderado, manejable sin técnicas extremas.</p>
-        <p>Esta metodología asegura que la clasificación no sea un concurso de popularidad bruta, sino un análisis de calidad relativa que respeta las particularidades de cada comunidad de lectores.</p>
+        <p style="margin-top:1.6rem;margin-bottom:.6rem;font-size:.82rem;font-weight:500;color:var(--ink);"><span data-es="Paso 2 — Umbral del percentil 70" data-en="Step 2 — 70th percentile threshold">Paso 2 — Umbral del percentil 70</span></p>
+        <p><span data-es="Para convertir la métrica continua en una clasificación binaria útil para el modelo, se estableció el <strong>percentil 70 del Z-Score</strong> como punto de corte. Todo libro que supere ese umbral es etiquetado como <strong>POPULAR</strong>. El resultado: 62% no populares / 38% populares — un desbalance moderado, manejable sin técnicas extremas." data-en="To convert the continuous metric into a binary classification useful for the model, the <strong>70th percentile of the Z-Score</strong> was established as the cutoff. Any book exceeding that threshold is labeled <strong>POPULAR</strong>. The result: 62% not popular / 38% popular — a moderate imbalance, manageable without extreme techniques.">Para convertir la métrica continua en una clasificación binaria útil para el modelo, se estableció el <strong>percentil 70 del Z-Score</strong> como punto de corte. Todo libro que supere ese umbral es etiquetado como <strong>POPULAR</strong>. El resultado: 62% no populares / 38% populares — un desbalance moderado, manejable sin técnicas extremas.</span></p>
+        <p><span data-es="Esta metodología asegura que la clasificación no sea un concurso de popularidad bruta, sino un análisis de calidad relativa que respeta las particularidades de cada comunidad de lectores." data-en="This methodology ensures that classification is not a raw popularity contest, but a relative quality analysis that respects the particularities of each reader community.">Esta metodología asegura que la clasificación no sea un concurso de popularidad bruta, sino un análisis de calidad relativa que respeta las particularidades de cada comunidad de lectores.</span></p>
       </div>
     </div>
   </div>
@@ -160,82 +168,82 @@
     <div class="sg">
       <span class="sl">Feature engineering</span>
       <div>
-        <h2>Variables construidas</h2>
-        <p style="margin-bottom:1.4rem;">Las variables más predictivas no estaban en el dataset original — fueron construidas:</p>
+        <h2><span data-es="Variables construidas" data-en="Engineered variables">Variables construidas</span></h2>
+        <p style="margin-bottom:1.4rem;"><span data-es="Las variables más predictivas no estaban en el dataset original — fueron construidas:" data-en="The most predictive variables were not in the original dataset — they were engineered:">Las variables más predictivas no estaban en el dataset original — fueron construidas:</span></p>
         <div class="feat-list">
           <div class="feat-item">
             <div class="fi-n">01</div>
-            <div class="fi-t"><strong>nps_autor_prev</strong> — NPS histórico del autor antes del libro analizado. La variable con mayor correlación con popularidad.</div>
+            <div class="fi-t"><span data-es="<strong>nps_autor_prev</strong> — NPS histórico del autor antes del libro analizado. La variable con mayor correlación con popularidad." data-en="<strong>nps_autor_prev</strong> — Author&#39;s historical NPS before the analyzed book. The variable with the highest correlation with popularity."><strong>nps_autor_prev</strong> — NPS histórico del autor antes del libro analizado. La variable con mayor correlación con popularidad.</span></div>
           </div>
           <div class="feat-item">
             <div class="fi-n">02</div>
-            <div class="fi-t"><strong>q_libros_prev</strong> — Cantidad de libros publicados previamente por el autor. Proxy de audiencia consolidada.</div>
+            <div class="fi-t"><span data-es="<strong>q_libros_prev</strong> — Cantidad de libros publicados previamente por el autor. Proxy de audiencia consolidada." data-en="<strong>q_libros_prev</strong> — Number of books previously published by the author. Proxy for consolidated audience."><strong>q_libros_prev</strong> — Cantidad de libros publicados previamente por el autor. Proxy de audiencia consolidada.</span></div>
           </div>
           <div class="feat-item">
             <div class="fi-n">03</div>
-            <div class="fi-t"><strong>antiguedad</strong> — Años desde la primera publicación. El modelo detectó que la antigüedad penaliza: el mercado premia las novedades.</div>
+            <div class="fi-t"><span data-es="<strong>antiguedad</strong> — Años desde la primera publicación. El modelo detectó que la antigüedad penaliza: el mercado premia las novedades." data-en="<strong>antiguedad</strong> — Years since first publication. The model detected that age penalizes: the market rewards novelty."><strong>antiguedad</strong> — Años desde la primera publicación. El modelo detectó que la antigüedad penaliza: el mercado premia las novedades.</span></div>
           </div>
           <div class="feat-item">
             <div class="fi-n">04</div>
-            <div class="fi-t"><strong>Cluster_Nombre</strong> — Géneros agrupados en 8 clusters mediante KMeans sobre los géneros originales del dataset (que tenían 13.773 combinaciones únicas). Cada cluster representa una comunidad lectora con comportamiento homogéneo.</div>
+            <div class="fi-t"><span data-es="<strong>Cluster_Nombre</strong> — Géneros agrupados en 8 clusters mediante KMeans sobre los géneros originales del dataset (que tenían 13.773 combinaciones únicas). Cada cluster representa una comunidad lectora con comportamiento homogéneo." data-en="<strong>Cluster_Nombre</strong> — Genres grouped into 8 clusters via KMeans on the original dataset genres (which had 13,773 unique combinations). Each cluster represents a reader community with homogeneous behavior."><strong>Cluster_Nombre</strong> — Géneros agrupados en 8 clusters mediante KMeans sobre los géneros originales del dataset (que tenían 13.773 combinaciones únicas). Cada cluster representa una comunidad lectora con comportamiento homogéneo.</span></div>
           </div>
         </div>
-        <h3 style="font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 300; color: var(--ink); margin-top: 2.2rem; margin-bottom: 1.2rem;">Libros más reseñados por cluster</h3>
+        <h3 style="font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 300; color: var(--ink); margin-top: 2.2rem; margin-bottom: 1.2rem;"><span data-es="Libros más reseñados por cluster" data-en="Most reviewed books by cluster">Libros más reseñados por cluster</span></h3>
         <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 0.5rem;">
 
           <div style="background: var(--card); border: 1px solid var(--rule); border-radius: 10px; padding: 1.4rem;">
-            <div style="font-size: 0.65rem; font-weight: 600; letter-spacing: 0.13em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.7rem;">Ciencia Ficción</div>
+            <div style="font-size: 0.65rem; font-weight: 600; letter-spacing: 0.13em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.7rem;"><span data-es="Ciencia Ficción" data-en="Science Fiction">Ciencia Ficción</span></div>
             <div style="font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 400; color: var(--ink); margin-bottom: 0.3rem;">1984</div>
-            <div style="font-size: 0.78rem; color: var(--mid); margin-bottom: 0.5rem;">587.628 reseñas</div>
+            <div style="font-size: 0.78rem; color: var(--mid); margin-bottom: 0.5rem;"><span data-es="587.628 reseñas" data-en="587,628 reviews">587.628 reseñas</span></div>
             <div style="font-size: 0.75rem; color: var(--mid);">The Hunger Games · The Midnight Library</div>
           </div>
 
           <div style="background: var(--card); border: 1px solid var(--rule); border-radius: 10px; padding: 1.4rem;">
-            <div style="font-size: 0.65rem; font-weight: 600; letter-spacing: 0.13em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.7rem;">Misterio, Thriller y Terror</div>
+            <div style="font-size: 0.65rem; font-weight: 600; letter-spacing: 0.13em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.7rem;"><span data-es="Misterio, Thriller y Terror" data-en="Mystery, Thriller & Horror">Misterio, Thriller y Terror</span></div>
             <div style="font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 400; color: var(--ink); margin-bottom: 0.3rem;">Verity</div>
-            <div style="font-size: 0.78rem; color: var(--mid); margin-bottom: 0.5rem;">712.108 reseñas</div>
+            <div style="font-size: 0.78rem; color: var(--mid); margin-bottom: 0.5rem;"><span data-es="712.108 reseñas" data-en="712,108 reviews">712.108 reseñas</span></div>
             <div style="font-size: 0.75rem; color: var(--mid);">The Silent Patient · A Good Girl's Guide</div>
           </div>
 
           <div style="background: var(--card); border: 1px solid var(--rule); border-radius: 10px; padding: 1.4rem;">
-            <div style="font-size: 0.65rem; font-weight: 600; letter-spacing: 0.13em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.7rem;">Novela Literaria e Histórica</div>
+            <div style="font-size: 0.65rem; font-weight: 600; letter-spacing: 0.13em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.7rem;"><span data-es="Novela Literaria e Histórica" data-en="Literary & Historical Fiction">Novela Literaria e Histórica</span></div>
             <div style="font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 400; color: var(--ink); margin-bottom: 0.3rem;">The Seven Husbands of Evelyn Hugo</div>
-            <div style="font-size: 0.78rem; color: var(--mid); margin-bottom: 0.5rem;">1.098.517 reseñas</div>
+            <div style="font-size: 0.78rem; color: var(--mid); margin-bottom: 0.5rem;"><span data-es="1.098.517 reseñas" data-en="1,098,517 reviews">1.098.517 reseñas</span></div>
             <div style="font-size: 0.75rem; color: var(--mid);">The Song of Achilles · Addie LaRue</div>
           </div>
 
           <div style="background: var(--card); border: 1px solid var(--rule); border-radius: 10px; padding: 1.4rem;">
-            <div style="font-size: 0.65rem; font-weight: 600; letter-spacing: 0.13em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.7rem;">Ficción y Nuevas Tendencias</div>
+            <div style="font-size: 0.65rem; font-weight: 600; letter-spacing: 0.13em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.7rem;"><span data-es="Ficción y Nuevas Tendencias" data-en="Fiction & New Trends">Ficción y Nuevas Tendencias</span></div>
             <div style="font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 400; color: var(--ink); margin-bottom: 0.3rem;">A Court of Mist and Fury</div>
-            <div style="font-size: 0.78rem; color: var(--mid); margin-bottom: 0.5rem;">674.371 reseñas</div>
+            <div style="font-size: 0.78rem; color: var(--mid); margin-bottom: 0.5rem;"><span data-es="674.371 reseñas" data-en="674,371 reviews">674.371 reseñas</span></div>
             <div style="font-size: 0.75rem; color: var(--mid);">ACOTAR · It Ends with Us</div>
           </div>
 
           <div style="background: var(--card); border: 1px solid var(--rule); border-radius: 10px; padding: 1.4rem;">
-            <div style="font-size: 0.65rem; font-weight: 600; letter-spacing: 0.13em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.7rem;">No ficción y Reflexión</div>
+            <div style="font-size: 0.65rem; font-weight: 600; letter-spacing: 0.13em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.7rem;"><span data-es="No ficción y Reflexión" data-en="Non-fiction & Reflection">No ficción y Reflexión</span></div>
             <div style="font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 400; color: var(--ink); margin-bottom: 0.3rem;">The Subtle Art of Not Giving a F*ck</div>
-            <div style="font-size: 0.78rem; color: var(--mid); margin-bottom: 0.5rem;">584.217 reseñas</div>
+            <div style="font-size: 0.78rem; color: var(--mid); margin-bottom: 0.5rem;"><span data-es="584.217 reseñas" data-en="584,217 reviews">584.217 reseñas</span></div>
             <div style="font-size: 0.75rem; color: var(--mid);">Atomic Habits · Sapiens</div>
           </div>
 
           <div style="background: var(--card); border: 1px solid var(--rule); border-radius: 10px; padding: 1.4rem;">
-            <div style="font-size: 0.65rem; font-weight: 600; letter-spacing: 0.13em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.7rem;">Ficción Juvenil</div>
+            <div style="font-size: 0.65rem; font-weight: 600; letter-spacing: 0.13em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.7rem;"><span data-es="Ficción Juvenil" data-en="Young Adult Fiction">Ficción Juvenil</span></div>
             <div style="font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 400; color: var(--ink); margin-bottom: 0.3rem;">The Cruel Prince</div>
-            <div style="font-size: 0.78rem; color: var(--mid); margin-bottom: 0.5rem;">398.542 reseñas</div>
+            <div style="font-size: 0.78rem; color: var(--mid); margin-bottom: 0.5rem;"><span data-es="398.542 reseñas" data-en="398,542 reviews">398.542 reseñas</span></div>
             <div style="font-size: 0.75rem; color: var(--mid);">An Ember in the Ashes · Six of Crows</div>
           </div>
 
           <div style="background: var(--card); border: 1px solid var(--rule); border-radius: 10px; padding: 1.4rem;">
-            <div style="font-size: 0.65rem; font-weight: 600; letter-spacing: 0.13em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.7rem;">Historiador y Biógrafo</div>
+            <div style="font-size: 0.65rem; font-weight: 600; letter-spacing: 0.13em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.7rem;"><span data-es="Historiador y Biógrafo" data-en="History & Biography">Historiador y Biógrafo</span></div>
             <div style="font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 400; color: var(--ink); margin-bottom: 0.3rem;">Educated</div>
-            <div style="font-size: 0.78rem; color: var(--mid); margin-bottom: 0.5rem;">512.904 reseñas</div>
+            <div style="font-size: 0.78rem; color: var(--mid); margin-bottom: 0.5rem;"><span data-es="512.904 reseñas" data-en="512,904 reviews">512.904 reseñas</span></div>
             <div style="font-size: 0.75rem; color: var(--mid);">The Glass Castle · Born a Crime</div>
           </div>
 
           <div style="background: var(--card); border: 1px solid var(--rule); border-radius: 10px; padding: 1.4rem;">
-            <div style="font-size: 0.65rem; font-weight: 600; letter-spacing: 0.13em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.7rem;">Fantasía y Romance Juvenil</div>
-            <div style="font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 400; color: var(--ink); margin-bottom: 0.3rem;">Crepúsculo</div>
-            <div style="font-size: 0.78rem; color: var(--mid); margin-bottom: 0.5rem;">743.891 reseñas</div>
+            <div style="font-size: 0.65rem; font-weight: 600; letter-spacing: 0.13em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.7rem;"><span data-es="Fantasía y Romance Juvenil" data-en="Young Adult Fantasy & Romance">Fantasía y Romance Juvenil</span></div>
+            <div style="font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 400; color: var(--ink); margin-bottom: 0.3rem;"><span data-es="Crepúsculo" data-en="Twilight">Crepúsculo</span></div>
+            <div style="font-size: 0.78rem; color: var(--mid); margin-bottom: 0.5rem;"><span data-es="743.891 reseñas" data-en="743,891 reviews">743.891 reseñas</span></div>
             <div style="font-size: 0.75rem; color: var(--mid);">The Fault in Our Stars · Divergent</div>
           </div>
 
@@ -246,22 +254,22 @@
 
   <div class="section reveal">
     <div class="sg">
-      <span class="sl">Modelos</span>
+      <span class="sl"><span data-es="Modelos" data-en="Models">Modelos</span></span>
       <div>
-        <h2>Comparación de modelos</h2>
-        <p style="margin-bottom:1.4rem;">Se entrenaron cuatro modelos. La métrica prioritaria fue <strong>precisión en libros populares</strong>: que los libros predichos como exitosos efectivamente lo sean.</p>
+        <h2><span data-es="Comparación de modelos" data-en="Model comparison">Comparación de modelos</span></h2>
+        <p style="margin-bottom:1.4rem;"><span data-es="Se entrenaron cuatro modelos. La métrica prioritaria fue <strong>precisión en libros populares</strong>: que los libros predichos como exitosos efectivamente lo sean." data-en="Four models were trained. The priority metric was <strong>precision on popular books</strong>: that books predicted as successful actually are.">Se entrenaron cuatro modelos. La métrica prioritaria fue <strong>precisión en libros populares</strong>: que los libros predichos como exitosos efectivamente lo sean.</span></p>
         <table class="bt">
           <thead>
-            <tr><th>Modelo</th><th>Accuracy</th><th>Precisión (pop.)</th><th>Recall (pop.)</th><th>AUC-ROC</th></tr>
+            <tr><th>Modelo</th><th>Accuracy</th><th><span data-es="Precisión (pop.)" data-en="Precision (pop.)">Precisión (pop.)</span></th><th>Recall (pop.)</th><th>AUC-ROC</th></tr>
           </thead>
           <tbody>
-            <tr><td>Regresión Logística</td><td>0.66</td><td>0.54</td><td>0.66</td><td>0.72</td></tr>
-            <tr><td>Árbol de Decisión</td><td>0.73</td><td>0.62</td><td>0.72</td><td>0.79</td></tr>
+            <tr><td><span data-es="Regresión Logística" data-en="Logistic Regression">Regresión Logística</span></td><td>0.66</td><td>0.54</td><td>0.66</td><td>0.72</td></tr>
+            <tr><td><span data-es="Árbol de Decisión" data-en="Decision Tree">Árbol de Decisión</span></td><td>0.73</td><td>0.62</td><td>0.72</td><td>0.79</td></tr>
             <tr><td>Random Forest</td><td>0.74</td><td>0.67</td><td>0.60</td><td>0.79</td></tr>
             <tr><td>XGBoost <span class="wb">elegido</span></td><td>0.76</td><td>0.71</td><td>0.61</td><td>0.81</td></tr>
           </tbody>
         </table>
-        <p style="margin-top:1.4rem;">XGBoost fue elegido por ser el modelo más equilibrado entre entrenamiento y test, con la mayor precisión (71%) y AUC-ROC (0.81). Un libro que el modelo marque como popular tiene una probabilidad real alta de serlo.</p>
+        <p style="margin-top:1.4rem;"><span data-es="XGBoost fue elegido por ser el modelo más equilibrado entre entrenamiento y test, con la mayor precisión (71%) y AUC-ROC (0.81). Un libro que el modelo marque como popular tiene una probabilidad real alta de serlo." data-en="XGBoost was chosen for being the most balanced model between training and test, with the highest precision (71%) and AUC-ROC (0.81). A book the model marks as popular has a genuinely high probability of being so.">XGBoost fue elegido por ser el modelo más equilibrado entre entrenamiento y test, con la mayor precisión (71%) y AUC-ROC (0.81). Un libro que el modelo marque como popular tiene una probabilidad real alta de serlo.</span></p>
       </div>
     </div>
   </div>
@@ -270,28 +278,28 @@
     <div class="sg">
       <span class="sl">Interpretabilidad</span>
       <div>
-        <h2>¿Qué hace popular a un libro?</h2>
-        <p>El análisis SHAP sobre el modelo XGBoost reveló los factores reales detrás de las predicciones:</p>
+        <h2><span data-es="¿Qué hace popular a un libro?" data-en="What makes a book popular?">¿Qué hace popular a un libro?</span></h2>
+        <p><span data-es="El análisis SHAP sobre el modelo XGBoost reveló los factores reales detrás de las predicciones:" data-en="The SHAP analysis on the XGBoost model revealed the real factors behind predictions:">El análisis SHAP sobre el modelo XGBoost reveló los factores reales detrás de las predicciones:</span></p>
         <div class="feat-list">
           <div class="feat-item">
             <div class="fi-n">↑</div>
-            <div class="fi-t"><strong>NPS previo del autor</strong> — el factor más determinante. Un autor con buen historial casi garantiza popularidad; uno con mala reputación la castiga severamente.</div>
+            <div class="fi-t"><span data-es="<strong>NPS previo del autor</strong> — el factor más determinante. Un autor con buen historial casi garantiza popularidad; uno con mala reputación la castiga severamente." data-en="<strong>Author&#39;s prior NPS</strong> — the most determining factor. An author with a good track record almost guarantees popularity; one with a bad reputation severely penalizes it."><strong>NPS previo del autor</strong> — el factor más determinante. Un autor con buen historial casi garantiza popularidad; uno con mala reputación la castiga severamente.</span></div>
           </div>
           <div class="feat-item">
             <div class="fi-n">↑</div>
-            <div class="fi-t"><strong>Novela Literaria e Histórica</strong> — el único cluster de géneros con impacto positivo consistente. Un género "ganador" en Goodreads.</div>
+            <div class="fi-t"><span data-es="<strong>Novela Literaria e Histórica</strong> — el único cluster de géneros con impacto positivo consistente. Un género &quot;ganador&quot; en Goodreads." data-en="<strong>Literary & Historical Fiction</strong> — the only genre cluster with consistent positive impact. A &quot;winning&quot; genre on Goodreads."><strong>Novela Literaria e Histórica</strong> — el único cluster de géneros con impacto positivo consistente. Un género "ganador" en Goodreads.</span></div>
           </div>
           <div class="feat-item">
             <div class="fi-n">↓</div>
-            <div class="fi-t"><strong>Antigüedad</strong> — penaliza. Los libros más viejos tienen menor probabilidad de ser populares en la plataforma actual.</div>
+            <div class="fi-t"><span data-es="<strong>Antigüedad</strong> — penaliza. Los libros más viejos tienen menor probabilidad de ser populares en la plataforma actual." data-en="<strong>Age</strong> — penalizes. Older books have a lower probability of being popular on the current platform."><strong>Antigüedad</strong> — penaliza. Los libros más viejos tienen menor probabilidad de ser populares en la plataforma actual.</span></div>
           </div>
           <div class="feat-item">
             <div class="fi-n">↓</div>
-            <div class="fi-t"><strong>Ficción Juvenil</strong> — tiene más dificultades para alcanzar alta popularidad comparado con otros géneros.</div>
+            <div class="fi-t"><span data-es="<strong>Ficción Juvenil</strong> — tiene más dificultades para alcanzar alta popularidad comparado con otros géneros." data-en="<strong>Young Adult Fiction</strong> — has more difficulty reaching high popularity compared to other genres."><strong>Ficción Juvenil</strong> — tiene más dificultades para alcanzar alta popularidad comparado con otros géneros.</span></div>
           </div>
           <div class="feat-item">
             <div class="fi-n">—</div>
-            <div class="fi-t"><strong>Cantidad de libros previos del autor</strong> — tener muchos libros publicados no necesariamente predice éxito en el título actual.</div>
+            <div class="fi-t"><span data-es="<strong>Cantidad de libros previos del autor</strong> — tener muchos libros publicados no necesariamente predice éxito en el título actual." data-en="<strong>Number of previous books by the author</strong> — having many published books does not necessarily predict success in the current title."><strong>Cantidad de libros previos del autor</strong> — tener muchos libros publicados no necesariamente predice éxito en el título actual.</span></div>
           </div>
         </div>
       </div>
@@ -300,30 +308,52 @@
 
   <div class="section reveal">
     <div class="sg">
-      <span class="sl">Conclusiones</span>
+      <span class="sl"><span data-es="Conclusiones" data-en="Conclusions">Conclusiones</span></span>
       <div>
-        <h2>Lo que aprendimos</h2>
+        <h2><span data-es="Lo que aprendimos" data-en="What we learned">Lo que aprendimos</span></h2>
         <div class="cl">
-          <div class="ci"><div class="cn">1</div><div class="ct"><strong>La variable objetivo debe ser inteligente.</strong> Un promedio simple no captura la realidad. Al ponderar por volumen y normalizar por género, obtuvimos un objetivo verdaderamente predictivo que el modelo pudo aprender.</div></div>
-          <div class="ci"><div class="cn">2</div><div class="ct"><strong>El historial del autor es el predictor más fuerte.</strong> El éxito previo del autor casi garantiza popularidad en el nuevo título. Los primeros libros de autores nuevos tienen muchas más dificultades para despegar.</div></div>
-          <div class="ci"><div class="cn">3</div><div class="ct"><strong>XGBoost captura mejor las interacciones no lineales.</strong> Su valor está en la precisión balanceada y capacidad de generalización sin overfitting — no solo en accuracy bruto como sugieren las métricas simples.</div></div>
-          <div class="ci"><div class="cn">4</div><div class="ct"><strong>La explicabilidad con SHAP es esencial en ML.</strong> No es suficiente un modelo preciso si no puedes explicar por qué predice lo que predice. SHAP convirtió una caja negra en decisiones interpretables para el negocio editorial.</div></div>
+          <div class="ci"><div class="cn">1</div><div class="ct"><span data-es="<strong>La variable objetivo debe ser inteligente.</strong> Un promedio simple no captura la realidad. Al ponderar por volumen y normalizar por género, obtuvimos un objetivo verdaderamente predictivo que el modelo pudo aprender." data-en="<strong>The target variable must be intelligent.</strong> A simple average doesn&#39;t capture reality. By weighting for volume and normalizing by genre, we obtained a truly predictive target that the model could learn from."><strong>La variable objetivo debe ser inteligente.</strong> Un promedio simple no captura la realidad. Al ponderar por volumen y normalizar por género, obtuvimos un objetivo verdaderamente predictivo que el modelo pudo aprender.</span></div></div>
+          <div class="ci"><div class="cn">2</div><div class="ct"><span data-es="<strong>El historial del autor es el predictor más fuerte.</strong> El éxito previo del autor casi garantiza popularidad en el nuevo título. Los primeros libros de autores nuevos tienen muchas más dificultades para despegar." data-en="<strong>Author history is the strongest predictor.</strong> An author&#39;s previous success almost guarantees popularity in a new title. First books from new authors have much more difficulty taking off."><strong>El historial del autor es el predictor más fuerte.</strong> El éxito previo del autor casi garantiza popularidad en el nuevo título. Los primeros libros de autores nuevos tienen muchas más dificultades para despegar.</span></div></div>
+          <div class="ci"><div class="cn">3</div><div class="ct"><span data-es="<strong>XGBoost captura mejor las interacciones no lineales.</strong> Su valor está en la precisión balanceada y capacidad de generalización sin overfitting — no solo en accuracy bruto como sugieren las métricas simples." data-en="<strong>XGBoost better captures non-linear interactions.</strong> Its value lies in balanced precision and generalization capacity without overfitting — not just raw accuracy as simple metrics suggest."><strong>XGBoost captura mejor las interacciones no lineales.</strong> Su valor está en la precisión balanceada y capacidad de generalización sin overfitting — no solo en accuracy bruto como sugieren las métricas simples.</span></div></div>
+          <div class="ci"><div class="cn">4</div><div class="ct"><span data-es="<strong>La explicabilidad con SHAP es esencial en ML.</strong> No es suficiente un modelo preciso si no puedes explicar por qué predice lo que predice. SHAP convirtió una caja negra en decisiones interpretables para el negocio editorial." data-en="<strong>Explainability with SHAP is essential in ML.</strong> A precise model isn&#39;t enough if you can&#39;t explain why it predicts what it predicts. SHAP turned a black box into interpretable decisions for the publishing business."><strong>La explicabilidad con SHAP es esencial en ML.</strong> No es suficiente un modelo preciso si no puedes explicar por qué predice lo que predice. SHAP convirtió una caja negra en decisiones interpretables para el negocio editorial.</span></div></div>
         </div>
       </div>
     </div>
   </div>
 
   <div class="pnav reveal">
-    <a href="clientcatch.html" style="text-decoration:none;color:inherit;"><div class="pnl">Anterior</div><div class="pnt">Client Catch</div></a>
-    <a href="braintumor.html" style="text-decoration:none;color:inherit;text-align:right;display:block;"><div class="pnl">Siguiente proyecto</div><div class="pnt">Brain Tumor Detection</div></a>
-    <a href="braintumor.html" class="pna">Ver proyecto →</a>
+    <a href="clientcatch.html" style="text-decoration:none;color:inherit;"><div class="pnl"><span data-es="Anterior" data-en="Previous">Anterior</span></div><div class="pnt">Client Catch</div></a>
+    <a href="braintumor.html" style="text-decoration:none;color:inherit;text-align:right;display:block;"><div class="pnl"><span data-es="Siguiente proyecto" data-en="Next project">Siguiente proyecto</span></div><div class="pnt">Brain Tumor Detection</div></a>
+    <a href="braintumor.html" class="pna"><span data-es="Ver proyecto →" data-en="View project →">Ver proyecto →</span></a>
   </div>
 
 </div>
-<footer>© 2026 Elena Salomón López</footer>
+<footer><span data-es="© 2026 Elena Salomón López" data-en="© 2026 Elena Salomón López">© 2026 Elena Salomón López</span></footer>
 <script>
   const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.08});
   document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+
+<script>
+(function() {
+  var lang = localStorage.getItem('lang') || 'es';
+  var btn = document.getElementById('lang-btn');
+  function applyLang(l) {
+    document.querySelectorAll('[data-es]').forEach(function(el) {
+      el.innerHTML = l === 'en' ? el.getAttribute('data-en') : el.getAttribute('data-es');
+    });
+    if (btn) btn.textContent = l === 'es' ? 'EN' : 'ES';
+    document.documentElement.lang = l;
+  }
+  if (btn) {
+    btn.addEventListener('click', function() {
+      lang = lang === 'es' ? 'en' : 'es';
+      localStorage.setItem('lang', lang);
+      applyLang(lang);
+    });
+  }
+  applyLang(lang);
+})();
 </script>
 </body>
 </html>
